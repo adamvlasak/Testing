@@ -1,0 +1,19 @@
+version: "3.7"
+services:
+  webapp:
+    image: webgoat/webgoat-7.1
+
+  hub:
+    image: selenium/hub
+    ports:
+      - "4444:4444"
+
+  node:
+    image: selenium/node-chrome
+    environment:
+      HUB_HOST: hub
+    depends_on:
+      - hub
+    links:
+      - hub
+      - webapp

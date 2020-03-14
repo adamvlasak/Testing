@@ -6,7 +6,7 @@ namespace Testing.Pages
     {
         public WebGoatRegistrationPage(IWebDriver driver) : base(driver)
         {
-            _driver.Navigate().GoToUrl("http://localhost:8080/WebGoat/registration");
+            _driver.Navigate().GoToUrl("http://webapp:8080/WebGoat/registration");
         }
 
         public WebGoatLoginPage Login()

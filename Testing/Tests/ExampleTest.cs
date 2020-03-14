@@ -12,6 +12,7 @@ namespace Testing.Tests
             var homePage = new ExamplePage(driver);
             homePage.Visit();
             homePage.Verify();
+            homePage.Screenshot();
         }
     }
 }
