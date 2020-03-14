@@ -1,9 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using OpenQA.Selenium.Support.PageObjects;
 using System;
-using System.Linq;
-using NUnit.Framework;
 
 namespace Testing.Pages
 {

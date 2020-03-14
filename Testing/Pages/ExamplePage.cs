@@ -1,15 +1,12 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.PageObjects;
-using OpenQA.Selenium.Support.UI;
-using System;
 
 namespace Testing.Pages
 {
     public class ExamplePage : BasePage
     {
-        IWebElement title => _driver.FindElement(By.TagName("h1"));
-        IWebElement paragraph => _driver.FindElement(By.TagName("p"));
+        private IWebElement title => _driver.FindElement(By.TagName("h1"));
+        private IWebElement paragraph => _driver.FindElement(By.TagName("p"));
 
         public ExamplePage(IWebDriver driver) : base(driver)
         {

@@ -5,11 +5,9 @@ namespace Testing.Pages
 {
     public class BigWebsitePage : BasePage
     {
-        //IWebElement Title => _wait.Until(driver => driver.FindElement(By.CssSelector(".logo--header")));
-        [Skip(AutoCheck = false)]
-        IWebElement Title => _driver.FindElement(By.CssSelector(".logo--header"));
-        [Skip(AutoCheck = true)]
-        IWebElement Paragraph => _wait.Until(driver => driver.FindElement(By.CssSelector("p")));
+        private IWebElement Title => _driver.FindElement(By.CssSelector(".logo--header"));
+
+        private IWebElement Paragraph => _wait.Until(driver => driver.FindElement(By.CssSelector("p")));
 
         public BigWebsitePage(IWebDriver driver) : base(driver)
         {
