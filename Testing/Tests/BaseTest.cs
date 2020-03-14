@@ -26,7 +26,7 @@ namespace Testing.Tests
         [TearDown]
         public void TearDown()
         {
-            driver.Close();
+            driver.Manage().Cookies.DeleteAllCookies();
             driver.Quit();
         }
     }
