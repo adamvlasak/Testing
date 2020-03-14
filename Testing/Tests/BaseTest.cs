@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
+using System;
 
 namespace Testing.Tests
 {
@@ -12,7 +14,9 @@ namespace Testing.Tests
         [SetUp]
         public void Setup()
         {
-            driver = new ChromeDriver();
+            ChromeOptions options = new ChromeOptions();
+            options.PageLoadStrategy = PageLoadStrategy.Normal;
+            driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
             driver.Manage().Window.Maximize();
         }
 
