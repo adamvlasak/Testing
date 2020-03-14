@@ -10,6 +10,7 @@ namespace Testing.Tests
     public class BaseTest
     {
         protected IWebDriver driver;
+        private readonly Uri hubAddress = new Uri("http://localhost:4444/wd/hub");
 
         [SetUp]
         public void Setup()
@@ -18,7 +19,7 @@ namespace Testing.Tests
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
-            driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
+            driver = new RemoteWebDriver(hubAddress, options);
             driver.Manage().Window.Maximize();
         }
 
