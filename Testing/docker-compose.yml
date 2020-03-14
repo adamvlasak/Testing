@@ -2,6 +2,8 @@ version: "3.7"
 services:
   webapp:
     image: webgoat/webgoat-7.1
+    ports:
+      - "8080:8080"
 
   hub:
     image: selenium/hub

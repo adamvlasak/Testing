@@ -6,7 +6,7 @@ namespace Testing.Pages
 {
     public class BasePage
     {
-        private const int waitTime = 60;
+        private const int waitTime = 5;
 
         protected IWebDriver _driver;
         protected WebDriverWait _wait;
