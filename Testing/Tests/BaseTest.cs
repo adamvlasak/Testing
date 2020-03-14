@@ -14,8 +14,10 @@ namespace Testing.Tests
         [SetUp]
         public void Setup()
         {
-            ChromeOptions options = new ChromeOptions();
-            options.PageLoadStrategy = PageLoadStrategy.Normal;
+            ChromeOptions options = new ChromeOptions
+            {
+                PageLoadStrategy = PageLoadStrategy.Normal
+            };
             driver = new RemoteWebDriver(new Uri("http://localhost:4444/wd/hub"), options);
             driver.Manage().Window.Maximize();
         }
