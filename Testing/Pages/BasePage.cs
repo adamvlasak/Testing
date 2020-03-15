@@ -21,7 +21,7 @@ namespace Testing.Pages
         {
             ITakesScreenshot sDriver = (ITakesScreenshot)_driver;
             var screenshot = sDriver.GetScreenshot();
-            screenshot.SaveAsFile($"c:\\tmp\\{DateTime.Now.ToFileTime()}.png", ScreenshotImageFormat.Png);
+            screenshot.SaveAsFile($"c:\\tmp\\{DateTime.Now.ToString("yyyy-dd-MM--HH-mm-ss")}.png", ScreenshotImageFormat.Png);
         }
     }
 }
