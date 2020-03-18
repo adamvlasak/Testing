@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using Testing.Pages;
 
 namespace Testing.Tests
@@ -9,9 +10,8 @@ namespace Testing.Tests
         [Test]
         public void TestMethod()
         {
-            var homePage = new BigWebsitePage(driver);
+            var homePage = new BigWebsitePage(WebDriver);
             homePage.Visit();
-            homePage.Screenshot();
         }
     }
 }

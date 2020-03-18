@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using Testing.Pages;
 
 namespace Testing.Tests
@@ -11,30 +12,28 @@ namespace Testing.Tests
         [TestCase("admin", "admin")]
         [TestCase("webgoat", "Webgoat")]
         [TestCase("webgoat", "")]
-        public void LoginUnsuccessfulTest(string username, string password)
+        public void LoginUnsuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(driver);
+            var p = new WebGoatLoginPage(WebDriver);
             p.Visit();
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             p.Login(username, password);
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc?error"));
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc?error"));
             Assert.That(p.ErrorMessage.Displayed, Is.True);
             Assert.That(p.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
-            p.Screenshot();
         }
 
         [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
-        public void LoginSuccessfulTest(string username, string password)
+        public void LoginSuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(driver);
+            var p = new WebGoatLoginPage(WebDriver);
             p.Visit();
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
-            p.Screenshot();
         }
 
         [Test]
@@ -42,9 +41,9 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void LogoutTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(driver);
+            var p = new WebGoatLoginPage(WebDriver);
             p.Visit();
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
@@ -52,8 +51,7 @@ namespace Testing.Tests
             Assert.That(p.AlertSuccess.Displayed, Is.True);
             Assert.That(p.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(p.LoginLink.Displayed, Is.True);
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/logout.mvc"));
-            p.Screenshot();
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/logout.mvc"));
         }
 
         [Test]
@@ -61,15 +59,14 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void CompleteLesson(string username, string password)
         {
-            var p = new WebGoatLoginPage(driver);
+            var p = new WebGoatLoginPage(WebDriver);
             p.Visit();
-            Assert.That(driver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             lp.EnableLabelDebugging();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
-            lp.Screenshot();
         }
     }
 }

@@ -9,8 +9,9 @@ namespace Testing.Tests
     [TestFixture]
     public class BaseTest
     {
-        protected IWebDriver driver;
         private readonly Uri hubAddress = new Uri("http://localhost:4444/wd/hub");
+
+        protected IWebDriver WebDriver { get; set; }
 
         [SetUp]
         public void Setup()
@@ -19,15 +20,16 @@ namespace Testing.Tests
             {
                 PageLoadStrategy = PageLoadStrategy.Normal
             };
-            driver = new RemoteWebDriver(hubAddress, options);
-            driver.Manage().Window.Maximize();
+            WebDriver = new RemoteWebDriver(hubAddress, options);
+            WebDriver.Manage().Window.Maximize();
         }
 
         [TearDown]
         public void TearDown()
         {
-            driver.Manage().Cookies.DeleteAllCookies();
-            driver.Quit();
+            WebDriver.Screenshot();
+            WebDriver.Manage().Cookies.DeleteAllCookies();
+            WebDriver.Quit();
         }
     }
 }

@@ -16,12 +16,5 @@ namespace Testing.Pages
             _driver = driver;
             _wait = new WebDriverWait(_driver, new TimeSpan(0, 0, waitTime));
         }
-
-        public void Screenshot()
-        {
-            ITakesScreenshot sDriver = (ITakesScreenshot)_driver;
-            var screenshot = sDriver.GetScreenshot();
-            screenshot.SaveAsFile($"c:\\tmp\\{DateTime.Now.ToString("yyyy-dd-MM--HH-mm-ss")}.png", ScreenshotImageFormat.Png);
-        }
     }
 }
