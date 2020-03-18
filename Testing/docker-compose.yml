@@ -12,6 +12,7 @@ services:
 
   node:
     image: selenium/node-chrome
+    shm_size: '2gb'
     environment:
       HUB_HOST: hub
     depends_on:
