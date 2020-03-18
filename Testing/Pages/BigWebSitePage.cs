@@ -5,9 +5,9 @@ namespace Testing.Pages
 {
     public class BigWebsitePage : BasePage
     {
-        private IWebElement Title => _driver.FindElement(By.CssSelector(".logo--header"));
+        private IWebElement Title => WebDriver.FindElement(By.CssSelector(".logo--header"));
 
-        private IWebElement Paragraph => _wait.Until(driver => driver.FindElement(By.CssSelector("p")));
+        private IWebElement Paragraph => Wait.Until(driver => driver.FindElement(By.CssSelector("p")));
 
         public BigWebsitePage(IWebDriver driver) : base(driver)
         {
@@ -15,7 +15,7 @@ namespace Testing.Pages
 
         public void Visit()
         {
-            _driver.Navigate().GoToUrl("https://wired.com");
+            WebDriver.Navigate().GoToUrl("https://wired.com");
         }
 
         public void Verify()

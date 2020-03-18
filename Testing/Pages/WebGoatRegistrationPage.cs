@@ -6,12 +6,12 @@ namespace Testing.Pages
     {
         public WebGoatRegistrationPage(IWebDriver driver) : base(driver)
         {
-            _driver.Navigate().GoToUrl("http://webapp:8080/WebGoat/registration");
+            WebDriver.Navigate().GoToUrl("http://webapp:8080/WebGoat/registration");
         }
 
         public WebGoatLoginPage Login()
         {
-            return new WebGoatLoginPage(_driver);
+            return new WebGoatLoginPage(WebDriver);
         }
     }
 }

@@ -7,14 +7,13 @@ namespace Testing.Pages
     public class BasePage
     {
         private const int waitTime = 5;
-
-        protected IWebDriver _driver;
-        protected WebDriverWait _wait;
+        protected IWebDriver WebDriver { get; set; }
+        protected WebDriverWait Wait { get; set; }
 
         public BasePage(IWebDriver driver)
         {
-            _driver = driver;
-            _wait = new WebDriverWait(_driver, new TimeSpan(0, 0, waitTime));
+            WebDriver = driver;
+            Wait = new WebDriverWait(WebDriver, new TimeSpan(0, 0, waitTime));
         }
     }
 }

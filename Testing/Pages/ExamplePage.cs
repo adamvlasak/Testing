@@ -5,8 +5,8 @@ namespace Testing.Pages
 {
     public class ExamplePage : BasePage
     {
-        private IWebElement title => _driver.FindElement(By.TagName("h1"));
-        private IWebElement paragraph => _driver.FindElement(By.TagName("p"));
+        private IWebElement title => WebDriver.FindElement(By.TagName("h1"));
+        private IWebElement paragraph => WebDriver.FindElement(By.TagName("p"));
 
         public ExamplePage(IWebDriver driver) : base(driver)
         {
@@ -14,7 +14,7 @@ namespace Testing.Pages
 
         public void Visit()
         {
-            _driver.Navigate().GoToUrl("https://example.org");
+            WebDriver.Navigate().GoToUrl("https://example.org");
         }
 
         public void Verify()

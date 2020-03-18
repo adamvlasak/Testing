@@ -5,14 +5,14 @@ namespace Testing.Pages
 {
     public sealed class LoggedInHomePage : BasePage
     {
-        public IWebElement LessonTitle => _wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
-        public IWebElement UserMenu => _wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
-        public IWebElement LogoutLink => _wait.Until(driver => driver.FindElement(By.LinkText("Logout")));
-        public IWebElement ShowDeveloperOptionsLink => _wait.Until(driver => driver.FindElement(By.LinkText("Show developer controls")));
-        public IWebElement DeveloperControlContainer => _wait.Until(driver => driver.FindElement(By.CssSelector("div#developer-control-container")));
-        public IWebElement EnableLabelDebuggingLink => _wait.Until(driver => driver.FindElement(By.LinkText("Enable label debugging")));
-        public IWebElement DisableabelDebuggingLink => _wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
-        public IWebElement LessonProgressStatus => _wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
+        public IWebElement LessonTitle => Wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
+        public IWebElement UserMenu => Wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
+        public IWebElement LogoutLink => Wait.Until(driver => driver.FindElement(By.LinkText("Logout")));
+        public IWebElement ShowDeveloperOptionsLink => Wait.Until(driver => driver.FindElement(By.LinkText("Show developer controls")));
+        public IWebElement DeveloperControlContainer => Wait.Until(driver => driver.FindElement(By.CssSelector("div#developer-control-container")));
+        public IWebElement EnableLabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Enable label debugging")));
+        public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
+        public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
 
         public LoggedInHomePage(IWebDriver driver) : base(driver)
         {
@@ -22,7 +22,7 @@ namespace Testing.Pages
         {
             UserMenu.Click();
             LogoutLink.Click();
-            return new WebGoatLoginPage(_driver);
+            return new WebGoatLoginPage(WebDriver);
         }
 
         public void EnableLabelDebugging()

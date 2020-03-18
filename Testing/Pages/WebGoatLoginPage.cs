@@ -4,12 +4,12 @@ namespace Testing.Pages
 {
     public class WebGoatLoginPage : BasePage
     {
-        public IWebElement Username => _wait.Until(driver => driver.FindElement(By.Id("exampleInputEmail1")));
-        public IWebElement Password => _wait.Until(driver => driver.FindElement(By.Id("exampleInputPassword1")));
-        public IWebElement Submit => _wait.Until(driver => driver.FindElement(By.CssSelector("button.btn-primary")));
-        public IWebElement ErrorMessage => _wait.Until(driver => driver.FindElement(By.CssSelector("div.error")));
-        public IWebElement AlertSuccess => _wait.Until(driver => driver.FindElement(By.CssSelector("div.alert-success")));
-        public IWebElement LoginLink => _wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
+        public IWebElement Username => Wait.Until(driver => driver.FindElement(By.Id("exampleInputEmail1")));
+        public IWebElement Password => Wait.Until(driver => driver.FindElement(By.Id("exampleInputPassword1")));
+        public IWebElement Submit => Wait.Until(driver => driver.FindElement(By.CssSelector("button.btn-primary")));
+        public IWebElement ErrorMessage => Wait.Until(driver => driver.FindElement(By.CssSelector("div.error")));
+        public IWebElement AlertSuccess => Wait.Until(driver => driver.FindElement(By.CssSelector("div.alert-success")));
+        public IWebElement LoginLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
 
         public WebGoatLoginPage(IWebDriver driver) : base(driver)
         {
@@ -17,7 +17,7 @@ namespace Testing.Pages
 
         public void Visit()
         {
-            _driver.Navigate().GoToUrl("http://webapp:8080/WebGoat");
+            WebDriver.Navigate().GoToUrl("http://webapp:8080/WebGoat");
         }
 
         public LoggedInHomePage Login(string username, string password)
@@ -25,12 +25,12 @@ namespace Testing.Pages
             Username.SendKeys(username);
             Password.SendKeys(password);
             Submit.Click();
-            return new LoggedInHomePage(_driver);
+            return new LoggedInHomePage(WebDriver);
         }
 
         public WebGoatRegistrationPage Register()
         {
-            return new WebGoatRegistrationPage(_driver);
+            return new WebGoatRegistrationPage(WebDriver);
         }
     }
 }
