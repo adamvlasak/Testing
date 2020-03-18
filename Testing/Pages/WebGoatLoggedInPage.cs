@@ -3,7 +3,7 @@ using System;
 
 namespace Testing.Pages
 {
-    public sealed class LoggedInHomePage : BasePage
+    public sealed class WebGoatLoggedInPage : BasePage
     {
         public IWebElement LessonTitle => Wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
         public IWebElement UserMenu => Wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
@@ -14,7 +14,7 @@ namespace Testing.Pages
         public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
         public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
 
-        public LoggedInHomePage(IWebDriver driver) : base(driver)
+        public WebGoatLoggedInPage(IWebDriver driver) : base(driver)
         {
         }
 
