@@ -9,9 +9,10 @@ namespace Testing.Tests
         [Test]
         public void TestMethod()
         {
-            var homePage = new ExamplePage(WebDriver);
-            homePage.Visit();
-            homePage.Verify();
+            var p = new ExamplePage(WebDriver);
+            p.Visit();
+            Assert.That(p.title.Displayed, Is.True);
+            Assert.That(p.paragraph.Displayed, Is.True);
         }
     }
 }

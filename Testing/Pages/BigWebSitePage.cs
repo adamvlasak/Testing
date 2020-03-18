@@ -1,13 +1,11 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 
 namespace Testing.Pages
 {
     public class BigWebsitePage : BasePage
     {
-        private IWebElement Title => WebDriver.FindElement(By.CssSelector(".logo--header"));
-
-        private IWebElement Paragraph => Wait.Until(driver => driver.FindElement(By.CssSelector("p")));
+        public IWebElement Title => Wait.Until(driver => driver.FindElement(By.CssSelector(".logo--header")));
+        public IWebElement Paragraph => Wait.Until(driver => driver.FindElement(By.CssSelector("p")));
 
         public BigWebsitePage(IWebDriver driver) : base(driver)
         {
@@ -16,12 +14,6 @@ namespace Testing.Pages
         public void Visit()
         {
             WebDriver.Navigate().GoToUrl("https://wired.com");
-        }
-
-        public void Verify()
-        {
-            Assert.That(Title.Displayed, Is.True, "Title not found on the page");
-            Assert.That(Paragraph.Displayed, Is.True);
         }
     }
 }

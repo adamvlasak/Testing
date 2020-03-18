@@ -9,8 +9,10 @@ namespace Testing.Tests
         [Test]
         public void TestMethod()
         {
-            var homePage = new BigWebsitePage(WebDriver);
-            homePage.Visit();
+            var p = new BigWebsitePage(WebDriver);
+            p.Visit();
+            Assert.That(p.Title.Displayed, Is.True, "Title not found on the page");
+            Assert.That(p.Paragraph.Displayed, Is.True);
         }
     }
 }
