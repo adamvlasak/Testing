@@ -66,6 +66,7 @@ namespace Testing.Tests
             var lp = p.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             lp.EnableLabelDebugging();
+            lp.UserMenu.Click();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
             lp.Logout();

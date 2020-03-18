@@ -7,10 +7,16 @@ using System;
 
 namespace Testing.Tests
 {
+    public enum Browser
+    {
+        Chrome,
+        Firefox
+    }
+
     [TestFixture]
     public class BaseTest
     {
-        private const string browser = "chrome";
+        private readonly Browser browser = Browser.Chrome;
         private readonly Uri hubAddress = new Uri("http://localhost:4444/wd/hub");
 
         protected IWebDriver WebDriver { get; set; }
@@ -22,18 +28,18 @@ namespace Testing.Tests
             WebDriver.Manage().Window.Maximize();
         }
 
-        private IWebDriver CreateWebDriver(string browser)
+        private IWebDriver CreateWebDriver(Browser browser)
         {
             switch (browser)
             {
-                case "firefox":
+                case Browser.Firefox:
                     FirefoxOptions firefoxOptions = new FirefoxOptions
                     {
                         PageLoadStrategy = PageLoadStrategy.Normal
                     };
                     return new RemoteWebDriver(hubAddress, firefoxOptions);
 
-                case "chrome":
+                case Browser.Chrome:
                     ChromeOptions chromeOptions = new ChromeOptions
                     {
                         PageLoadStrategy = PageLoadStrategy.Normal
