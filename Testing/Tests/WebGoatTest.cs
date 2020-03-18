@@ -33,6 +33,8 @@ namespace Testing.Tests
             var lp = p.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
+            lp.Logout();
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/logout.mvc"));
         }
 
         [Test]
@@ -66,6 +68,8 @@ namespace Testing.Tests
             lp.EnableLabelDebugging();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
+            lp.Logout();
+            Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/logout.mvc"));
         }
     }
 }
