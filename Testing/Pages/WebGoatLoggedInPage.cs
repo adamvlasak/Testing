@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using System;
 
 namespace Testing.Pages
 {
@@ -13,6 +12,10 @@ namespace Testing.Pages
         public IWebElement EnableLabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Enable label debugging")));
         public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
         public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
+
+        public WebGoatLoggedInPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
+        {
+        }
 
         public WebGoatLoggedInPage(IWebDriver driver) : base(driver)
         {

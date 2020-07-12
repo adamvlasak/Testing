@@ -13,7 +13,7 @@ namespace Testing.Tests
         [TestCase("webgoat", "")]
         public void LoginUnsuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(WebDriver);
+            var p = new WebGoatLoginPage(new System.Uri("http://webapp:8080/WebGoat"), WebDriver);
             p.Visit();
             Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             p.Login(username, password);
@@ -27,7 +27,7 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void LoginSuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(WebDriver);
+            var p = new WebGoatLoginPage(new System.Uri("http://webapp:8080/WebGoat"), WebDriver);
             p.Visit();
             Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);
@@ -42,7 +42,7 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void LogoutTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(WebDriver);
+            var p = new WebGoatLoginPage(new System.Uri("http://webapp:8080/WebGoat"), WebDriver);
             p.Visit();
             Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);
@@ -60,7 +60,7 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void CompleteLesson(string username, string password)
         {
-            var p = new WebGoatLoginPage(WebDriver);
+            var p = new WebGoatLoginPage(new System.Uri("http://webapp:8080/WebGoat"), WebDriver);
             p.Visit();
             Assert.That(WebDriver.Url, Is.EqualTo("http://webapp:8080/WebGoat/login.mvc"));
             var lp = p.Login(username, password);

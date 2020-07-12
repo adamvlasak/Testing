@@ -12,13 +12,12 @@ namespace Testing.Pages
         public IWebElement LoginLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
         public IWebElement RegisterLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
 
-        public WebGoatLoginPage(IWebDriver driver) : base(driver)
+        public WebGoatLoginPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
         {
         }
 
-        public void Visit()
+        public WebGoatLoginPage(IWebDriver driver) : base(driver)
         {
-            WebDriver.Navigate().GoToUrl("http://webapp:8080/WebGoat");
         }
 
         public WebGoatLoggedInPage Login(string username, string password)

@@ -9,8 +9,8 @@ namespace Testing.Tests
         [Test]
         public void TestMethod()
         {
-            var p = new ExamplePage(WebDriver);
-            p.Visit("https://example.org");
+            var p = new ExamplePage(new System.Uri("https://example.org"), WebDriver);
+            p.Visit();
             Assert.That(p.Title.Displayed, Is.True);
             Assert.That(p.Paragraph.Displayed, Is.True);
         }
