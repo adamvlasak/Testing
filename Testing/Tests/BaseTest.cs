@@ -20,7 +20,7 @@ namespace Testing.Tests
         private readonly Browser browser = Browser.ChromeDriver;
         private readonly Uri hubAddress = new Uri("http://localhost:4444/wd/hub");
 
-        protected IWebDriver WebDriver { get; set; }
+        protected IWebDriver WebDriver { get; private set; }
 
         private IWebDriver CreateWebDriver(Browser browser)
         {

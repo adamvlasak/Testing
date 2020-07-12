@@ -8,8 +8,8 @@ namespace Testing.Pages
     {
         private const int waitTime = 5;
 
-        protected IWebDriver WebDriver { get; set; }
-        protected WebDriverWait Wait { get; set; }
+        protected IWebDriver WebDriver { get; private set; }
+        protected WebDriverWait Wait { get; private set; }
         protected Uri BaseUrl { get; private set; }
 
         private WebDriverWait CreateWebDriverWait()
