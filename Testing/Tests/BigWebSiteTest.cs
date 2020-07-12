@@ -7,7 +7,7 @@ namespace Testing.Tests
     public class BigWebSiteTest : BaseTest
     {
         [Test]
-        public void TestMethod()
+        public void WaitForReady_Using_AnonymousMethod()
         {
             var p = new BigWebsitePage(new System.Uri("https://wired.com"), WebDriver);
             p.Visit();
@@ -24,6 +24,25 @@ namespace Testing.Tests
                 Assert.That(p.Title.Displayed, Is.True, $"Title not found on the web page {WebDriver.Url}");
                 Assert.That(p.App.Displayed, Is.True, "No app found on the web page");
             });
+        }
+
+        [Test]
+        public void WaitForReady_Using_NormalCall()
+        {
+            var p = new BigWebsitePage(new System.Uri("https://wired.com"), WebDriver);
+            p.Visit();
+
+            p.WaitForReady();
+
+            Assert.That(p.Title.Displayed, Is.True, $"Title not found on the web page {WebDriver.Url}");
+            Assert.That(p.App.Displayed, Is.True, "No app found on the web page");
+
+            WebDriver.Navigate().Refresh();
+
+            p.WaitForReady();
+
+            Assert.That(p.Title.Displayed, Is.True, $"Title not found on the web page {WebDriver.Url}");
+            Assert.That(p.App.Displayed, Is.True, "No app found on the web page");
         }
     }
 }
