@@ -10,10 +10,5 @@ namespace Testing.Pages
         public BigWebsitePage(IWebDriver driver) : base(driver)
         {
         }
-
-        public void Visit()
-        {
-            WebDriver.Navigate().GoToUrl("https://wired.com");
-        }
     }
 }

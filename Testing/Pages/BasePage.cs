@@ -15,5 +15,10 @@ namespace Testing.Pages
             WebDriver = driver;
             Wait = new WebDriverWait(WebDriver, new TimeSpan(0, 0, waitTime));
         }
+
+        public void Visit(string url)
+        {
+            WebDriver.Navigate().GoToUrl(url);
+        }
     }
 }

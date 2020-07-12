@@ -10,7 +10,7 @@ namespace Testing.Tests
         public void TestMethod()
         {
             var p = new BigWebsitePage(WebDriver);
-            p.Visit();
+            p.Visit("https://wired.com");
             Assert.That(p.Title.Displayed, Is.True, "Title not found on the web page");
             Assert.That(p.Paragraph.Displayed, Is.True, "No paragraph found on the web page");
         }

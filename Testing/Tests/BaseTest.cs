@@ -10,13 +10,14 @@ namespace Testing.Tests
     public enum Browser
     {
         Chrome,
+        ChromeDriver,
         Firefox
     }
 
     [TestFixture]
     public class BaseTest
     {
-        private readonly Browser browser = Browser.Chrome;
+        private readonly Browser browser = Browser.ChromeDriver;
         private readonly Uri hubAddress = new Uri("http://localhost:4444/wd/hub");
 
         protected IWebDriver WebDriver { get; set; }
@@ -35,17 +36,18 @@ namespace Testing.Tests
                 case Browser.Firefox:
                     FirefoxOptions firefoxOptions = new FirefoxOptions
                     {
-                        PageLoadStrategy = PageLoadStrategy.Normal
+                        PageLoadStrategy = PageLoadStrategy.Default
                     };
                     return new RemoteWebDriver(hubAddress, firefoxOptions);
 
                 case Browser.Chrome:
                     ChromeOptions chromeOptions = new ChromeOptions
                     {
-                        PageLoadStrategy = PageLoadStrategy.Normal
+                        PageLoadStrategy = PageLoadStrategy.Default
                     };
                     return new RemoteWebDriver(hubAddress, chromeOptions);
-
+                case Browser.ChromeDriver:
+                    return new ChromeDriver();
                 default:
                     throw new InvalidProgramException("Unsupported browser.");
 
@@ -57,12 +59,13 @@ namespace Testing.Tests
         {
             WebDriver.Screenshot();
             WebDriver.Manage().Cookies.DeleteAllCookies();
+            WebDriver.Close();
         }
 
         [OneTimeTearDown]
         public void OneTimeTearDown()
         {
-            WebDriver.Quit();
+            WebDriver?.Quit();
         }
     }
 }
