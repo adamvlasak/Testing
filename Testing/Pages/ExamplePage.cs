@@ -4,8 +4,8 @@ namespace Testing.Pages
 {
     public class ExamplePage : BasePage
     {
-        public IWebElement title => WebDriver.FindElement(By.TagName("h1"));
-        public IWebElement paragraph => WebDriver.FindElement(By.TagName("p"));
+        public IWebElement Title => WebDriver.FindElement(By.TagName("h1"));
+        public IWebElement Paragraph => WebDriver.FindElement(By.TagName("p"));
 
         public ExamplePage(IWebDriver driver) : base(driver)
         {
