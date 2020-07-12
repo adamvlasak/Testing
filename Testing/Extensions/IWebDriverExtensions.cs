@@ -6,7 +6,9 @@ namespace OpenQA.Selenium
     public enum FrontendFramework
     {
         jQuery,
-        vanilla
+        vanilla,
+        angular,
+        react
     }
 
     public static class IWebDriverExtensions
