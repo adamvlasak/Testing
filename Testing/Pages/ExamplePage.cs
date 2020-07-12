@@ -14,5 +14,10 @@ namespace Testing.Pages
         public ExamplePage(IWebDriver driver) : base(driver)
         {
         }
+
+        public void WaitForReady()
+        {
+            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
+        }
     }
 }
