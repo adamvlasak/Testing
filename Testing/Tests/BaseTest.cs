@@ -64,7 +64,6 @@ namespace Testing.Tests
             }
 
             WebDriver.Manage().Cookies.DeleteAllCookies();
-            WebDriver.Close();
         }
 
         [OneTimeTearDown]
