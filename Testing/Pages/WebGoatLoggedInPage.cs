@@ -21,6 +21,11 @@ namespace Testing.Pages
         {
         }
 
+        public void WaitForReady()
+        {
+            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
+        }
+
         public WebGoatLoginPage Logout()
         {
             UserMenu.Click();

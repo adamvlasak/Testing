@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 
 namespace Testing.Pages
 {
@@ -26,6 +27,11 @@ namespace Testing.Pages
             Password.SendKeys(password);
             Submit.Click();
             return new WebGoatLoggedInPage(WebDriver);
+        }
+
+        public void WaitForReady()
+        {
+            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
         }
     }
 }
