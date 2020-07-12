@@ -15,5 +15,11 @@ namespace Testing.Pages
         public BigWebsitePage(IWebDriver driver) : base(driver)
         {
         }
+
+        public void WaitForReady(System.Action action)
+        {
+            WebDriver.WaitForReady("return window.jQuery != undefined && jQuery.active === 0;");
+            action();
+        }
     }
 }
