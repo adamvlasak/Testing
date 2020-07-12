@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium.Support.UI;
+using System.IO;
 
 namespace OpenQA.Selenium
 {
@@ -6,8 +7,15 @@ namespace OpenQA.Selenium
     {
         public static void Screenshot(this IWebDriver driver)
         {
+            var path = "c:\\tmp";
             var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
-            screenshot.SaveAsFile($"c:\\tmp\\{System.DateTime.Now.ToString("yyyy-dd-MM--HH-mm-ss")}.png", ScreenshotImageFormat.Png);
+
+            if (Directory.Exists(path) == false)
+            {
+                Directory.CreateDirectory(path);
+            }
+
+            screenshot.SaveAsFile($"{path}\\{System.DateTime.Now.ToString("yyyy-dd-MM--HH-mm-ss")}.png", ScreenshotImageFormat.Png);
         }
     }
 }
