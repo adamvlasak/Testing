@@ -30,25 +30,19 @@ namespace Testing.Pages
             Wait = CreateWebDriverWait();
         }
 
-        public void VisitUrl(string url)
+        public void GoToUrl(string url)
         {
             WebDriver.Navigate().GoToUrl(url);
         }
 
         public void Visit()
         {
-            VisitUrl(BaseUrl.ToString());
-        }
-
-        public void Visit(Action action)
-        {
-            Visit();
-            action();
+            GoToUrl(BaseUrl.ToString());
         }
 
         public void VisitPath(string path)
         {
-            VisitUrl($"{BaseUrl}{path}");
+            GoToUrl($"{BaseUrl}{path}");
         }
     }
 }
