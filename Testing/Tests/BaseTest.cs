@@ -61,7 +61,7 @@ namespace Testing.Tests
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
-                WebDriver.Screenshot();
+                WebDriver.Screenshot(TestContext.CurrentContext.Test.ClassName, TestContext.CurrentContext.Test.MethodName);
             }
 
             WebDriver.Manage().Cookies.DeleteAllCookies();

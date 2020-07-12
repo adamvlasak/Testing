@@ -5,7 +5,7 @@ namespace OpenQA.Selenium
 {
     public static class IWebDriverExtensions
     {
-        public static void Screenshot(this IWebDriver driver)
+        public static void Screenshot(this IWebDriver driver, string className, string methodName)
         {
             var path = "c:\\tmp";
             var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
@@ -15,7 +15,7 @@ namespace OpenQA.Selenium
                 Directory.CreateDirectory(path);
             }
 
-            screenshot.SaveAsFile($"{path}\\{System.DateTime.Now.ToString("yyyy-dd-MM--HH-mm-ss")}.png", ScreenshotImageFormat.Png);
+            screenshot.SaveAsFile($"{path}\\{System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}_{className}_{methodName}.png", ScreenshotImageFormat.Png);
         }
     }
 }
