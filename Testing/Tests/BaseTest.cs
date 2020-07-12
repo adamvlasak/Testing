@@ -39,8 +39,10 @@ namespace Testing.Tests
                         PageLoadStrategy = PageLoadStrategy.Default
                     };
                     return new RemoteWebDriver(hubAddress, chromeOptions);
+
                 case Browser.ChromeDriver:
                     return new ChromeDriver();
+
                 default:
                     throw new InvalidProgramException("Unsupported browser.");
 
