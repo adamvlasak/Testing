@@ -5,7 +5,7 @@ namespace Testing.Pages
     public class BigWebsitePage : BasePage
     {
         public IWebElement Title => WebDriver.FindElement(By.CssSelector(".logo--header"));
-        public IWebElement Paragraph => WebDriver.FindElement(By.CssSelector("p"));
+        public IWebElement App => WebDriver.FindElement(By.CssSelector("div#app-root"));
 
         public BigWebsitePage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
         {
@@ -16,9 +16,14 @@ namespace Testing.Pages
         {
         }
 
+        public void WaitForReady()
+        {
+            WebDriver.WaitForReady(Wait, "return window.jQuery != undefined && window.jQuery.active === 0;");
+        }
+
         public void WaitForReady(System.Action action)
         {
-            WebDriver.WaitForReady(Wait, "return window.jQuery != undefined && jQuery.active === 0;");
+            WaitForReady();
             action();
         }
     }
