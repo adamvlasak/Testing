@@ -2,7 +2,7 @@
 
 namespace Testing.Pages
 {
-    public class WebGoatLoginPage : BasePage
+    public sealed class WebGoatLoginPage : BasePage
     {
         public IWebElement Username => Wait.Until(driver => driver.FindElement(By.Id("exampleInputEmail1")));
         public IWebElement Password => Wait.Until(driver => driver.FindElement(By.Id("exampleInputPassword1")));

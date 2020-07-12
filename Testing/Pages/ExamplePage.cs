@@ -2,7 +2,7 @@
 
 namespace Testing.Pages
 {
-    public class ExamplePage : BasePage
+    public sealed class ExamplePage : BasePage
     {
         public IWebElement Title => WebDriver.FindElement(By.TagName("h1"));
         public IWebElement Paragraph => WebDriver.FindElement(By.TagName("p"));

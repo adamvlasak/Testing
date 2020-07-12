@@ -2,7 +2,7 @@
 
 namespace Testing.Pages
 {
-    public class BigWebsitePageSync : BasePage
+    public sealed class BigWebsitePageSync : BasePage
     {
         public IWebElement Title => Wait.Until(driver => driver.FindElement(By.CssSelector(".logo--header")));
         public IWebElement App => Wait.Until(driver => driver.FindElement(By.CssSelector("div#app-root")));

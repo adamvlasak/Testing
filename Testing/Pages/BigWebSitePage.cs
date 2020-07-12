@@ -2,7 +2,7 @@
 
 namespace Testing.Pages
 {
-    public class BigWebsitePage : BasePage
+    public sealed class BigWebsitePage : BasePage
     {
         public IWebElement Title => WebDriver.FindElement(By.CssSelector(".logo--header"));
         public IWebElement App => WebDriver.FindElement(By.CssSelector("div#app-root"));
