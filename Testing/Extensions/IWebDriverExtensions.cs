@@ -3,6 +3,12 @@ using System.IO;
 
 namespace OpenQA.Selenium
 {
+    public enum FrontedFramework
+    {
+        jQuery,
+        vanilla
+    }
+
     public static class IWebDriverExtensions
     {
         public static void Screenshot(this IWebDriver driver, string className, string methodName)
@@ -18,9 +24,21 @@ namespace OpenQA.Selenium
             screenshot.SaveAsFile($"{path}\\{System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}_{className}_{methodName}.png", ScreenshotImageFormat.Png);
         }
 
-        public static void WaitForReady(this IWebDriver driver, WebDriverWait wait, string script)
+        public static void WaitForReady(this IWebDriver driver, WebDriverWait wait, FrontedFramework fw)
         {
             var js = (IJavaScriptExecutor)driver;
+            string script = string.Empty;
+
+            switch (fw)
+            {
+                case FrontedFramework.jQuery:
+                    script = "return window.jQuery != undefined && window.jQuery.active === 0;";
+                    break;
+
+                default:
+                    script = "return document.querySelector('body') != undefined;";
+                    break;
+            }
 
             wait.Until(d =>
             {

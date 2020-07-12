@@ -18,7 +18,7 @@ namespace Testing.Pages
         // could be in BasePage when FE is consistent
         public void WaitForReady()
         {
-            WebDriver.WaitForReady(Wait, "return window.jQuery != undefined && window.jQuery.active === 0;");
+            WebDriver.WaitForReady(Wait, FrontedFramework.jQuery);
         }
 
         // handy for test case
