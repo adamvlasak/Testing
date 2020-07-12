@@ -18,7 +18,7 @@ namespace Testing.Pages
         // could be in BasePage when FE is consistent
         public void WaitForReady()
         {
-            WebDriver.WaitForReady(Wait, FrontedFramework.jQuery);
+            WebDriver.WaitForReady(Wait, FrontendFramework.jQuery);
         }
 
         // handy for test case
