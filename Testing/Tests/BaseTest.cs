@@ -22,13 +22,6 @@ namespace Testing.Tests
 
         protected IWebDriver WebDriver { get; set; }
 
-        [OneTimeSetUp]
-        public void Setup()
-        {
-            WebDriver = CreateWebDriver(browser);
-            WebDriver.Manage().Window.Maximize();
-        }
-
         private IWebDriver CreateWebDriver(Browser browser)
         {
             switch (browser)
@@ -52,6 +45,13 @@ namespace Testing.Tests
                     throw new InvalidProgramException("Unsupported browser.");
 
             }
+        }
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            WebDriver = CreateWebDriver(browser);
+            WebDriver.Manage().Window.Maximize();
         }
 
         [TearDown]
