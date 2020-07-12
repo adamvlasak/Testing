@@ -6,15 +6,15 @@ namespace Testing.Pages
 {
     public class BasePage
     {
-        private const int waitTime = 5;
+        private const int defaultTimeout = 5;
 
         protected IWebDriver WebDriver { get; private set; }
-        protected WebDriverWait Wait { get; private set; }
+        protected WebDriverWait Wait { get; set; }
         protected Uri BaseUrl { get; private set; }
 
-        private WebDriverWait CreateWebDriverWait()
+        protected WebDriverWait CreateWebDriverWait(UInt32 timeout = defaultTimeout)
         {
-            return new WebDriverWait(WebDriver, new TimeSpan(0, 0, waitTime));
+            return new WebDriverWait(WebDriver, new TimeSpan(0, 0, (int)timeout));
         }
 
         public BasePage(Uri baseUrl, IWebDriver driver)

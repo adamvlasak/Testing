@@ -9,6 +9,7 @@ namespace Testing.Pages
 
         public BigWebsitePage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
         {
+            Wait = CreateWebDriverWait(10);
         }
 
         public BigWebsitePage(IWebDriver driver) : base(driver)
