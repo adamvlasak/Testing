@@ -44,7 +44,6 @@ namespace Testing.Tests
 
                 default:
                     throw new InvalidProgramException("Unsupported browser.");
-
             }
         }
 

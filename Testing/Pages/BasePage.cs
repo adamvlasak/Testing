@@ -12,7 +12,7 @@ namespace Testing.Pages
         protected WebDriverWait Wait { get; set; }
         protected Uri BaseUrl { get; private set; }
 
-        protected WebDriverWait CreateWebDriverWait(UInt32 timeout = defaultTimeout)
+        protected WebDriverWait CreateWebDriverWait(uint timeout = defaultTimeout)
         {
             return new WebDriverWait(WebDriver, new TimeSpan(0, 0, (int)timeout));
         }

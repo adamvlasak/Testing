@@ -15,11 +15,13 @@ namespace Testing.Pages
         {
         }
 
+        // could be in BasePage when FE is consistent
         public void WaitForReady()
         {
             WebDriver.WaitForReady(Wait, "return window.jQuery != undefined && window.jQuery.active === 0;");
         }
 
+        // handy for test case
         public void WaitForReady(System.Action action)
         {
             WaitForReady();
