@@ -14,7 +14,6 @@ namespace Testing.Tests
         Firefox
     }
 
-    [TestFixture]
     public class BaseTest
     {
         private readonly Browser browser = Browser.ChromeDriver;
