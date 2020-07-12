@@ -57,7 +57,11 @@ namespace Testing.Tests
         [TearDown]
         public void TearDown()
         {
-            WebDriver.Screenshot();
+            if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
+            {
+                WebDriver.Screenshot();
+            }
+
             WebDriver.Manage().Cookies.DeleteAllCookies();
             WebDriver.Close();
         }
