@@ -14,7 +14,7 @@ namespace Testing.Tests
             Browser = Browser.ChromeDriver,
             SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
             ScreenshotPath = @"c:\tmp",
-            WindowSize = WindowSize.Mobile
+            WindowSize = WindowSize.FullScreen
         };
 
         [OneTimeSetUp]

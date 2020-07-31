@@ -14,7 +14,7 @@ namespace Testing.Framework
             {
                 return WindowSize switch
                 {
-                    WindowSize.FullScreen => "--maximized",
+                    WindowSize.FullScreen => Browser == Browser.ChromeDriver ? "--start-maximized" : "--window-size=1920,1080",
                     WindowSize.Mobile => "--window-size=372,900",
                     _ => throw new ArgumentException("Unsupported window size"),
                 };
