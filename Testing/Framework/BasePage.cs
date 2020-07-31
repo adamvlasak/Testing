@@ -14,14 +14,14 @@ namespace Testing.Pages
         public BasePage(Uri baseUrl, IWebDriver driver)
         {
             WebDriver = driver;
-            Wait = WebDriverFactory.CreateWebDriverWait(WebDriver);
+            Wait = Factory.CreateWebDriverWait(WebDriver);
             BaseUrl = baseUrl;
         }
 
         public BasePage(IWebDriver driver)
         {
             WebDriver = driver;
-            Wait = WebDriverFactory.CreateWebDriverWait(WebDriver);
+            Wait = Factory.CreateWebDriverWait(WebDriver);
         }
 
         public void GoToUrl(string url)

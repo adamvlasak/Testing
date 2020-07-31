@@ -19,15 +19,7 @@ namespace Testing.Tests
         [OneTimeSetUp]
         public void Setup()
         {
-            if (Configuration.Browser == Browser.ChromeDriver)
-            {
-                WebDriver = WebDriverFactory.CreateChromeDriver();
-                WebDriver.Manage().Window.Maximize();
-            }
-            else
-            {
-                WebDriver = WebDriverFactory.CreateRemoteWebDriver(Configuration.Browser, Configuration.SeleniumHubUrl);
-            }
+            WebDriver = Factory.CreateWebDriver(Configuration);
         }
 
         [TearDown]
