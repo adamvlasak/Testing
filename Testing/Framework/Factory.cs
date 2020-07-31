@@ -20,23 +20,23 @@ namespace Testing.Framework
         /// <param name="browser">RemoteFirefox or RemoteChrome</param>
         /// <param name="hubAddress">Selenium Hub URL</param>
         /// <returns>IWebDriver</returns>
-        private static IWebDriver RemoteWebDriver(Browser browser, Uri hubAddress)
+        private static IWebDriver RemoteWebDriver(TestConfiguration configuration)
         {
-            switch (browser)
+            switch (configuration.Browser)
             {
                 case Browser.RemoteFirefox:
                     FirefoxOptions firefoxOptions = new FirefoxOptions
                     {
                         PageLoadStrategy = PageLoadStrategy.Default
                     };
-                    return new RemoteWebDriver(hubAddress, firefoxOptions);
+                    return new RemoteWebDriver(configuration.SeleniumHubUrl, firefoxOptions);
 
                 case Browser.RemoteChrome:
                     ChromeOptions chromeOptions = new ChromeOptions
                     {
                         PageLoadStrategy = PageLoadStrategy.Default
                     };
-                    return new RemoteWebDriver(hubAddress, chromeOptions);
+                    return new RemoteWebDriver(configuration.SeleniumHubUrl, chromeOptions);
 
                 default:
                     throw new ArgumentException("Unsupported browser.");
@@ -47,11 +47,14 @@ namespace Testing.Framework
         /// Returns instance of ChromeDriver
         /// </summary>
         /// <returns>IWebDriver instance</returns>
-        private static IWebDriver ChromeDriver()
+        private static IWebDriver ChromeDriver(TestConfiguration configuration)
         {
-            var wd = new ChromeDriver();
-            wd.Manage().Window.Maximize();
-            return wd;
+            var options = new ChromeOptions
+            {
+                PageLoadStrategy = PageLoadStrategy.Default
+            };
+            options.AddArgument(configuration.WindowSizeBrowserOption);
+            return new ChromeDriver(options);
         }
 
         /// <summary>
@@ -82,14 +85,14 @@ namespace Testing.Framework
             switch(configuration.Browser)
             {
                 case Browser.ChromeDriver:
-                    return ChromeDriver();
+                    return ChromeDriver(configuration);
                 case Browser.GeckoDriver:
                     return GeckoDriver();
                 case Browser.EdgeDriver:
                     return EdgeDriver();
                 case Browser.RemoteChrome:
                 case Browser.RemoteFirefox:
-                    return RemoteWebDriver(configuration.Browser, configuration.SeleniumHubUrl);
+                    return RemoteWebDriver(configuration);
                 default:
                     throw new Exception("Invalid configuration.");
             }
