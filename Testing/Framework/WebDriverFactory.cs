@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
+using OpenQA.Selenium.Support.UI;
 using System;
 
 namespace Testing.Framework
@@ -11,6 +12,8 @@ namespace Testing.Framework
     /// </summary>
     public static class WebDriverFactory
     {
+        private const int defaultTimeout = 5;
+
         /// <summary>
         /// Returns instance of RemoteWebDriver
         /// </summary>
@@ -47,6 +50,17 @@ namespace Testing.Framework
         public static IWebDriver CreateChromeDriver()
         {
             return new ChromeDriver();
+        }
+
+        /// <summary>
+        /// Creates instance of WebDriverWait with <paramref name="timeout"/>
+        /// </summary>
+        /// <param name="webDriver">IWebDriver instance</param>
+        /// <param name="timeout">Timeout in seconds</param>
+        /// <returns></returns>
+        public static WebDriverWait CreateWebDriverWait(IWebDriver webDriver, uint timeout = defaultTimeout)
+        {
+            return new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
         }
     }
 }
