@@ -13,9 +13,8 @@ namespace OpenQA.Selenium
 
     public static class IWebDriverExtensions
     {
-        public static void Screenshot(this IWebDriver driver, string className, string methodName)
+        public static void Screenshot(this IWebDriver driver, string path, string className, string methodName)
         {
-            var path = "c:\\tmp";
             var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
 
             if (Directory.Exists(path) == false)

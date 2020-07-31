@@ -14,7 +14,7 @@ namespace Testing.Pages
 
         protected WebDriverWait CreateWebDriverWait(uint timeout = defaultTimeout)
         {
-            return new WebDriverWait(WebDriver, new TimeSpan(0, 0, (int)timeout));
+            return new WebDriverWait(WebDriver, TimeSpan.FromSeconds(timeout));
         }
 
         public BasePage(Uri baseUrl, IWebDriver driver)
