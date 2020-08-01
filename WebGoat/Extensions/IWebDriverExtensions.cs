@@ -13,7 +13,7 @@ namespace OpenQA.Selenium
 
     public static class IWebDriverExtensions
     {
-        public static void Screenshot(this IWebDriver driver, string path, string className, string methodName)
+        public static string Screenshot(this IWebDriver driver, string path, string className, string methodName)
         {
             var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
 
@@ -22,7 +22,11 @@ namespace OpenQA.Selenium
                 Directory.CreateDirectory(path);
             }
 
-            screenshot.SaveAsFile($"{path}\\{System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}_{className}_{methodName}.png", ScreenshotImageFormat.Png);
+            var fileName = $"{path}\\{System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}_{className}_{methodName}.png";
+
+            screenshot.SaveAsFile($"{fileName}", ScreenshotImageFormat.Png);
+
+            return fileName;
         }
 
         public static void WaitForReady(this IWebDriver driver, WebDriverWait wait, FrontendFramework fw)

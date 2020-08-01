@@ -29,7 +29,8 @@ namespace WebGoat.Tests
         {
             if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
             {
-                WebDriver.Screenshot(Configuration.ScreenshotPath, TestContext.CurrentContext.Test.ClassName, TestContext.CurrentContext.Test.MethodName);
+                var screenshot = WebDriver.Screenshot(Configuration.ScreenshotPath, TestContext.CurrentContext.Test.ClassName, TestContext.CurrentContext.Test.MethodName);
+                TestContext.AddTestAttachment(screenshot);
             }
 
             WebDriver.Manage().Cookies.DeleteAllCookies();

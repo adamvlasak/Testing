@@ -29,7 +29,7 @@ namespace WebGoat.Pages
             WebDriver.Navigate().GoToUrl(url);
         }
 
-        public void Visit()
+        public virtual void Visit()
         {
             GoToUrl(BaseUrl.ToString());
         }
