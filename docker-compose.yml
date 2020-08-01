@@ -15,8 +15,8 @@ services:
     shm_size: '2gb'
     environment:
       HUB_HOST: hub
-      SCREEN_WIDTH: "1360"
-      SCREEN_HEIGHT: "1020"
+      SCREEN_WIDTH: "1920"
+      SCREEN_HEIGHT: "1080"
     depends_on:
       - hub
     links:
