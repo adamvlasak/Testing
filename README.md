@@ -7,7 +7,7 @@ $ git clone https://github.com/adamvlasak/Testing.git
 $ cd Testing/Testing
 $ docker-compose up -d
 ```
-## Prerequisities
+## Prerequisites
 
 ### Windows
 
