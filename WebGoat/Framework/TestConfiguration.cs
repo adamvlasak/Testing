@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Testing.Framework
+namespace WebGoat.Framework
 {
     public class TestConfiguration
     {
@@ -8,6 +8,7 @@ namespace Testing.Framework
         public Uri SeleniumHubUrl { get; set; }
         public string ScreenshotPath { get; set; }
         public WindowSize WindowSize { get; set; }
+
         public string WindowSizeBrowserOption
         {
             get

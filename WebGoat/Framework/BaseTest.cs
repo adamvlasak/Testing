@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
-using Testing.Framework;
+using WebGoat.Framework;
 
-namespace Testing.Tests
+namespace WebGoat.Tests
 {
     public class BaseTest
     {
@@ -14,7 +14,7 @@ namespace Testing.Tests
             Browser = Browser.RemoteChrome,
             SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
             ApplicationUrl = new Uri("http://webapp:8080/WebGoat"),
-            ScreenshotPath = @"c:\tmp",
+            ScreenshotPath = @"c:\tmp\screenshots",
             WindowSize = WindowSize.FullScreen
         };
 

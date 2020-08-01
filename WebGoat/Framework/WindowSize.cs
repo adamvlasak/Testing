@@ -1,4 +1,4 @@
-﻿namespace Testing.Framework
+﻿namespace WebGoat.Framework
 {
     public enum WindowSize
     {
@@ -6,6 +6,7 @@
         /// FullScreen used by ChromeDriver
         /// </summary>
         FullScreen,
+
         /// <summary>
         /// Mobile window size used by ChromeDriver
         /// </summary>

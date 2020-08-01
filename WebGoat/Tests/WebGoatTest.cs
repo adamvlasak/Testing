@@ -1,13 +1,12 @@
 ﻿using NUnit.Framework;
-using Testing.Framework;
-using Testing.Pages;
+using WebGoat.Pages;
 
-namespace Testing.Tests
+namespace WebGoat.Tests
 {
     [TestFixture]
     public class WebGoatTest : BaseTest
     {
-        WebGoatLoginPage LoginPage;
+        private WebGoatLoginPage LoginPage;
 
         [SetUp]
         public void SetUp()

@@ -5,7 +5,7 @@ using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
 
-namespace Testing.Framework
+namespace WebGoat.Framework
 {
     /// <summary>
     /// Creates various WebDriver instances and WebDriverWait
@@ -83,17 +83,21 @@ namespace Testing.Framework
         /// <returns>IWebDriver instance</returns>
         public static IWebDriver CreateWebDriver(TestConfiguration configuration)
         {
-            switch(configuration.Browser)
+            switch (configuration.Browser)
             {
                 case Browser.ChromeDriver:
                     return ChromeDriver(configuration);
+
                 case Browser.GeckoDriver:
                     return GeckoDriver();
+
                 case Browser.EdgeDriver:
                     return EdgeDriver();
+
                 case Browser.RemoteChrome:
                 case Browser.RemoteFirefox:
                     return RemoteWebDriver(configuration);
+
                 default:
                     throw new Exception("Invalid configuration.");
             }

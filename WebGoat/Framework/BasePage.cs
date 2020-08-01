@@ -1,9 +1,9 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
-using Testing.Framework;
+using WebGoat.Framework;
 
-namespace Testing.Pages
+namespace WebGoat.Pages
 {
     public class BasePage
     {

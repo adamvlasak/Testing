@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
-using System;
 
-namespace Testing.Pages
+namespace WebGoat.Pages
 {
     public sealed class WebGoatLoginPage : BasePage
     {

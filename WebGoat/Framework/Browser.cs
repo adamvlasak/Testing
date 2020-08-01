@@ -1,4 +1,4 @@
-﻿namespace Testing.Framework
+﻿namespace WebGoat.Framework
 {
     public enum Browser
     {
