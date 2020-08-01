@@ -20,5 +20,7 @@ namespace Testing.Framework
                 };
             }
         }
+
+        public Uri ApplicationUrl { get; internal set; }
     }
 }

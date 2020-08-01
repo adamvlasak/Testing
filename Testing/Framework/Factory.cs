@@ -36,6 +36,7 @@ namespace Testing.Framework
                     {
                         PageLoadStrategy = PageLoadStrategy.Default
                     };
+                    chromeOptions.AddArgument(configuration.WindowSizeBrowserOption);
                     return new RemoteWebDriver(configuration.SeleniumHubUrl, chromeOptions);
 
                 default:

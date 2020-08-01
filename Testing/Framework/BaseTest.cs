@@ -9,10 +9,11 @@ namespace Testing.Tests
     {
         protected IWebDriver WebDriver { get; private set; }
 
-        private TestConfiguration Configuration => new TestConfiguration
+        protected TestConfiguration Configuration => new TestConfiguration
         {
-            Browser = Browser.ChromeDriver,
+            Browser = Browser.RemoteChrome,
             SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
+            ApplicationUrl = new Uri("http://webapp:8080/WebGoat"),
             ScreenshotPath = @"c:\tmp",
             WindowSize = WindowSize.FullScreen
         };
