@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using Testing.Framework;
 using Testing.Pages;
 
 namespace Testing.Tests
@@ -6,6 +7,21 @@ namespace Testing.Tests
     [TestFixture]
     public class WebGoatTest : BaseTest
     {
+        WebGoatLoginPage LoginPage;
+
+        [SetUp]
+        public void SetUp()
+        {
+            LoginPage = new WebGoatLoginPage(Configuration.ApplicationUrl, WebDriver);
+            LoginPage.Visit();
+            AssertUrl(Sitemap.LoginUrl);
+        }
+
+        private void AssertUrl(string expectedUrl)
+        {
+            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}{expectedUrl}"));
+        }
+
         [Test]
         [TestCase("guest", "Guest")]
         [TestCase("admin", "admin")]
@@ -13,13 +29,10 @@ namespace Testing.Tests
         [TestCase("webgoat", "")]
         public void LoginUnsuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(Configuration.ApplicationUrl, WebDriver);
-            p.Visit();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/login.mvc"));
-            p.Login(username, password);
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/login.mvc?error"));
-            Assert.That(p.ErrorMessage.Displayed, Is.True);
-            Assert.That(p.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
+            LoginPage.Login(username, password);
+            AssertUrl($"{Sitemap.LoginUrl}?error");
+            Assert.That(LoginPage.ErrorMessage.Displayed, Is.True);
+            Assert.That(LoginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }
 
         [Test]
@@ -27,14 +40,11 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void LoginSuccessfullTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(new System.Uri($"{Configuration.ApplicationUrl}"), WebDriver);
-            p.Visit();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/login.mvc"));
-            var lp = p.Login(username, password);
+            var lp = LoginPage.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
             lp.Logout();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/logout.mvc"));
+            AssertUrl(Sitemap.LogoutUrl);
         }
 
         [Test]
@@ -42,17 +52,14 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void LogoutTest(string username, string password)
         {
-            var p = new WebGoatLoginPage(new System.Uri($"{Configuration.ApplicationUrl}"), WebDriver);
-            p.Visit();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/login.mvc"));
-            var lp = p.Login(username, password);
+            var lp = LoginPage.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
-            p = lp.Logout();
-            Assert.That(p.AlertSuccess.Displayed, Is.True);
-            Assert.That(p.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
-            Assert.That(p.LoginLink.Displayed, Is.True);
-            Assert.That(WebDriver.Url, Is.EqualTo("Configuration.ApplicationUrl/logout.mvc"));
+            LoginPage = lp.Logout();
+            Assert.That(LoginPage.AlertSuccess.Displayed, Is.True);
+            Assert.That(LoginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
+            Assert.That(LoginPage.LoginLink.Displayed, Is.True);
+            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/logout.mvc"));
         }
 
         [Test]
@@ -60,17 +67,14 @@ namespace Testing.Tests
         [TestCase("webgoat", "webgoat")]
         public void CompleteLesson(string username, string password)
         {
-            var p = new WebGoatLoginPage(new System.Uri($"{Configuration.ApplicationUrl}"), WebDriver);
-            p.Visit();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/login.mvc"));
-            var lp = p.Login(username, password);
+            var lp = LoginPage.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             lp.EnableLabelDebugging();
             lp.UserMenu.Click();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
             lp.Logout();
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/logout.mvc"));
+            AssertUrl(Sitemap.LogoutUrl);
         }
     }
 }
