@@ -14,12 +14,12 @@ namespace Testing.Tests
         {
             LoginPage = new WebGoatLoginPage(Configuration.ApplicationUrl, WebDriver);
             LoginPage.Visit();
-            AssertUrl(Sitemap.LoginUrl);
+            AssertUrl("/login.mvc");
         }
 
-        private void AssertUrl(string expectedUrl)
+        private void AssertUrl(string expectedPath)
         {
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}{expectedUrl}"));
+            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}{expectedPath}"));
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace Testing.Tests
         public void LoginUnsuccessfullTest(string username, string password)
         {
             LoginPage.Login(username, password);
-            AssertUrl($"{Sitemap.LoginUrl}?error");
+            AssertUrl("/login.mvc?error");
             Assert.That(LoginPage.ErrorMessage.Displayed, Is.True);
             Assert.That(LoginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }
@@ -44,7 +44,7 @@ namespace Testing.Tests
             Assert.That(lp.LessonTitle.Displayed, Is.True);
             Assert.That(lp.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
             lp.Logout();
-            AssertUrl(Sitemap.LogoutUrl);
+            AssertUrl("/logout.mvc");
         }
 
         [Test]
@@ -74,7 +74,7 @@ namespace Testing.Tests
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
             lp.Logout();
-            AssertUrl(Sitemap.LogoutUrl);
+            AssertUrl("/logout.mvc");
         }
     }
 }
