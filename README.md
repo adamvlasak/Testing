@@ -5,7 +5,8 @@ This project uses WebGoat application running inside docker container.
 ```
 $ git clone https://github.com/adamvlasak/Testing.git
 $ cd Testing/Testing
-$ docker-compose up -d
+$ make hub
+$ make test
 ```
 ## Prerequisites
 
