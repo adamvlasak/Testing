@@ -1,11 +1,22 @@
 # Webgoat Tests
 
-This project uses WebGoat application running inside docker container. When you run `docker-compose up -d` you will start also selenium hub and node running chrome under linux using xvfb.
+This project uses WebGoat application running inside docker container.
 
 ```
 $ git clone https://github.com/adamvlasak/Testing.git
 $ cd Testing/Testing
 $ docker-compose up -d
 ```
+## Prerequisities
 
-Use Visual Studio Test Explorer to run tests.
+### Windows
+
+**Turn on Windows Features**
+- Windows Subsystem for Linux
+- Virtual Machine Platform
+
+**Install WSL2 Linux kernel update package** from https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
+
+**Install Docker** https://hub.docker.com/editions/community/docker-ce-desktop-windows/
+
+Use **Visual Studio Test Explorer** to run tests.
