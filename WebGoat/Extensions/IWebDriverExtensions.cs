@@ -3,14 +3,6 @@ using System.IO;
 
 namespace OpenQA.Selenium
 {
-    public enum FrontendFramework
-    {
-        jQuery,
-        vanilla,
-        angular,
-        react
-    }
-
     public static class IWebDriverExtensions
     {
         public static string Screenshot(this IWebDriver driver, string path, string className, string methodName)
@@ -29,25 +21,12 @@ namespace OpenQA.Selenium
             return fileName;
         }
 
-        public static void WaitForReady(this IWebDriver driver, WebDriverWait wait, FrontendFramework fw)
+        public static void WaitForReady(this IWebDriver driver, WebDriverWait wait)
         {
             var js = (IJavaScriptExecutor)driver;
-            string script = string.Empty;
-
-            switch (fw)
-            {
-                case FrontendFramework.jQuery:
-                    script = "return window.jQuery != undefined && window.jQuery.active === 0;";
-                    break;
-
-                default:
-                    script = "return document.querySelector('body') != undefined;";
-                    break;
-            }
-
             wait.Until(d =>
             {
-                var isReady = (bool)js.ExecuteScript(script);
+                var isReady = (bool)js.ExecuteScript("return document.querySelector('section#container') != undefined;");
                 return isReady;
             });
         }

@@ -25,6 +25,7 @@ namespace WebGoat.Pages
         {
             UserMenu.Click();
             LogoutLink.Click();
+            WebDriver.WaitForReady(Wait);
             return new LoginPage(WebDriver);
         }
 

@@ -21,12 +21,7 @@ namespace WebGoat.Pages
         public override void Visit()
         {
             base.Visit();
-            WaitForReady();
-        }
-
-        protected void WaitForReady()
-        {
-            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
+            WebDriver.WaitForReady(Wait);
         }
     }
 }

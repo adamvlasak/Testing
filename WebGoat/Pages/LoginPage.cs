@@ -25,7 +25,7 @@ namespace WebGoat.Pages
             Username.SendKeys(username);
             Password.SendKeys(password);
             Submit.Click();
-            WaitForReady();
+            WebDriver.WaitForReady(Wait);
             return new LoggedInPage(WebDriver);
         }
     }
