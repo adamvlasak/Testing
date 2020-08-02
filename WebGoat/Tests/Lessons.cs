@@ -10,7 +10,7 @@ namespace WebGoat.Tests
         [SetUp]
         public void SetUp()
         {
-            LoginPage = new LoginPage(Configuration.ApplicationUrl, WebDriver);
+            LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
             LoginPage.Visit();
             AssertUrl("/login.mvc");
         }

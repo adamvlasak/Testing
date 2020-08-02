@@ -12,11 +12,11 @@ namespace WebGoat.Pages
         public IWebElement LoginLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
         public IWebElement RegisterLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
 
-        public LoginPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
+        public LoginPage(IWebDriver webDriver) : base(webDriver)
         {
         }
 
-        public LoginPage(IWebDriver driver) : base(driver)
+        public LoginPage(IWebDriver webDriver, System.Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
 

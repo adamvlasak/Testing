@@ -13,11 +13,11 @@ namespace WebGoat.Pages
         public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
         public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
 
-        public LoggedInPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
+        public LoggedInPage(IWebDriver webDriver) : base(webDriver)
         {
         }
 
-        public LoggedInPage(IWebDriver driver) : base(driver)
+        public LoggedInPage(IWebDriver webDriver, System.Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
 

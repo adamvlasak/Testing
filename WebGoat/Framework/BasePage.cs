@@ -11,17 +11,24 @@ namespace WebGoat.Pages
         protected WebDriverWait Wait { get; set; }
         protected Uri BaseUrl { get; private set; }
 
-        public BasePage(Uri baseUrl, IWebDriver driver)
+        public BasePage(IWebDriver webDriver)
         {
-            WebDriver = driver;
+            WebDriver = webDriver;
+            Wait = Factory.CreateWebDriverWait(WebDriver);
+        }
+
+        public BasePage(IWebDriver webDriver, Uri baseUrl)
+        {
+            WebDriver = webDriver;
             Wait = Factory.CreateWebDriverWait(WebDriver);
             BaseUrl = baseUrl;
         }
 
-        public BasePage(IWebDriver driver)
+        public BasePage(IWebDriver webDriver, WebDriverWait wait, Uri baseUrl)
         {
-            WebDriver = driver;
-            Wait = Factory.CreateWebDriverWait(WebDriver);
+            WebDriver = webDriver;
+            Wait = wait;
+            BaseUrl = baseUrl;
         }
 
         public void GoToUrl(string url)
