@@ -2,7 +2,7 @@
 
 namespace WebGoat.Pages
 {
-    public sealed class WebGoatLoggedInPage : BasePage
+    public sealed class LoggedInPage : BasePage
     {
         public IWebElement LessonTitle => Wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
         public IWebElement UserMenu => Wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
@@ -13,11 +13,11 @@ namespace WebGoat.Pages
         public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
         public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
 
-        public WebGoatLoggedInPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
+        public LoggedInPage(System.Uri baseUrl, IWebDriver driver) : base(baseUrl, driver)
         {
         }
 
-        public WebGoatLoggedInPage(IWebDriver driver) : base(driver)
+        public LoggedInPage(IWebDriver driver) : base(driver)
         {
         }
 
@@ -26,11 +26,11 @@ namespace WebGoat.Pages
             WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
         }
 
-        public WebGoatLoginPage Logout()
+        public LoginPage Logout()
         {
             UserMenu.Click();
             LogoutLink.Click();
-            return new WebGoatLoginPage(WebDriver);
+            return new LoginPage(WebDriver);
         }
 
         public void EnableLabelDebugging()

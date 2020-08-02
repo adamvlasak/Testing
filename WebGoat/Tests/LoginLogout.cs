@@ -4,14 +4,14 @@ using WebGoat.Pages;
 namespace WebGoat.Tests
 {
     [TestFixture]
-    public class WebGoatTest : BaseTest
+    public class LoginLogout : BaseTest
     {
-        private WebGoatLoginPage LoginPage;
+        private LoginPage LoginPage;
 
         [SetUp]
         public void SetUp()
         {
-            LoginPage = new WebGoatLoginPage(Configuration.ApplicationUrl, WebDriver);
+            LoginPage = new LoginPage(Configuration.ApplicationUrl, WebDriver);
             LoginPage.Visit();
             AssertUrl("/login.mvc");
         }
@@ -59,21 +59,6 @@ namespace WebGoat.Tests
             Assert.That(LoginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(LoginPage.LoginLink.Displayed, Is.True);
             Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/logout.mvc"));
-        }
-
-        [Test]
-        [TestCase("guest", "guest")]
-        [TestCase("webgoat", "webgoat")]
-        public void CompleteLesson(string username, string password)
-        {
-            var lp = LoginPage.Login(username, password);
-            Assert.That(lp.LessonTitle.Displayed, Is.True);
-            lp.EnableLabelDebugging();
-            lp.UserMenu.Click();
-            Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
-            Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
-            lp.Logout();
-            AssertUrl("/logout.mvc");
         }
     }
 }
