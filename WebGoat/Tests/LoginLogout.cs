@@ -34,7 +34,6 @@ namespace WebGoat.Tests
             Assert.That(LoginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }
 
-        [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
         public void LoginSuccessfullTest(string username, string password)
@@ -44,17 +43,6 @@ namespace WebGoat.Tests
             Assert.That(lp.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
             lp.Logout();
             AssertUrl("/logout.mvc");
-        }
-
-        [Test]
-        [TestCase("guest", "guest")]
-        [TestCase("webgoat", "webgoat")]
-        public void LogoutTest(string username, string password)
-        {
-            var lp = LoginPage.Login(username, password);
-            Assert.That(lp.LessonTitle.Displayed, Is.True);
-            Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
-            LoginPage = lp.Logout();
             Assert.That(LoginPage.AlertSuccess.Displayed, Is.True);
             Assert.That(LoginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(LoginPage.LoginLink.Displayed, Is.True);
