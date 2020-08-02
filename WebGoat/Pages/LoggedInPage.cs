@@ -2,7 +2,7 @@
 
 namespace WebGoat.Pages
 {
-    public sealed class LoggedInPage : BasePage
+    public sealed class LoggedInPage : BaseWebGoatPage
     {
         public IWebElement LessonTitle => Wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
         public IWebElement UserMenu => Wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
@@ -19,11 +19,6 @@ namespace WebGoat.Pages
 
         public LoggedInPage(IWebDriver webDriver, System.Uri baseUrl) : base(webDriver, baseUrl)
         {
-        }
-
-        public void WaitForReady()
-        {
-            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
         }
 
         public LoginPage Logout()

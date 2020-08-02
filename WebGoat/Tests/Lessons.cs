@@ -3,7 +3,7 @@ using WebGoat.Pages;
 
 namespace WebGoat.Tests
 {
-    class Lessons : BaseTest
+    class Lessons : BaseWebGoatTest
     {
         private LoginPage LoginPage;
 
@@ -13,11 +13,6 @@ namespace WebGoat.Tests
             LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
             LoginPage.Visit();
             AssertUrl("/login.mvc");
-        }
-
-        private void AssertUrl(string expectedPath)
-        {
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}{expectedPath}"));
         }
 
         [Test]

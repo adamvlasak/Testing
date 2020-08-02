@@ -2,7 +2,7 @@
 
 namespace WebGoat.Pages
 {
-    public sealed class LoginPage : BasePage
+    public sealed class LoginPage : BaseWebGoatPage
     {
         public IWebElement Username => Wait.Until(driver => driver.FindElement(By.Id("exampleInputEmail1")));
         public IWebElement Password => Wait.Until(driver => driver.FindElement(By.Id("exampleInputPassword1")));
@@ -20,12 +20,6 @@ namespace WebGoat.Pages
         {
         }
 
-        public override void Visit()
-        {
-            base.Visit();
-            WaitForReady();
-        }
-
         public LoggedInPage Login(string username, string password)
         {
             Username.SendKeys(username);
@@ -33,11 +27,6 @@ namespace WebGoat.Pages
             Submit.Click();
             WaitForReady();
             return new LoggedInPage(WebDriver);
-        }
-
-        public void WaitForReady()
-        {
-            WebDriver.WaitForReady(Wait, FrontendFramework.vanilla);
         }
     }
 }

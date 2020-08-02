@@ -20,7 +20,7 @@ namespace WebGoat.Framework
         /// <param name="browser">RemoteFirefox or RemoteChrome</param>
         /// <param name="hubAddress">Selenium Hub URL</param>
         /// <returns>IWebDriver</returns>
-        private static IWebDriver RemoteWebDriver(TestConfiguration configuration)
+        private static IWebDriver RemoteWebDriver(Configuration configuration)
         {
             switch (configuration.Browser)
             {
@@ -48,7 +48,7 @@ namespace WebGoat.Framework
         /// Returns instance of ChromeDriver
         /// </summary>
         /// <returns>IWebDriver instance</returns>
-        private static IWebDriver ChromeDriver(TestConfiguration configuration)
+        private static IWebDriver ChromeDriver(Configuration configuration)
         {
             var options = new ChromeOptions
             {
@@ -81,7 +81,7 @@ namespace WebGoat.Framework
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns>IWebDriver instance</returns>
-        public static IWebDriver CreateWebDriver(TestConfiguration configuration)
+        public static IWebDriver CreateWebDriver(Configuration configuration)
         {
             switch (configuration.Browser)
             {

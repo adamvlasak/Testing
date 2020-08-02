@@ -2,7 +2,7 @@
 
 namespace WebGoat.Framework
 {
-    public class TestConfiguration
+    public class Configuration
     {
         public Browser Browser { get; set; }
         public Uri SeleniumHubUrl { get; set; }

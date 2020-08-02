@@ -9,7 +9,7 @@ namespace WebGoat.Tests
     {
         protected IWebDriver WebDriver { get; private set; }
 
-        protected TestConfiguration Configuration => new TestConfiguration
+        protected Configuration Configuration => new Configuration
         {
             Browser = Browser.RemoteChrome,
             SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
