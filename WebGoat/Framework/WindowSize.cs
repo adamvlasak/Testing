@@ -3,12 +3,12 @@
     public enum WindowSize
     {
         /// <summary>
-        /// FullScreen used by ChromeDriver
+        /// FullScreen used by browser
         /// </summary>
         FullScreen,
 
         /// <summary>
-        /// Mobile window size used by ChromeDriver
+        /// Mobile window size used by browser
         /// </summary>
         Mobile
     }

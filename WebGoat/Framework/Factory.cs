@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -25,17 +24,11 @@ namespace WebGoat.Framework
             switch (configuration.Browser)
             {
                 case Browser.RemoteFirefox:
-                    FirefoxOptions firefoxOptions = new FirefoxOptions
-                    {
-                        PageLoadStrategy = PageLoadStrategy.Default
-                    };
+                    var firefoxOptions = Configuration.DefaultFirefoxOptions;
                     return new RemoteWebDriver(configuration.SeleniumHubUrl, firefoxOptions);
 
                 case Browser.RemoteChrome:
-                    ChromeOptions chromeOptions = new ChromeOptions
-                    {
-                        PageLoadStrategy = PageLoadStrategy.Default
-                    };
+                    var chromeOptions = Configuration.DefaultChromeOptions;
                     chromeOptions.AddArgument(configuration.WindowSizeBrowserOption);
                     return new RemoteWebDriver(configuration.SeleniumHubUrl, chromeOptions);
 
@@ -50,10 +43,7 @@ namespace WebGoat.Framework
         /// <returns>IWebDriver instance</returns>
         private static IWebDriver ChromeDriver(Configuration configuration)
         {
-            var options = new ChromeOptions
-            {
-                PageLoadStrategy = PageLoadStrategy.Default
-            };
+            var options = Configuration.DefaultChromeOptions;
             options.AddArgument(configuration.WindowSizeBrowserOption);
             return new ChromeDriver(options);
         }
