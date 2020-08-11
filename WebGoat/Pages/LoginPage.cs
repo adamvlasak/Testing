@@ -11,6 +11,7 @@ namespace WebGoat.Pages
         public IWebElement RegisterLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
 
         private LoginDialog _loginDialog;
+
         public LoginDialog LoginDialog
         {
             get
