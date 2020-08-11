@@ -3,7 +3,7 @@ using System;
 
 namespace WebGoat.Pages
 {
-    public class StartPage : BaseWebGoatPage
+    public sealed class StartPage : BaseWebGoatPage
     {
         public StartPage(IWebDriver webDriver) : base(webDriver)
         {

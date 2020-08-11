@@ -3,7 +3,7 @@ using WebGoat.Pages;
 
 namespace WebGoat.Tests
 {
-    internal class Lessons : BaseWebGoatTest
+    internal sealed class Lessons : BaseWebGoatTest
     {
         private LoginPage LoginPage;
 

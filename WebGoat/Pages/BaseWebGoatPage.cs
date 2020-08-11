@@ -14,10 +14,6 @@ namespace WebGoat.Pages
         {
         }
 
-        public BaseWebGoatPage(IWebDriver webDriver, WebDriverWait wait, Uri baseUrl) : base(webDriver, wait, baseUrl)
-        {
-        }
-
         public override void Visit()
         {
             base.Visit();

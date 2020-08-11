@@ -24,13 +24,6 @@ namespace WebGoat.Pages
             BaseUrl = baseUrl;
         }
 
-        public BasePage(IWebDriver webDriver, WebDriverWait wait, Uri baseUrl)
-        {
-            WebDriver = webDriver;
-            Wait = wait;
-            BaseUrl = baseUrl;
-        }
-
         public void GoToUrl(string url)
         {
             WebDriver.Navigate().GoToUrl(url);

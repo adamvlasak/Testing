@@ -4,7 +4,7 @@ using WebGoat.Pages;
 namespace WebGoat.Tests
 {
     [TestFixture]
-    public class LoginLogout : BaseWebGoatTest
+    internal sealed class LoginLogout : BaseWebGoatTest
     {
         private LoginPage LoginPage;
 
