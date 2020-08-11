@@ -10,18 +10,18 @@ namespace WebGoat.Pages
         public IWebElement LoginLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
         public IWebElement RegisterLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
 
-        private LoginDialog _loginDialog;
+        private LoginForm _loginForm;
 
-        public LoginDialog LoginDialog
+        public LoginForm LoginForm
         {
             get
             {
-                if (_loginDialog != null)
-                    return _loginDialog;
+                if (_loginForm != null)
+                    return _loginForm;
 
                 var form = Wait.Until(d => d.FindElement(By.CssSelector("form[name='loginForm']")));
-                _loginDialog = new LoginDialog(WebDriver, Wait, form);
-                return _loginDialog;
+                _loginForm = new LoginForm(WebDriver, Wait, form);
+                return _loginForm;
             }
         }
 
@@ -35,7 +35,8 @@ namespace WebGoat.Pages
 
         public LoggedInPage Login(string username, string password)
         {
-            LoginDialog.Login(username, password);
+            LoginForm.Fill(username, password);
+            LoginForm.Submit();
             WebDriver.WaitForReady(Wait);
             return new LoggedInPage(WebDriver);
         }
