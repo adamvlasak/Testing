@@ -35,9 +35,7 @@ namespace WebGoat.Pages
 
         public LoggedInPage Login(string username, string password)
         {
-            LoginDialog.Username.SendKeys(username);
-            LoginDialog.Password.SendKeys(password);
-            LoginDialog.Submit.Click();
+            LoginDialog.Login(username, password);
             WebDriver.WaitForReady(Wait);
             return new LoggedInPage(WebDriver);
         }

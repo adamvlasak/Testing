@@ -12,5 +12,12 @@ namespace WebGoat.Components
         public IWebElement Username => WrappedElement.FindElement(By.Id("exampleInputEmail1"));
         public IWebElement Password => WrappedElement.FindElement(By.Id("exampleInputPassword1"));
         public IWebElement Submit => WrappedElement.FindElement(By.CssSelector("button.btn-primary"));
+
+        public void Login(string username, string password)
+        {
+            Username.SendKeys(username);
+            Password.SendKeys(password);
+            Submit.Click();
+        }
     }
 }
