@@ -12,7 +12,7 @@ namespace WebGoat.Extensions
     {
         public static IWebElement FindElementWithWait(this ISearchContext context, By by)
         {
-            WaitForElement(context, by);
+            WaitForElementToBeDisplayed(context, by);
             return context.FindElement(by);
         }
 
@@ -26,10 +26,10 @@ namespace WebGoat.Extensions
             return context.FindElements(by);
         }
 
-        private static void WaitForElement(ISearchContext context, By by)
+        private static void WaitForElementToBeDisplayed(ISearchContext context, By by)
         {
             var wait = Factory.CreateWebDriverWait(ConvertToWebDriver(context));
-            wait.Until(d => context.FindElement(by));
+            wait.Until(d => context.FindElement(by)?.Displayed == true);
         }
 
         private static IWebDriver ConvertToWebDriver(ISearchContext context)
