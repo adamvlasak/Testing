@@ -10,7 +10,7 @@ $ make test
 ```
 ## Prerequisites
 
-### Windows
+### Windows 10 Version 2004 or later
 
 **Turn on Windows Features**
 - Windows Subsystem for Linux
