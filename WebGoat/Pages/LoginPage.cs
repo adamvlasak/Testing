@@ -4,7 +4,7 @@ using WebGoat.Extensions;
 
 namespace WebGoat.Pages
 {
-    public sealed class LoginPage : BaseWebGoatPage
+    public sealed class LoginPage : BasePage
     {
         public IWebElement ErrorMessage => WebDriver.FindElementWithWait(By.CssSelector("div.error"));
         public IWebElement AlertSuccess => WebDriver.FindElementWithWait(By.CssSelector("div.alert-success"));
@@ -37,7 +37,6 @@ namespace WebGoat.Pages
         {
             LoginForm.Fill(username, password);
             LoginForm.Submit();
-            WebDriver.WaitForReady(Wait);
             return new LoggedInPage(WebDriver);
         }
     }

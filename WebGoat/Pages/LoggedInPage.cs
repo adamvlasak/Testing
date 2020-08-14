@@ -3,7 +3,7 @@ using WebGoat.Extensions;
 
 namespace WebGoat.Pages
 {
-    public sealed class LoggedInPage : BaseWebGoatPage
+    public sealed class LoggedInPage : BasePage
     {
         public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
         public IWebElement UserMenu => WebDriver.FindElementWithWait(By.CssSelector("button#user-menu"));
@@ -26,7 +26,6 @@ namespace WebGoat.Pages
         {
             UserMenu.Click();
             LogoutLink.Click();
-            WebDriver.WaitForReady(Wait);
             return new LoginPage(WebDriver);
         }
 

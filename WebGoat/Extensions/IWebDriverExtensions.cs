@@ -21,15 +21,5 @@ namespace WebGoat.Extensions
 
             return fileName;
         }
-
-        public static void WaitForReady(this IWebDriver driver, WebDriverWait wait)
-        {
-            var js = (IJavaScriptExecutor)driver;
-            wait.Until(d =>
-            {
-                var isReady = (bool)js.ExecuteScript("return document.querySelector('section#container') != undefined;");
-                return isReady;
-            });
-        }
     }
 }
