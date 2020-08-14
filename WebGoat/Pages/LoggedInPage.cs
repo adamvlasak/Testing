@@ -5,14 +5,14 @@ namespace WebGoat.Pages
 {
     public sealed class LoggedInPage : BaseWebGoatPage
     {
-        public IWebElement LessonTitle => Wait.Until(driver => driver.FindElement(By.CssSelector("h1#lesson-title")));
-        public IWebElement UserMenu => Wait.Until(driver => driver.FindElement(By.CssSelector("button#user-menu")));
-        public IWebElement LogoutLink => Wait.Until(driver => driver.FindElement(By.LinkText("Logout")));
-        public IWebElement ShowDeveloperOptionsLink => Wait.Until(driver => driver.FindElement(By.LinkText("Show developer controls")));
-        public IWebElement DeveloperControlContainer => Wait.Until(driver => driver.FindElement(By.CssSelector("div#developer-control-container")));
-        public IWebElement EnableLabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Enable label debugging")));
-        public IWebElement DisableabelDebuggingLink => Wait.Until(driver => driver.FindElement(By.LinkText("Disable label debugging")));
-        public IWebElement LessonProgressStatus => Wait.Until(driver => driver.FindElement(By.CssSelector("div#lesson-progress")));
+        public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
+        public IWebElement UserMenu => WebDriver.FindElementWithWait(By.CssSelector("button#user-menu"));
+        public IWebElement LogoutLink => WebDriver.FindElementWithWait(By.LinkText("Logout"));
+        public IWebElement ShowDeveloperOptionsLink => WebDriver.FindElementWithWait(By.LinkText("Show developer controls"));
+        public IWebElement DeveloperControlContainer => WebDriver.FindElementWithWait(By.CssSelector("div#developer-control-container"));
+        public IWebElement EnableLabelDebuggingLink => WebDriver.FindElementWithWait(By.LinkText("Enable label debugging"));
+        public IWebElement DisableabelDebuggingLink => WebDriver.FindElementWithWait(By.LinkText("Disable label debugging"));
+        public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
 
         public LoggedInPage(IWebDriver webDriver) : base(webDriver)
         {

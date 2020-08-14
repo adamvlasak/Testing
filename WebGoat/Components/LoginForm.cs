@@ -1,5 +1,5 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+using WebGoat.Extensions;
 
 namespace WebGoat.Components
 {
@@ -9,9 +9,9 @@ namespace WebGoat.Components
         {
         }
 
-        public IWebElement UsernameInput => Element.FindElement(By.Id("exampleInputEmail1"));
-        public IWebElement PasswordInput => Element.FindElement(By.Id("exampleInputPassword1"));
-        public IWebElement SubmitButton => Element.FindElement(By.CssSelector("button.btn-primary"));
+        public IWebElement UsernameInput => Element.FindElementWithWait(By.Id("exampleInputEmail1"));
+        public IWebElement PasswordInput => Element.FindElementWithWait(By.Id("exampleInputPassword1"));
+        public IWebElement SubmitButton => Element.FindElementWithWait(By.CssSelector("button.btn-primary"));
 
         public void Fill(string username, string password)
         {

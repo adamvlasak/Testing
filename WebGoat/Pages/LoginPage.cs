@@ -6,13 +6,12 @@ namespace WebGoat.Pages
 {
     public sealed class LoginPage : BaseWebGoatPage
     {
-        public IWebElement ErrorMessage => Wait.Until(driver => driver.FindElement(By.CssSelector("div.error")));
-        public IWebElement AlertSuccess => Wait.Until(driver => driver.FindElement(By.CssSelector("div.alert-success")));
-        public IWebElement LoginLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
-        public IWebElement RegisterLink => Wait.Until(driver => driver.FindElement(By.CssSelector("h4 a")));
+        public IWebElement ErrorMessage => WebDriver.FindElementWithWait(By.CssSelector("div.error"));
+        public IWebElement AlertSuccess => WebDriver.FindElementWithWait(By.CssSelector("div.alert-success"));
+        public IWebElement LoginLink => WebDriver.FindElementWithWait(By.CssSelector("h4 a"));
+        public IWebElement RegisterLink => WebDriver.FindElementWithWait(By.CssSelector("h4 a"));
 
         private LoginForm _loginForm;
-
         public LoginForm LoginForm
         {
             get
@@ -20,8 +19,7 @@ namespace WebGoat.Pages
                 if (_loginForm != null)
                     return _loginForm;
 
-                var form = Wait.Until(d => d.FindElement(By.CssSelector("form[name='loginForm']")));
-                _loginForm = new LoginForm(WebDriver, form);
+                _loginForm = WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
                 return _loginForm;
             }
         }
