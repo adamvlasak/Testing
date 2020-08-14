@@ -1,28 +1,25 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.Internal;
-using OpenQA.Selenium.Support.UI;
-using System;
+using System.Collections.ObjectModel;
 
 namespace WebGoat.Components
 {
-    public abstract class BaseComponent : IWrapsElement, IWrapsDriver
+    public abstract class BaseComponent : BaseObject, ISearchContext
     {
-        public IWebElement WrappedElement { get; }
+        protected IWebElement Element { get; }
 
-        public IWebDriver WrappedDriver { get; }
-
-        protected WebDriverWait Wait { get; }
-
-        public BaseComponent(IWebDriver driver, WebDriverWait wait, IWebElement element)
+        protected BaseComponent(IWebDriver webDriver, IWebElement element) : base(webDriver)
         {
-            if (element == null)
-            {
-                throw new ArgumentNullException(nameof(element), "element cannot be null");
-            }
+            Element = element;
+        }
 
-            WrappedDriver = driver;
-            WrappedElement = element;
-            Wait = wait;
+        public IWebElement FindElement(By by)
+        {
+            return Element.FindElement(by);
+        }
+
+        public ReadOnlyCollection<IWebElement> FindElements(By by)
+        {
+            return Element.FindElements(by);
         }
     }
 }

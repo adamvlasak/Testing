@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
+using WebGoat.Extensions;
 using WebGoat.Framework;
 
 namespace WebGoat.Tests

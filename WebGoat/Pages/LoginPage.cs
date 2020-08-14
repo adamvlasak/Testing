@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using WebGoat.Components;
+using WebGoat.Extensions;
 
 namespace WebGoat.Pages
 {
@@ -20,7 +21,7 @@ namespace WebGoat.Pages
                     return _loginForm;
 
                 var form = Wait.Until(d => d.FindElement(By.CssSelector("form[name='loginForm']")));
-                _loginForm = new LoginForm(WebDriver, Wait, form);
+                _loginForm = new LoginForm(WebDriver, form);
                 return _loginForm;
             }
         }

@@ -36,6 +36,11 @@ namespace WebGoat.Framework
         public WindowSize WindowSize { get; set; }
 
         /// <summary>
+        /// Default timeout used for Explicit Waiting
+        /// </summary>
+        public const uint DefaultTimeout = 5;
+
+        /// <summary>
         /// Based on other properties returns correct window size argument for WebDriver
         /// </summary>
         public string WindowSizeBrowserOption

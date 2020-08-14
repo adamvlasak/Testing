@@ -1,7 +1,8 @@
-﻿using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 using System.IO;
 
-namespace OpenQA.Selenium
+namespace WebGoat.Extensions
 {
     public static class IWebDriverExtensions
     {

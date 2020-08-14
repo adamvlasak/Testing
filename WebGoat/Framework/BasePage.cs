@@ -1,26 +1,21 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
+using WebGoat.Components;
 using WebGoat.Framework;
 
 namespace WebGoat.Pages
 {
-    public class BasePage
+    public class BasePage : BaseObject
     {
-        protected IWebDriver WebDriver { get; private set; }
-        protected WebDriverWait Wait { get; set; }
         protected Uri BaseUrl { get; private set; }
 
-        public BasePage(IWebDriver webDriver)
+        public BasePage(IWebDriver webDriver) : base(webDriver)
         {
-            WebDriver = webDriver;
-            Wait = Factory.CreateWebDriverWait(WebDriver);
         }
 
-        public BasePage(IWebDriver webDriver, Uri baseUrl)
+        public BasePage(IWebDriver webDriver, Uri baseUrl) : base(webDriver)
         {
-            WebDriver = webDriver;
-            Wait = Factory.CreateWebDriverWait(WebDriver);
             BaseUrl = baseUrl;
         }
 

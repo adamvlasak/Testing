@@ -5,13 +5,13 @@ namespace WebGoat.Components
 {
     public class LoginForm : BaseComponent
     {
-        public LoginForm(IWebDriver driver, WebDriverWait wait, IWebElement element) : base(driver, wait, element)
+        public LoginForm(IWebDriver webDriver, IWebElement element) : base(webDriver, element)
         {
         }
 
-        public IWebElement UsernameInput => WrappedElement.FindElement(By.Id("exampleInputEmail1"));
-        public IWebElement PasswordInput => WrappedElement.FindElement(By.Id("exampleInputPassword1"));
-        public IWebElement SubmitButton => WrappedElement.FindElement(By.CssSelector("button.btn-primary"));
+        public IWebElement UsernameInput => Element.FindElement(By.Id("exampleInputEmail1"));
+        public IWebElement PasswordInput => Element.FindElement(By.Id("exampleInputPassword1"));
+        public IWebElement SubmitButton => Element.FindElement(By.CssSelector("button.btn-primary"));
 
         public void Fill(string username, string password)
         {
