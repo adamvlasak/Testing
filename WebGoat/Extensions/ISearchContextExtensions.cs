@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Remote;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.ObjectModel;
 using WebGoat.Components;
@@ -19,7 +18,7 @@ namespace WebGoat.Extensions
 
         public static T FindElementWithWait<T>(this ISearchContext context, By by) where T : BaseComponent
         {
-            return Activator.CreateInstance(typeof(T), new object[] { ResolveContext(context), FindElementWithWait(context, by) }) as T;
+            return Activator.CreateInstance(typeof(T), new object[] { ConvertToWebDriver(context), FindElementWithWait(context, by) }) as T;
         }
 
         public static ReadOnlyCollection<IWebElement> FindWebElements(this ISearchContext context, By by)
@@ -29,18 +28,13 @@ namespace WebGoat.Extensions
 
         private static void WaitForElement(ISearchContext context, By by)
         {
-            var wait = new WebDriverWait(ResolveContext(context), TimeSpan.FromSeconds(Configuration.DefaultTimeout));
+            var wait = Factory.CreateWebDriverWait(ConvertToWebDriver(context));
             wait.Until(d => context.FindElement(by));
         }
 
-        private static IWebDriver ResolveContext(ISearchContext context)
+        private static IWebDriver ConvertToWebDriver(ISearchContext context)
         {
-            if (context is RemoteWebElement)
-                return ((IWrapsDriver)context).WrappedDriver;
-            else if (context is ISearchContext)
-                return context as IWebDriver;
-            else
-                throw new ArgumentException("Unable to resolve context.");
+            return context is RemoteWebElement ? ((IWrapsDriver)context).WrappedDriver : context as IWebDriver;
         }
     }
 }

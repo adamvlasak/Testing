@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
-using System;
 using WebGoat.Framework;
 
 namespace WebGoat.Components
@@ -14,7 +13,7 @@ namespace WebGoat.Components
         public BaseObject(IWebDriver driver)
         {
             WebDriver = driver;
-            Wait = new WebDriverWait(WebDriver, TimeSpan.FromSeconds(Configuration.DefaultTimeout));
+            Wait = Factory.CreateWebDriverWait(WebDriver);
         }
     }
 }
