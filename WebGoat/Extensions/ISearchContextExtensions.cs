@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Internal;
 using OpenQA.Selenium.Remote;
 using System;
-using System.Collections.ObjectModel;
 using WebGoat.Components;
 using WebGoat.Framework;
 
