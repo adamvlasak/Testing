@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using WebGoat.Framework;
 using WebGoat.Pages;
 
 namespace WebGoat.Tests
@@ -12,7 +13,7 @@ namespace WebGoat.Tests
         {
             LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
             LoginPage.Visit();
-            AssertUrl("/login.mvc");
+            AssertUrl(SiteMap.LoginPageUrl);
         }
 
         [Test]

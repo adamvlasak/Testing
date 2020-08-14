@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using WebGoat.Framework;
 using WebGoat.Pages;
 
 namespace WebGoat.Tests
@@ -13,7 +14,7 @@ namespace WebGoat.Tests
         {
             loginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
             loginPage.Visit();
-            AssertUrl("/login.mvc");
+            AssertUrl(SiteMap.LoginPageUrl);
         }
 
         [Test]
@@ -24,7 +25,7 @@ namespace WebGoat.Tests
         public void LoginUnsuccessfullTest(string username, string password)
         {
             loginPage.Login(username, password);
-            AssertUrl("/login.mvc?error");
+            AssertUrl($"{SiteMap.LoginPageUrl}?error");
             Assert.That(loginPage.ErrorMessage.Displayed, Is.True);
             Assert.That(loginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }
@@ -37,7 +38,7 @@ namespace WebGoat.Tests
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
             loggedInPage.Logout();
-            AssertUrl("/logout.mvc");
+            AssertUrl(SiteMap.LogoutPageUrl);
             Assert.That(loginPage.AlertSuccess.Displayed, Is.True);
             Assert.That(loginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(loginPage.LoginLink.Displayed, Is.True);
