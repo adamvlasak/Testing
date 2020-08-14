@@ -21,11 +21,6 @@ namespace WebGoat.Extensions
             return Activator.CreateInstance(typeof(T), new object[] { ConvertToWebDriver(context), FindElementWithWait(context, by) }) as T;
         }
 
-        public static ReadOnlyCollection<IWebElement> FindWebElements(this ISearchContext context, By by)
-        {
-            return context.FindElements(by);
-        }
-
         private static void WaitForElementToBeDisplayed(ISearchContext context, By by)
         {
             var wait = Factory.CreateWebDriverWait(ConvertToWebDriver(context));
