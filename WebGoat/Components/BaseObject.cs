@@ -7,7 +7,7 @@ namespace WebGoat.Components
 {
     public abstract class BaseObject
     {
-        public WebDriverWait Wait { get;  }
+        public WebDriverWait Wait { get; }
 
         public IWebDriver WebDriver { get; }
 

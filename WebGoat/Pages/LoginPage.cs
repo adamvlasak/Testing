@@ -12,6 +12,7 @@ namespace WebGoat.Pages
         public IWebElement RegisterLink => WebDriver.FindElementWithWait(By.CssSelector("h4 a"));
 
         private LoginForm _loginForm;
+
         public LoginForm LoginForm
         {
             get
