@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using WebGoat.Components;
 using WebGoat.Extensions;
+using WebGoat.Framework;
 
 namespace WebGoat.Pages
 {

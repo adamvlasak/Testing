@@ -2,7 +2,7 @@
 using System;
 using WebGoat.Components;
 
-namespace WebGoat.Pages
+namespace WebGoat.Framework
 {
     public class BasePage : BaseObject
     {

@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
 using WebGoat.Extensions;
-using WebGoat.Framework;
 
-namespace WebGoat.Tests
+namespace WebGoat.Framework
 {
     public class BaseTest
     {
