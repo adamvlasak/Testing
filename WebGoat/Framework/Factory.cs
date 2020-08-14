@@ -11,8 +11,6 @@ namespace WebGoat.Framework
     /// </summary>
     public static class Factory
     {
-        private const int defaultTimeout = 5;
-
         /// <summary>
         /// Returns instance of RemoteWebDriver
         /// </summary>
@@ -99,7 +97,7 @@ namespace WebGoat.Framework
         /// <param name="webDriver">IWebDriver instance</param>
         /// <param name="timeout">Timeout in seconds</param>
         /// <returns>WebDriverWait instance</returns>
-        public static WebDriverWait CreateWebDriverWait(IWebDriver webDriver, uint timeout = defaultTimeout)
+        public static WebDriverWait CreateWebDriverWait(IWebDriver webDriver, uint timeout = Configuration.DefaultTimeout)
         {
             return new WebDriverWait(webDriver, TimeSpan.FromSeconds(timeout));
         }
