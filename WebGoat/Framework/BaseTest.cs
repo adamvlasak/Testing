@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using WebGoat.Extensions;
 using WebGoat.Framework;
 
@@ -10,14 +9,7 @@ namespace WebGoat.Tests
     {
         protected IWebDriver WebDriver { get; private set; }
 
-        protected Configuration Configuration => new Configuration
-        {
-            Browser = Browser.RemoteChrome,
-            SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
-            ApplicationUrl = new Uri("http://webapp:8080/WebGoat"),
-            ScreenshotPath = @"c:\tmp\screenshots",
-            WindowSize = WindowSize.FullScreen
-        };
+        protected Configuration Configuration => Configuration.Create();
 
         [OneTimeSetUp]
         public void Setup()

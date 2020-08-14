@@ -79,5 +79,21 @@ namespace WebGoat.Framework
         {
             PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default
         };
+
+        /// <summary>
+        /// TODO: use app.config or configuration.json
+        /// </summary>
+        /// <returns></returns>
+        public static Configuration Create()
+        {
+            return new Configuration
+            {
+                Browser = Browser.ChromeDriver,
+                SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
+                ApplicationUrl = new Uri("http://localhost:8080/WebGoat"),
+                ScreenshotPath = @"c:\tmp\screenshots",
+                WindowSize = WindowSize.FullScreen
+            };
+        }
     }
 }
