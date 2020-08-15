@@ -17,19 +17,30 @@ namespace WebGoat.Framework
             BaseUrl = baseUrl;
         }
 
-        public void GoToUrl(string url)
-        {
-            WebDriver.Navigate().GoToUrl(url);
-        }
-
+        /// <summary>
+        /// Navigates to page BaseUrl.
+        /// </summary>
         public virtual void Visit()
         {
-            GoToUrl(BaseUrl.ToString());
+            VisitUrl(BaseUrl);
         }
 
+        /// <summary>
+        /// Navigates to any URL.
+        /// </summary>
+        /// <param name="url"></param>
+        public void VisitUrl(Uri url)
+        {
+            WebDriver.Navigate().GoToUrl(url.ToString());
+        }
+
+        /// <summary>
+        /// Navigates to URL path. Uses BaseUrl.
+        /// </summary>
+        /// <param name="path"></param>
         public void VisitPath(string path)
         {
-            GoToUrl($"{BaseUrl}{path}");
+            VisitUrl(new Uri($"{BaseUrl}{path}"));
         }
     }
 }
