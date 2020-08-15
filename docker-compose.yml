@@ -4,11 +4,16 @@ services:
     image: webgoat/webgoat-7.1
     ports:
       - "8080:8080"
+      - "9090:9090"
+    environment:
+      TZ: "Europe/Prague"
 
   hub:
     image: selenium/hub
     ports:
       - "4444:4444"
+    environment:
+      TZ: "Europe/Prague"
 
   node:
     image: selenium/node-chrome
@@ -17,6 +22,7 @@ services:
       HUB_HOST: hub
       SCREEN_WIDTH: "1920"
       SCREEN_HEIGHT: "1080"
+      TZ: "Europe/Prague"
     depends_on:
       - hub
     links:
