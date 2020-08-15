@@ -9,7 +9,9 @@ namespace WebGoat.Pages
     {
         public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
         public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
-        public UserMenu UserMenu => WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
+
+        private UserMenu _userMenu;
+        public UserMenu UserMenu => _userMenu != null ? _userMenu : _userMenu = WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
 
         public LoggedInPage(IWebDriver webDriver) : base(webDriver)
         {
