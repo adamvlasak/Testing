@@ -27,7 +27,7 @@ namespace WebGoat.Tests
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
             lp.Logout();
-            AssertUrl("/logout.mvc");
+            AssertUrl(SiteMap.LogoutPageUrl);
         }
     }
 }

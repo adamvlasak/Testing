@@ -42,7 +42,7 @@ namespace WebGoat.Tests
             Assert.That(loginPage.AlertSuccess.Displayed, Is.True);
             Assert.That(loginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(loginPage.LoginLink.Displayed, Is.True);
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}/logout.mvc"));
+            AssertUrl(SiteMap.LogoutPageUrl);
         }
     }
 }
