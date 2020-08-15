@@ -51,7 +51,7 @@ namespace WebGoat.Extensions
         /// <returns></returns>
         private static IWebDriver ConvertToWebDriver(ISearchContext context)
         {
-            return context is RemoteWebElement ? ((IWrapsDriver)context).WrappedDriver : context as IWebDriver;
+            return context is IWebElement ? ((IWrapsDriver)context).WrappedDriver : context as IWebDriver;
         }
     }
 }
