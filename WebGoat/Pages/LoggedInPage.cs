@@ -8,7 +8,6 @@ namespace WebGoat.Pages
     public sealed class LoggedInPage : BasePage
     {
         public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
-        public IWebElement DeveloperControlContainer => WebDriver.FindElementWithWait(By.CssSelector("div#developer-control-container"));
         public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
         public UserMenu UserMenu => WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
 
