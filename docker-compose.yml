@@ -1,22 +1,24 @@
 version: "3.7"
 services:
-  webapp:
+  webgoat:
     image: webgoat/webgoat-7.1
+    container_name: webgoat
     ports:
       - "8080:8080"
-      - "9090:9090"
     environment:
       TZ: "Europe/Prague"
 
   hub:
     image: selenium/hub
+    container_name: hub
     ports:
       - "4444:4444"
     environment:
       TZ: "Europe/Prague"
 
-  node:
+  chrome:
     image: selenium/node-chrome
+    container_name: chrome
     shm_size: '2gb'
     environment:
       HUB_HOST: hub
@@ -27,4 +29,4 @@ services:
       - hub
     links:
       - hub
-      - webapp
+      - webgoat
