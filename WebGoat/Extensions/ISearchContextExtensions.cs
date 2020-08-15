@@ -48,7 +48,7 @@ namespace WebGoat.Extensions
         /// There are 2 contexts: IWebElement and IWebDriver.
         /// </summary>
         /// <param name="context">ISearchContext context</param>
-        /// <returns></returns>
+        /// <returns>IWebDriver</returns>
         private static IWebDriver ConvertToWebDriver(ISearchContext context)
         {
             return context is IWebElement ? ((IWrapsDriver)context).WrappedDriver : context as IWebDriver;
