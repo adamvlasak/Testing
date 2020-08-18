@@ -29,5 +29,17 @@ namespace WebGoat.Tests
             lp.Logout();
             AssertUrl(SiteMap.LogoutPageUrl);
         }
+
+        [Test]
+        [TestCase("guest", "guest")]
+        [TestCase("webgoat", "webgoat")]
+        public void CompleteLesson2(string username, string password)
+        {
+            var lp = LoginPage.Login(username, password);
+            Assert.That(lp.LessonTitle.Displayed, Is.True);
+            lp.LessonMenu.Open("The CHALLENGE");
+            lp.Logout();
+            AssertUrl(SiteMap.LogoutPageUrl);
+        }
     }
 }

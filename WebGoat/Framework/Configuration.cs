@@ -8,7 +8,7 @@ namespace WebGoat.Framework
     /// <summary>
     /// Holds current configuration of Application under Test and infrastructure
     /// </summary>
-    public class Configuration
+    public static class Configuration
     {
         /// <summary>
         /// Browser to test with

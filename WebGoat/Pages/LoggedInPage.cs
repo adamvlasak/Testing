@@ -13,6 +13,8 @@ namespace WebGoat.Pages
         private UserMenu _userMenu;
         public UserMenu UserMenu => _userMenu != null ? _userMenu : _userMenu = WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
 
+        public LessonMenu LessonMenu => WebDriver.FindElementWithWait<LessonMenu>(By.CssSelector("div#menu-container ul.nano-content"));
+
         public LoggedInPage(IWebDriver webDriver) : base(webDriver)
         {
         }
