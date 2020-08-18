@@ -17,18 +17,18 @@ namespace WebGoat.Framework
         /// <param name="browser">RemoteFirefox or RemoteChrome</param>
         /// <param name="hubAddress">Selenium Hub URL</param>
         /// <returns>IWebDriver</returns>
-        private static IWebDriver RemoteWebDriver(Configuration configuration)
+        private static IWebDriver RemoteWebDriver()
         {
-            switch (configuration.Browser)
+            switch (Configuration.Browser)
             {
                 case Browser.RemoteFirefox:
                     var firefoxOptions = Configuration.DefaultFirefoxOptions;
-                    return new RemoteWebDriver(configuration.SeleniumHubUrl, firefoxOptions);
+                    return new RemoteWebDriver(Configuration.SeleniumHubUrl, firefoxOptions);
 
                 case Browser.RemoteChrome:
                     var chromeOptions = Configuration.DefaultChromeOptions;
-                    chromeOptions.AddArgument(configuration.WindowSizeBrowserOption);
-                    return new RemoteWebDriver(configuration.SeleniumHubUrl, chromeOptions);
+                    chromeOptions.AddArgument(Configuration.WindowSizeBrowserOption);
+                    return new RemoteWebDriver(Configuration.SeleniumHubUrl, chromeOptions);
 
                 default:
                     throw new ArgumentException("Unsupported browser.");
@@ -39,10 +39,10 @@ namespace WebGoat.Framework
         /// Returns instance of ChromeDriver
         /// </summary>
         /// <returns>IWebDriver instance</returns>
-        private static IWebDriver ChromeDriver(Configuration configuration)
+        private static IWebDriver ChromeDriver()
         {
             var options = Configuration.DefaultChromeOptions;
-            options.AddArgument(configuration.WindowSizeBrowserOption);
+            options.AddArgument(Configuration.WindowSizeBrowserOption);
             return new ChromeDriver(options);
         }
 
@@ -69,12 +69,12 @@ namespace WebGoat.Framework
         /// </summary>
         /// <param name="configuration"></param>
         /// <returns>IWebDriver instance</returns>
-        public static IWebDriver CreateWebDriver(Configuration configuration)
+        public static IWebDriver CreateWebDriver()
         {
-            switch (configuration.Browser)
+            switch (Configuration.Browser)
             {
                 case Browser.ChromeDriver:
-                    return ChromeDriver(configuration);
+                    return ChromeDriver();
 
                 case Browser.GeckoDriver:
                     return GeckoDriver();
@@ -84,7 +84,7 @@ namespace WebGoat.Framework
 
                 case Browser.RemoteChrome:
                 case Browser.RemoteFirefox:
-                    return RemoteWebDriver(configuration);
+                    return RemoteWebDriver();
 
                 default:
                     throw new Exception("Invalid configuration.");

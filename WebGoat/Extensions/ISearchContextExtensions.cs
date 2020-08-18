@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
-using OpenQA.Selenium.Remote;
 using System;
 using WebGoat.Components;
 using WebGoat.Framework;

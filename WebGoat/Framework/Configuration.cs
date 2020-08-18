@@ -13,27 +13,27 @@ namespace WebGoat.Framework
         /// <summary>
         /// Browser to test with
         /// </summary>
-        public Browser Browser { get; set; }
+        public static Browser Browser { get; set; } = Browser.ChromeDriver;
 
         /// <summary>
         /// URL of Selenium Grid
         /// </summary>
-        public Uri SeleniumHubUrl { get; set; }
+        public static Uri SeleniumHubUrl { get; set; } = new Uri("http://localhost:4444/wd/hub");
 
         /// <summary>
         /// URL of Application under test
         /// </summary>
-        public Uri ApplicationUrl { get; set; }
+        public static Uri ApplicationUrl { get; set; } = new Uri("http://localhost:8080/WebGoat");
 
         /// <summary>
         /// Path to directory in which screen shots will be saved
         /// </summary>
-        public string ScreenshotPath { get; set; }
+        public static string ScreenshotPath { get; set; } = ScreenshotPath = @"c:\tmp\screenshots";
 
         /// <summary>
         /// Window size of the browser
         /// </summary>
-        public WindowSize WindowSize { get; set; }
+        public static WindowSize WindowSize { get; set; } = WindowSize.FullScreen;
 
         /// <summary>
         /// Default timeout used for Explicit Waiting
@@ -43,7 +43,7 @@ namespace WebGoat.Framework
         /// <summary>
         /// Based on other properties returns correct window size argument for WebDriver
         /// </summary>
-        public string WindowSizeBrowserOption
+        public static string WindowSizeBrowserOption
         {
             get
             {
@@ -79,21 +79,5 @@ namespace WebGoat.Framework
         {
             PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default
         };
-
-        /// <summary>
-        /// TODO: use app.config or configuration.json
-        /// </summary>
-        /// <returns></returns>
-        public static Configuration Create()
-        {
-            return new Configuration
-            {
-                Browser = Browser.ChromeDriver,
-                SeleniumHubUrl = new Uri("http://localhost:4444/wd/hub"),
-                ApplicationUrl = new Uri("http://localhost:8080/WebGoat"),
-                ScreenshotPath = @"c:\tmp\screenshots",
-                WindowSize = WindowSize.FullScreen
-            };
-        }
     }
 }

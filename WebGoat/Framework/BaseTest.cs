@@ -8,12 +8,10 @@ namespace WebGoat.Framework
     {
         protected IWebDriver WebDriver { get; private set; }
 
-        protected Configuration Configuration => Configuration.Create();
-
         [OneTimeSetUp]
         public void Setup()
         {
-            WebDriver = Factory.CreateWebDriver(Configuration);
+            WebDriver = Factory.CreateWebDriver();
         }
 
         [TearDown]
