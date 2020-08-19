@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using System;
 using WebGoat.Components;
 using WebGoat.Extensions;
 using WebGoat.Framework;
@@ -32,6 +33,11 @@ namespace WebGoat.Pages
         public void EnableLabelDebugging()
         {
             UserMenu.EnableLabelDebugging();
+        }
+
+        public void OpenLesson(string lessonTitle)
+        {
+            LessonMenu.Open(lessonTitle);
         }
     }
 }

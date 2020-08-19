@@ -37,7 +37,11 @@ namespace WebGoat.Tests
         {
             var lp = LoginPage.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);
-            lp.LessonMenu.Open("The CHALLENGE");
+            lp.OpenLesson("Web Service SQL Injection");
+            lp.OpenLesson("JSON Injection");
+            lp.OpenLesson("Thread Safety Problems");
+            lp.OpenLesson("Denial of Service from Multiple Logins");
+            lp.OpenLesson("The CHALLENGE");
             lp.Logout();
             AssertUrl(SiteMap.LogoutPageUrl);
         }

@@ -13,7 +13,7 @@ namespace WebGoat.Framework
         /// <summary>
         /// Browser to test with
         /// </summary>
-        public static Browser Browser { get; set; } = Browser.ChromeDriver;
+        public static Browser Browser { get; set; } = Browser.RemoteChrome;
 
         /// <summary>
         /// URL of Selenium Grid
@@ -23,7 +23,7 @@ namespace WebGoat.Framework
         /// <summary>
         /// URL of Application under test
         /// </summary>
-        public static Uri ApplicationUrl { get; set; } = new Uri("http://localhost:8080/WebGoat");
+        public static Uri ApplicationUrl { get; set; } = new Uri("http://webgoat:8080/WebGoat");
 
         /// <summary>
         /// Path to directory in which screen shots will be saved
