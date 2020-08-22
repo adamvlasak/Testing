@@ -25,7 +25,7 @@ namespace WebGoat.Tests
         public void LoginSuccessfull(string username, string password)
         {
             LoggedInPage loggedInPage = base.Login(username, password);
-            Logout(loggedInPage);
+            base.Logout(loggedInPage);
         }
     }
 }
