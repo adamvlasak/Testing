@@ -1,11 +1,10 @@
 using NUnit.Framework;
 using OpenQA.Selenium;
-using WebGoat.Extensions;
 
 namespace WebGoat.Framework
 {
     [SetUpFixture]
-    public class BaseTest
+    public abstract class BaseTest
     {
         protected IWebDriver WebDriver { get; private set; }
 

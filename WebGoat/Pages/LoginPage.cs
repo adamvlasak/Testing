@@ -1,4 +1,5 @@
 using OpenQA.Selenium;
+using System;
 using WebGoat.Components;
 using WebGoat.Extensions;
 using WebGoat.Framework;
@@ -18,7 +19,7 @@ namespace WebGoat.Pages
         {
         }
 
-        public LoginPage(IWebDriver webDriver, System.Uri baseUrl) : base(webDriver, baseUrl)
+        public LoginPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
 

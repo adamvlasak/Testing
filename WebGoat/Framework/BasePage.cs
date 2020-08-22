@@ -4,7 +4,7 @@ using WebGoat.Components;
 
 namespace WebGoat.Framework
 {
-    public class BasePage : BaseObject
+    public abstract class BasePage : BaseObject
     {
         protected Uri BaseUrl { get; private set; }
 

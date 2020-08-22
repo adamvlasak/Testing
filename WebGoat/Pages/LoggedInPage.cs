@@ -20,7 +20,7 @@ namespace WebGoat.Pages
         {
         }
 
-        public LoggedInPage(IWebDriver webDriver, System.Uri baseUrl) : base(webDriver, baseUrl)
+        public LoggedInPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
 
