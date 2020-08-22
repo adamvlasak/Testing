@@ -23,7 +23,7 @@ namespace WebGoat.Pages
         public LogoutPage Logout()
         {
             UserMenu.Logout();
-            return new LogoutPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LogoutPageUrl}"));
+            return new LogoutPage(WebDriver, SiteMap.LogoutPageUrl);
         }
 
         public void EnableLabelDebugging()

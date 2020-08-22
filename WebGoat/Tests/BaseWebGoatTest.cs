@@ -16,7 +16,7 @@ namespace WebGoat.Tests
             LoggedInPage loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.AfterLoginPageUrl));
+            Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.LoggedInPageUrl));
             return loggedInPage;
         }
 
@@ -26,16 +26,16 @@ namespace WebGoat.Tests
             Assert.That(logoutPage.AlertSuccess.Displayed, Is.True);
             Assert.That(logoutPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(logoutPage.LoginLink.Displayed, Is.True);
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
+            Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.LogoutPageUrl));
         }
 
         [SetUp]
         protected void SetUp()
         {
             WebDriver.Manage().Cookies.DeleteAllCookies();
-            LoginPage = new LoginPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LoginPageUrl}"));
+            LoginPage = new LoginPage(WebDriver, SiteMap.LoginPageUrl);
             LoginPage.Visit();
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LoginPageUrl));
+            Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.LoginPageUrl));
         }
 
         [TearDown]

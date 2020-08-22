@@ -15,7 +15,7 @@ namespace WebGoat.Tests
         public void LoginUnsuccessfull(string username, string password)
         {
             LoginPage.Login(username, password);
-            Assert.That(WebDriver.Url, Does.Contain($"{SiteMap.LoginPageUrl}?error"));
+            Assert.That(WebDriver.Url, Is.EqualTo($"{SiteMap.LoginPageUrl}?error"));
             Assert.That(LoginPage.ErrorMessage.Displayed, Is.True);
             Assert.That(LoginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }

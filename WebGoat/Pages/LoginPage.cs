@@ -20,7 +20,7 @@ namespace WebGoat.Pages
         {
             LoginForm.Fill(username, password);
             LoginForm.Submit();
-            return new LoggedInPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.AfterLoginPageUrl}"));
+            return new LoggedInPage(WebDriver, SiteMap.LoggedInPageUrl);
         }
     }
 }
