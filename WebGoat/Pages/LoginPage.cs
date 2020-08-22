@@ -15,10 +15,6 @@ namespace WebGoat.Pages
         private LoginForm _loginForm;
         public LoginForm LoginForm => _loginForm ??= WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
 
-        public LoginPage(IWebDriver webDriver) : base(webDriver)
-        {
-        }
-
         public LoginPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
@@ -27,7 +23,7 @@ namespace WebGoat.Pages
         {
             LoginForm.Fill(username, password);
             LoginForm.Submit();
-            return new LoggedInPage(WebDriver);
+            return new LoggedInPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.AfterLoginPageUrl}"));
         }
     }
 }

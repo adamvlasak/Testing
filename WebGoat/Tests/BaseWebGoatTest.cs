@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using System;
 using WebGoat.Extensions;
 using WebGoat.Framework;
 using WebGoat.Pages;
@@ -15,7 +16,7 @@ namespace WebGoat.Tests
             LoggedInPage loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LoggedInPageUrl));
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.AfterLoginPageUrl));
             return loggedInPage;
         }
 
@@ -32,7 +33,7 @@ namespace WebGoat.Tests
         protected void SetUp()
         {
             WebDriver.Manage().Cookies.DeleteAllCookies();
-            LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
+            LoginPage = new LoginPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LoginPageUrl}"));
             LoginPage.Visit();
             Assert.That(WebDriver.Url, Does.Contain(SiteMap.LoginPageUrl));
         }

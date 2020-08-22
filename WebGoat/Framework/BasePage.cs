@@ -8,10 +8,6 @@ namespace WebGoat.Framework
     {
         protected Uri BaseUrl { get; }
 
-        protected BasePage(IWebDriver webDriver) : base(webDriver)
-        {
-        }
-
         protected BasePage(IWebDriver webDriver, Uri baseUrl) : base(webDriver)
         {
             BaseUrl = baseUrl;

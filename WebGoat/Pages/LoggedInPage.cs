@@ -16,10 +16,6 @@ namespace WebGoat.Pages
 
         public LessonMenu LessonMenu => WebDriver.FindElementWithWait<LessonMenu>(By.CssSelector("div#menu-container ul.nano-content"));
 
-        public LoggedInPage(IWebDriver webDriver) : base(webDriver)
-        {
-        }
-
         public LoggedInPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
         {
         }
@@ -27,7 +23,7 @@ namespace WebGoat.Pages
         public LoginPage Logout()
         {
             UserMenu.Logout();
-            return new LoginPage(WebDriver);
+            return new LoginPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LogoutPageUrl}"));
         }
 
         public void EnableLabelDebugging()
