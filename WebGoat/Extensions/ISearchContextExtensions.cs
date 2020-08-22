@@ -40,7 +40,7 @@ namespace WebGoat.Extensions
         private static void WaitForElementToBeDisplayed(ISearchContext context, By by)
         {
             var wait = Factory.CreateWebDriverWait(ConvertToWebDriver(context));
-            wait.Until(d => context.FindElement(by)?.Displayed == true);
+            wait.Until(_ => context.FindElement(by)?.Displayed == true);
         }
 
         /// <summary>

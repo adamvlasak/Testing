@@ -10,7 +10,7 @@ namespace WebGoat.Components
 
         public IWebDriver WebDriver { get; }
 
-        public BaseObject(IWebDriver driver)
+        protected BaseObject(IWebDriver driver)
         {
             WebDriver = driver;
             Wait = Factory.CreateWebDriverWait(WebDriver);

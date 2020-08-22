@@ -13,7 +13,7 @@ namespace WebGoat.Components
 
         private IWebElement GetElement(string text)
         {
-            Link link = null;
+            Link link;
             try
             {
                 link = LessonLinks.GetLinkByText(text);

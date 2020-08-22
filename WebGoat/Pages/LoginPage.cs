@@ -13,7 +13,7 @@ namespace WebGoat.Pages
         public IWebElement LoginLink => WebDriver.FindElementWithWait(By.CssSelector("h4 a"));
 
         private LoginForm _loginForm;
-        public LoginForm LoginForm => _loginForm != null ? _loginForm : _loginForm = WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
+        public LoginForm LoginForm => _loginForm ??= WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
 
         public LoginPage(IWebDriver webDriver) : base(webDriver)
         {

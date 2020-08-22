@@ -6,13 +6,13 @@ namespace WebGoat.Framework
 {
     public abstract class BasePage : BaseObject
     {
-        protected Uri BaseUrl { get; private set; }
+        protected Uri BaseUrl { get; }
 
-        public BasePage(IWebDriver webDriver) : base(webDriver)
+        protected BasePage(IWebDriver webDriver) : base(webDriver)
         {
         }
 
-        public BasePage(IWebDriver webDriver, Uri baseUrl) : base(webDriver)
+        protected BasePage(IWebDriver webDriver, Uri baseUrl) : base(webDriver)
         {
             BaseUrl = baseUrl;
         }

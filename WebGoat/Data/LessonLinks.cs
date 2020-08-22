@@ -77,17 +77,17 @@ namespace WebGoat.Data
 
         public static Link GetLinkByText(string text)
         {
-            return Links.Where(l => l.Title == text).Single();
+            return Links.Single(l => l.Title == text);
         }
 
         public static Link GetLinkByUrl(string url)
         {
-            return Links.Where(l => l.Path == url).Single();
+            return Links.Single(l => l.Path == url);
         }
 
         public static Link GetById(int id)
         {
-            return Links.Where(l => l.Id == id).Single();
+            return Links.Single(l => l.Id == id);
         }
     }
 }

@@ -17,12 +17,12 @@ namespace WebGoat.Extensions
         {
             var screenshot = ((ITakesScreenshot)driver).GetScreenshot();
 
-            if (Directory.Exists(path) == false)
+            if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
 
-            var fileName = $"{path}\\{System.DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss")}_{className}_{methodName}.png";
+            var fileName = $"{path}\\{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}_{className}_{methodName}.png";
 
             screenshot.SaveAsFile($"{fileName}", ScreenshotImageFormat.Png);
 
