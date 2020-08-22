@@ -20,10 +20,10 @@ namespace WebGoat.Pages
         {
         }
 
-        public LoginPage Logout()
+        public LogoutPage Logout()
         {
             UserMenu.Logout();
-            return new LoginPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LogoutPageUrl}"));
+            return new LogoutPage(WebDriver, new Uri($"{Configuration.ApplicationUrl}{SiteMap.LogoutPageUrl}"));
         }
 
         public void EnableLabelDebugging()

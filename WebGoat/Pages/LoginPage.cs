@@ -9,9 +9,6 @@ namespace WebGoat.Pages
     public sealed class LoginPage : BasePage
     {
         public IWebElement ErrorMessage => WebDriver.FindElementWithWait(By.CssSelector("div.error"));
-        public IWebElement AlertSuccess => WebDriver.FindElementWithWait(By.CssSelector("div.alert-success"));
-        public IWebElement LoginLink => WebDriver.FindElementWithWait(By.CssSelector("h4 a"));
-
         private LoginForm _loginForm;
         public LoginForm LoginForm => _loginForm ??= WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
 
