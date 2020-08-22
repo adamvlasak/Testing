@@ -34,3 +34,5 @@ Then you can format code before commit with this make target:
 ```
 make format
 ```
+
+> To be able to customize formatting rules you can check [this page](https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-formatting-conventions?view=vs-2019) or see [.editorconfig](https://editorconfig.org/) within the project.
