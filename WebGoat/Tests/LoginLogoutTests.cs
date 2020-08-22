@@ -15,7 +15,7 @@ namespace WebGoat.Tests
         public void LoginUnsuccessfull(string username, string password)
         {
             LoginPage.Login(username, password);
-            AssertUrl($"{SiteMap.LoginPageUrl}?error");
+            Assert.That(WebDriver.Url, Does.Contain($"{SiteMap.LoginPageUrl}?error"));
             Assert.That(LoginPage.ErrorMessage.Displayed, Is.True);
             Assert.That(LoginPage.ErrorMessage.Text, Is.EqualTo("Invalid username and password!"));
         }
@@ -24,15 +24,12 @@ namespace WebGoat.Tests
         [TestCase("webgoat", "webgoat")]
         public void LoginSuccessfull(string username, string password)
         {
-            var loggedInPage = LoginPage.Login(username, password);
-            Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
-            Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
+            LoggedInPage loggedInPage = base.Login(username, password);
             loggedInPage.Logout();
-            AssertUrl(SiteMap.LogoutPageUrl);
             Assert.That(LoginPage.AlertSuccess.Displayed, Is.True);
             Assert.That(LoginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(LoginPage.LoginLink.Displayed, Is.True);
-            AssertUrl(SiteMap.LogoutPageUrl);
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
         }
     }
 }

@@ -12,13 +12,12 @@ namespace WebGoat.Tests
         [TestCase("webgoat", "webgoat")]
         public void CompleteLesson(string username, string password)
         {
-            var lp = LoginPage.Login(username, password);
-            Assert.That(lp.LessonTitle.Displayed, Is.True);
+            LoggedInPage lp = base.Login(username, password);
             lp.EnableLabelDebugging();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
             lp.Logout();
-            AssertUrl(SiteMap.LogoutPageUrl);
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
         }
 
         [Test]
@@ -26,15 +25,14 @@ namespace WebGoat.Tests
         [TestCase("webgoat", "webgoat")]
         public void LessonsSmoke(string username, string password)
         {
-            var lp = LoginPage.Login(username, password);
-            Assert.That(lp.LessonTitle.Displayed, Is.True);
+            LoggedInPage lp = base.Login(username, password);
             lp.OpenLesson("Web Service SQL Injection");
             lp.OpenLesson("JSON Injection");
             lp.OpenLesson("Thread Safety Problems");
             lp.OpenLesson("Denial of Service from Multiple Logins");
             lp.OpenLesson("The CHALLENGE");
             lp.Logout();
-            AssertUrl(SiteMap.LogoutPageUrl);
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
         }
     }
 }

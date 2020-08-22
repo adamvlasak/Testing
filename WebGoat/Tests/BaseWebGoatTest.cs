@@ -10,22 +10,26 @@ namespace WebGoat.Tests
     {
         public LoginPage LoginPage { get; private set; }
 
-        protected void AssertUrl(string expectedPath)
+        protected LoggedInPage Login(string username, string password)
         {
-            Assert.That(WebDriver.Url, Is.EqualTo($"{Configuration.ApplicationUrl}{expectedPath}"));
+            LoggedInPage loggedInPage = LoginPage.Login(username, password);
+            Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
+            Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LoggedInPageUrl));
+            return loggedInPage;
         }
 
         [SetUp]
-        public void SetUp()
+        protected void SetUp()
         {
             WebDriver.Manage().Cookies.DeleteAllCookies();
             LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
             LoginPage.Visit();
-            AssertUrl(SiteMap.LoginPageUrl);
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LoginPageUrl));
         }
 
         [TearDown]
-        public void TearDown()
+        protected void TearDown()
         {
             var context = TestContext.CurrentContext;
             if (context.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)

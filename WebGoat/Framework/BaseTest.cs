@@ -9,13 +9,13 @@ namespace WebGoat.Framework
         protected IWebDriver WebDriver { get; private set; }
 
         [OneTimeSetUp]
-        public void OneTimeSetup()
+        protected void OneTimeSetup()
         {
             WebDriver = Factory.CreateWebDriver();
         }
 
         [OneTimeTearDown]
-        public void OneTimeTearDown()
+        protected void OneTimeTearDown()
         {
             WebDriver?.Quit();
         }

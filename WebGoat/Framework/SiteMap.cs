@@ -6,7 +6,7 @@ namespace WebGoat.Framework
     public static class SiteMap
     {
         public const string LoginPageUrl = "/login.mvc";
-        public const string StartPageUrl = "/start.mvc";
         public const string LogoutPageUrl = "/logout.mvc";
+        public const string LoggedInPageUrl = "/start.mvc";
     }
 }
