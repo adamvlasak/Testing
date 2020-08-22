@@ -1,13 +1,7 @@
-# Webgoat Tests
+# WebGoat Tests
 
-This project uses WebGoat application running inside docker container.
+This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It uses [WebGoat 7.1](https://owasp.org/www-project-webgoat/) as application under test running inside docker container.
 
-```
-$ git clone https://github.com/adamvlasak/Testing.git
-$ cd Testing/Testing
-$ make hub
-$ make test
-```
 ## Prerequisites
 
 ### Windows 10 Version 2004 or later
@@ -30,7 +24,7 @@ make test
 ```
 make test-parallel
 ```
-> Note: it is useful to have [dotnet-format|https://github.com/dotnet/format] installed as a global .NET tool:
+> Note: it is useful to have [dotnet-format](https://github.com/dotnet/format) installed as a global .NET tool:
 
 ```
 dotnet tool install -g dotnet-format
