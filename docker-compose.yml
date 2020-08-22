@@ -16,9 +16,24 @@ services:
     environment:
       TZ: "Europe/Prague"
 
-  chrome:
+  chrome1:
     image: selenium/node-chrome
-    container_name: chrome
+    container_name: chrome1
+    shm_size: '2gb'
+    environment:
+      HUB_HOST: hub
+      SCREEN_WIDTH: "1920"
+      SCREEN_HEIGHT: "1080"
+      TZ: "Europe/Prague"
+    depends_on:
+      - hub
+    links:
+      - hub
+      - webgoat
+
+  chrome2:
+    image: selenium/node-chrome
+    container_name: chrome2
     shm_size: '2gb'
     environment:
       HUB_HOST: hub
