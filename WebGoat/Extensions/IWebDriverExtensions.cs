@@ -22,7 +22,7 @@ namespace WebGoat.Extensions
                 Directory.CreateDirectory(path);
             }
 
-            var fileName = $"{path}\\{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}_{className}_{methodName}.png";
+            var fileName = $"{path}{Path.DirectorySeparatorChar}{System.DateTime.Now:yyyy-MM-dd_HH-mm-ss}_{className}_{methodName}.png";
 
             screenshot.SaveAsFile($"{fileName}", ScreenshotImageFormat.Png);
 
