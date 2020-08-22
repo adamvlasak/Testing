@@ -1,4 +1,4 @@
-﻿namespace WebGoat.Framework
+namespace WebGoat.Framework
 {
     public enum WindowSize
     {

@@ -16,8 +16,27 @@ $ make test
 - Windows Subsystem for Linux
 - Virtual Machine Platform
 
-**Install WSL2 Linux kernel update package** from https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
+**Install WSL2 Linux kernel update package**
+- https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
 
-**Install Docker** https://hub.docker.com/editions/community/docker-ce-desktop-windows/
+**Install Docker for desktop**
+ - https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 
-Use **Visual Studio Test Explorer** to run tests.
+Use **Visual Studio Test Explorer** to run tests or **make**:
+
+```
+make test
+```
+```
+make test-parallel
+```
+> Note: it is useful to have [dotnet-format|https://github.com/dotnet/format] installed as a global .NET tool:
+
+```
+dotnet tool install -g dotnet-format
+```
+
+Then you can format code before commit with this make target:
+```
+make format
+```

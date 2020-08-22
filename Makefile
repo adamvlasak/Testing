@@ -10,6 +10,9 @@ clean:
 build:
 	dotnet build
 
+format:
+	dotnet-format
+
 test:
 	dotnet test
 

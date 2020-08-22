@@ -1,4 +1,4 @@
-﻿using OpenQA.Selenium;
+using OpenQA.Selenium;
 using WebGoat.Components;
 using WebGoat.Extensions;
 using WebGoat.Framework;
