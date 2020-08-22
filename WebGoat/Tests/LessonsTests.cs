@@ -1,5 +1,4 @@
 using NUnit.Framework;
-using WebGoat.Framework;
 using WebGoat.Pages;
 
 namespace WebGoat.Tests
@@ -16,8 +15,7 @@ namespace WebGoat.Tests
             lp.EnableLabelDebugging();
             Assert.That(lp.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(lp.LessonProgressStatus.Displayed, Is.True);
-            lp.Logout();
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
+            Logout(lp);
         }
 
         [Test]
@@ -31,8 +29,7 @@ namespace WebGoat.Tests
             lp.OpenLesson("Thread Safety Problems");
             lp.OpenLesson("Denial of Service from Multiple Logins");
             lp.OpenLesson("The CHALLENGE");
-            lp.Logout();
-            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
+            Logout(lp);
         }
     }
 }

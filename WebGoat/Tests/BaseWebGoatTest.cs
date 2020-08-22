@@ -19,6 +19,15 @@ namespace WebGoat.Tests
             return loggedInPage;
         }
 
+        protected void Logout(LoggedInPage loggedInPage)
+        {
+            loggedInPage.Logout();
+            Assert.That(LoginPage.AlertSuccess.Displayed, Is.True);
+            Assert.That(LoginPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
+            Assert.That(LoginPage.LoginLink.Displayed, Is.True);
+            Assert.That(WebDriver.Url, Does.Contain(SiteMap.LogoutPageUrl));
+        }
+
         [SetUp]
         protected void SetUp()
         {
