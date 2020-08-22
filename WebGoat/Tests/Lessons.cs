@@ -4,18 +4,9 @@ using WebGoat.Pages;
 
 namespace WebGoat.Tests
 {
+    [TestFixture]
     internal sealed class Lessons : BaseWebGoatTest
     {
-        private LoginPage LoginPage;
-
-        [SetUp]
-        public void SetUp()
-        {
-            LoginPage = new LoginPage(WebDriver, Configuration.ApplicationUrl);
-            LoginPage.Visit();
-            AssertUrl(SiteMap.LoginPageUrl);
-        }
-
         [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]

@@ -4,26 +4,15 @@ using WebGoat.Extensions;
 
 namespace WebGoat.Framework
 {
+    [SetUpFixture]
     public class BaseTest
     {
         protected IWebDriver WebDriver { get; private set; }
 
         [OneTimeSetUp]
-        public void Setup()
+        public void OneTimeSetup()
         {
             WebDriver = Factory.CreateWebDriver();
-        }
-
-        [TearDown]
-        public void TearDown()
-        {
-            if (TestContext.CurrentContext.Result.Outcome.Status == NUnit.Framework.Interfaces.TestStatus.Failed)
-            {
-                var screenshot = WebDriver.Screenshot(Configuration.ScreenshotPath, TestContext.CurrentContext.Test.ClassName, TestContext.CurrentContext.Test.MethodName);
-                TestContext.AddTestAttachment(screenshot);
-            }
-
-            WebDriver.Manage().Cookies.DeleteAllCookies();
         }
 
         [OneTimeTearDown]

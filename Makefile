@@ -1,3 +1,5 @@
+all: hub clean build test-parallel
+
 hub:
 	docker-compose down
 	docker-compose up -d --remove-orphans
@@ -10,3 +12,6 @@ build:
 
 test:
 	dotnet test
+
+test-parallel:
+	dotnet test -- NUnit.NumberOfTestWorkers=2
