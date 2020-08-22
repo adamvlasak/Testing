@@ -5,7 +5,7 @@ using WebGoat.Pages;
 namespace WebGoat.Tests
 {
     [TestFixture]
-    internal sealed class Lessons : BaseWebGoatTest
+    internal sealed class LessonsTests : BaseWebGoatTest
     {
         [Test]
         [TestCase("guest", "guest")]
@@ -24,7 +24,7 @@ namespace WebGoat.Tests
         [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
-        public void CompleteLesson2(string username, string password)
+        public void LessonsSmoke(string username, string password)
         {
             var lp = LoginPage.Login(username, password);
             Assert.That(lp.LessonTitle.Displayed, Is.True);

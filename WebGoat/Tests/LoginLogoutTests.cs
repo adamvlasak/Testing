@@ -5,14 +5,14 @@ using WebGoat.Pages;
 namespace WebGoat.Tests
 {
     [TestFixture]
-    internal sealed class LoginLogout : BaseWebGoatTest
+    internal sealed class LoginLogoutTests : BaseWebGoatTest
     {
         [Test]
         [TestCase("guest", "Guest")]
         [TestCase("admin", "admin")]
         [TestCase("webgoat", "Webgoat")]
         [TestCase("webgoat", "")]
-        public void LoginUnsuccessfullTest(string username, string password)
+        public void LoginUnsuccessfull(string username, string password)
         {
             LoginPage.Login(username, password);
             AssertUrl($"{SiteMap.LoginPageUrl}?error");
@@ -22,7 +22,7 @@ namespace WebGoat.Tests
 
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
-        public void LoginSuccessfullTest(string username, string password)
+        public void LoginSuccessfull(string username, string password)
         {
             var loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
