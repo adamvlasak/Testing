@@ -1,6 +1,6 @@
 # WebGoat Tests
 
-This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It uses [WebGoat 7.1](https://owasp.org/www-project-webgoat/) as application under test running inside docker container.
+This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It uses [WebGoat 7.1](https://github.com/WebGoat/WebGoat/releases/tag/7.1) as application under test running inside docker container.
 
 ## Prerequisites
 
