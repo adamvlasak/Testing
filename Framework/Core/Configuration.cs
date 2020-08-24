@@ -13,22 +13,26 @@ namespace Framework.Core
         /// <summary>
         /// Browser to test with
         /// </summary>
-        public static Browser Browser { get; set; } = Browser.RemoteChrome;
+        public static Browser Browser => Browser.RemoteChrome;
 
         /// <summary>
         /// URL of Selenium Grid
         /// </summary>
-        public static Uri SeleniumHubUrl { get; set; } = new Uri("http://localhost:4444/wd/hub");
+        public static Uri SeleniumHubUrl => new Uri("http://localhost:4444/wd/hub");
 
         /// <summary>
         /// URL of Application under test
         /// </summary>
-        public static Uri ApplicationUrl { get; set; } = new Uri("http://webgoat:8080/WebGoat");
+        public static Uri ApplicationUrl =>
+            Browser == Browser.ChromeDriver ||
+            Browser == Browser.GeckoDriver ||
+            Browser == Browser.EdgeDriver ?
+                new Uri("http://localhost:8080/WebGoat") : new Uri("http://webgoat:8080/WebGoat");
 
         /// <summary>
         /// Path to directory in which screen shots will be saved
         /// </summary>
-        public static string ScreenshotPath { get; set; } = ScreenshotPath = @"c:\tmp\screenshots";
+        public static string ScreenshotPath => @"c:\tmp\screenshots";
 
         /// <summary>
         /// Window size of the browser
