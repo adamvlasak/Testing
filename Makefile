@@ -5,7 +5,7 @@ hub:
 	docker-compose up -d --remove-orphans
 
 clean:
-	dotnet clean
+	pwsh cleanup.ps1
 
 build:
 	dotnet build
