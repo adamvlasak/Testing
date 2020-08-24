@@ -2,10 +2,10 @@ using Framework.Core;
 using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
-using WebGoat.Components;
-using WebGoat.Core;
+using UI.Components;
+using UI.Core;
 
-namespace WebGoat.Pages
+namespace UI.Pages
 {
     public sealed class LoggedInPage : BasePage
     {

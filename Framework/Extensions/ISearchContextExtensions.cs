@@ -16,7 +16,7 @@ namespace Framework.Extensions
         /// <returns>The first matching OpenQA.Selenium.IWebElement on the current context.</returns>
         public static IWebElement FindElementWithWait(this ISearchContext context, By by)
         {
-            WaitForElementToBeDisplayed(context, by);
+            WaitForIWebElement(context, by);
             return context.FindElement(by);
         }
 
@@ -37,10 +37,10 @@ namespace Framework.Extensions
         /// </summary>
         /// <param name="context">ISearchContext context</param>
         /// <param name="by">By locator</param>
-        private static void WaitForElementToBeDisplayed(ISearchContext context, By by)
+        private static void WaitForIWebElement(ISearchContext context, By by)
         {
             var wait = Factory.CreateWebDriverWait(ConvertToWebDriver(context));
-            wait.Until(_ => context.FindElement(by)?.Displayed == true);
+            wait.Until(_ => context.FindElement(by) is IWebElement);
         }
 
         /// <summary>

@@ -2,7 +2,7 @@ using Framework.Components;
 using Framework.Extensions;
 using OpenQA.Selenium;
 
-namespace WebGoat.Components
+namespace UI.Components
 {
     public class LoginForm : BaseComponent
     {

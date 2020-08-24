@@ -14,8 +14,6 @@ namespace Framework.Core
         /// <summary>
         /// Returns instance of RemoteWebDriver
         /// </summary>
-        /// <param name="browser">RemoteFirefox or RemoteChrome</param>
-        /// <param name="hubAddress">Selenium Hub URL</param>
         /// <returns>IWebDriver</returns>
         private static IWebDriver RemoteWebDriver()
         {
@@ -67,7 +65,6 @@ namespace Framework.Core
         /// <summary>
         /// Creates IWebDriver instance based on given configuration
         /// </summary>
-        /// <param name="configuration"></param>
         /// <returns>IWebDriver instance</returns>
         public static IWebDriver CreateWebDriver()
         {

@@ -1,7 +1,7 @@
 using Framework.Core;
 using System;
 
-namespace WebGoat.Core
+namespace UI.Core
 {
     /// <summary>
     /// Provides URLs used in application under test.

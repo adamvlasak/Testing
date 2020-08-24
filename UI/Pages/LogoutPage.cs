@@ -3,7 +3,7 @@ using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
 
-namespace WebGoat.Pages
+namespace UI.Pages
 {
     public class LogoutPage : BasePage
     {

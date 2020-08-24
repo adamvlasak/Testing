@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace WebGoat.Core
+namespace UI.Core
 {
     public static class LessonLinks
     {

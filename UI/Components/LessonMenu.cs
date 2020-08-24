@@ -2,9 +2,10 @@ using Framework.Components;
 using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
-using WebGoat.Core;
+using System.Threading;
+using UI.Core;
 
-namespace WebGoat.Components
+namespace UI.Components
 {
     public class LessonMenu : BaseComponent
     {
@@ -26,7 +27,7 @@ namespace WebGoat.Components
 
             var parent = Element.FindElementWithWait(By.PartialLinkText(link.Parent));
             parent.Click();
-
+            Thread.Sleep(200); // animation takes 200 ms according to css
             return Element.FindElementWithWait(By.PartialLinkText(link.Title));
         }
 

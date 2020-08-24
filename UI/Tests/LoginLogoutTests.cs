@@ -1,8 +1,8 @@
 using NUnit.Framework;
-using WebGoat.Core;
-using WebGoat.Pages;
+using UI.Core;
+using UI.Pages;
 
-namespace WebGoat.Tests
+namespace UI.Tests
 {
     [TestFixture]
     internal sealed class LoginLogoutTests : BaseWebGoatTest

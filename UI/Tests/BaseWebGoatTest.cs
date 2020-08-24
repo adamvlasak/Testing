@@ -1,10 +1,10 @@
 using Framework.Core;
 using Framework.Extensions;
 using NUnit.Framework;
-using WebGoat.Core;
-using WebGoat.Pages;
+using UI.Core;
+using UI.Pages;
 
-namespace WebGoat.Tests
+namespace UI.Tests
 {
     [TestFixture]
     public abstract class BaseWebGoatTest : BaseTest
