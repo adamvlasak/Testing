@@ -37,7 +37,7 @@ namespace Framework.Core
         /// <summary>
         /// Window size of the browser
         /// </summary>
-        public static WindowSize WindowSize { get; set; } = WindowSize.FullScreen;
+        public static WindowSize WindowSize => WindowSize.FullScreen;
 
         /// <summary>
         /// Default timeout used for Explicit Waiting

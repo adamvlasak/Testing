@@ -4,3 +4,6 @@ Remove-Item -Path **\obj -Force -Recurse
 
 # because of test explorer in vscode
 Remove-Item -Path **\TestResults -Force -Recurse
+
+# remove screenshots
+Remove-Item -Path c:\tmp\screenshots\*.png -Force
