@@ -1,6 +1,6 @@
+using Framework.Components;
 using OpenQA.Selenium;
 using System;
-using Framework.Components;
 
 namespace Framework.Core
 {
