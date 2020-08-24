@@ -11,16 +11,16 @@ namespace UI.Tests
     {
         public LoginPage LoginPage { get; private set; }
 
-        protected LoggedInPage Login(string username, string password)
+        protected Lesson1Page Login(string username, string password)
         {
-            LoggedInPage loggedInPage = LoginPage.Login(username, password);
+            Lesson1Page loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
-            Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.LoggedInPageUrl));
+            Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.Lesson1PageUrl));
             return loggedInPage;
         }
 
-        protected void Logout(LoggedInPage loggedInPage)
+        protected void Logout(Lesson1Page loggedInPage)
         {
             LogoutPage logoutPage = loggedInPage.Logout();
             Assert.That(logoutPage.AlertSuccess.Displayed, Is.True);

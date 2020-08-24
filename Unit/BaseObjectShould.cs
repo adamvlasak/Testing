@@ -1,6 +1,6 @@
 namespace Unit
 {
-    class BaseObjectShould
+    public class BaseObjectShould
     {
     }
 }

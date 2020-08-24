@@ -1,10 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using Framework.Core;
+using Framework.Extensions;
+using OpenQA.Selenium;
+using System;
+using UI.Components;
+using UI.Core;
 
 namespace UI.Pages
 {
-    class BaseLessonPage
+    public class BaseLessonPage : BasePage
     {
+        private UserMenu _userMenu;
+        public UserMenu UserMenu => _userMenu ??= WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
+        public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
+        public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
+        public LessonMenu LessonMenu => WebDriver.FindElementWithWait<LessonMenu>(By.CssSelector("div#menu-container ul.nano-content"));
+        public BaseLessonPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
+        {
+        }
+
+        public LogoutPage Logout()
+        {
+            UserMenu.Logout();
+            return new LogoutPage(WebDriver, SiteMap.LogoutPageUrl);
+        }
+        public void OpenLesson(string lessonTitle)
+        {
+            LessonMenu.Open(lessonTitle);
+        }
     }
 }

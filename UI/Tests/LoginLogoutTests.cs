@@ -24,7 +24,7 @@ namespace UI.Tests
         [TestCase("webgoat", "webgoat")]
         public void LoginSuccessfull(string username, string password)
         {
-            LoggedInPage loggedInPage = base.Login(username, password);
+            Lesson1Page loggedInPage = base.Login(username, password);
             base.Logout(loggedInPage);
         }
     }
