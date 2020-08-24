@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29905.134
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebGoat", "WebGoat\WebGoat.csproj", "{1CCB8AB4-3533-4358-BA3C-98D0C3704561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "UI\UI.csproj", "{1CCB8AB4-3533-4358-BA3C-98D0C3704561}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unit", "Unit\Unit.csproj", "{6B26B5A2-2918-4493-9FC7-4879520B1A50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework", "Framework\Framework.csproj", "{CABEADE9-DDC4-4676-AF04-671546547D6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{1CCB8AB4-3533-4358-BA3C-98D0C3704561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CCB8AB4-3533-4358-BA3C-98D0C3704561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CCB8AB4-3533-4358-BA3C-98D0C3704561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B26B5A2-2918-4493-9FC7-4879520B1A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B26B5A2-2918-4493-9FC7-4879520B1A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B26B5A2-2918-4493-9FC7-4879520B1A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B26B5A2-2918-4493-9FC7-4879520B1A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABEADE9-DDC4-4676-AF04-671546547D6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABEADE9-DDC4-4676-AF04-671546547D6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABEADE9-DDC4-4676-AF04-671546547D6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABEADE9-DDC4-4676-AF04-671546547D6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
