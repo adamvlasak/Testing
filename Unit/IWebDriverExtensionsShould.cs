@@ -1,8 +1,8 @@
 using NUnit.Framework;
 
-namespace UnitTests
+namespace Unit
 {
-    public class Tests
+    public class IWebDriverExtensionsShould
     {
         [SetUp]
         public void Setup()
@@ -10,7 +10,7 @@ namespace UnitTests
         }
 
         [Test]
-        public void Test1()
+        public void Screenshot_Should_Save_a_File()
         {
             Assert.Pass();
         }

@@ -1,0 +1,6 @@
+namespace Unit
+{
+    class BaseObjectShould
+    {
+    }
+}
