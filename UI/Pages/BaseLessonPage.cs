@@ -14,7 +14,7 @@ namespace UI.Pages
         public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
         public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
         public LessonMenu LessonMenu => WebDriver.FindElementWithWait<LessonMenu>(By.CssSelector("div#menu-container ul.nano-content"));
-        public BaseLessonPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
+        public BaseLessonPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {
         }
 
@@ -23,9 +23,15 @@ namespace UI.Pages
             UserMenu.Logout();
             return new LogoutPage(WebDriver, SiteMap.LogoutPageUrl);
         }
-        public void OpenLesson(string lessonTitle)
+
+        /// <summary>
+        /// Opens lesson by given text name. Uses <paramref name="LessonMenu" /> component
+        /// </summary>
+        /// <param name="lessonTitle"></param>
+        /// <returns></returns>
+        public Uri OpenLesson(string lessonTitle)
         {
-            LessonMenu.Open(lessonTitle);
+            return LessonMenu.Open(lessonTitle);
         }
     }
 }

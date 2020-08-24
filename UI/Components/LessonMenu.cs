@@ -13,6 +13,14 @@ namespace UI.Components
         {
         }
 
+        /// <summary>
+        /// Finds link by text in collection of all lessons,
+        /// finds parent link, clicks on it,
+        /// waits for the animation to complete
+        /// and lastly clicks the link from opened sub menu.
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns>IWebElement of a link found in sub menu</returns>
         private IWebElement GetElement(string text)
         {
             Link link;
@@ -31,9 +39,17 @@ namespace UI.Components
             return Element.FindElementWithWait(By.PartialLinkText(link.Title));
         }
 
-        public void Open(string text)
+        /// <summary>
+        /// Opens lesson by given text name.
+        /// </summary>
+        /// <param name="text">Lesson to find</param>
+        /// <returns>Link's href attribute (full URL).</returns>
+        public Uri Open(string text)
         {
-            GetElement(text).Click();
+            var element = GetElement(text);
+            var href = element.GetAttribute("href");
+            element.Click();
+            return new Uri(href);
         }
     }
 }

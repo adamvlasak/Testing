@@ -1,4 +1,5 @@
 using Framework.Components;
+using NUnit.Framework;
 using OpenQA.Selenium;
 using System;
 
@@ -6,19 +7,21 @@ namespace Framework.Core
 {
     public abstract class BasePage : BaseObject
     {
-        protected Uri BaseUrl { get; }
+        public Uri Url { get; }
 
-        protected BasePage(IWebDriver webDriver, Uri baseUrl) : base(webDriver)
+        public string Path => Url.PathAndQuery;
+
+        protected BasePage(IWebDriver webDriver, Uri url) : base(webDriver)
         {
-            BaseUrl = baseUrl;
+            Url = url;
         }
 
         /// <summary>
-        /// Navigates to page BaseUrl.
+        /// Navigates to page URL.
         /// </summary>
         public virtual void Visit()
         {
-            VisitUrl(BaseUrl);
+            VisitUrl(Url);
         }
 
         /// <summary>
@@ -28,15 +31,7 @@ namespace Framework.Core
         public void VisitUrl(Uri url)
         {
             WebDriver.Navigate().GoToUrl(url.ToString());
-        }
-
-        /// <summary>
-        /// Navigates to URL path. Uses BaseUrl.
-        /// </summary>
-        /// <param name="path"></param>
-        public void VisitPath(string path)
-        {
-            VisitUrl(new Uri($"{BaseUrl}{path}"));
+            Assert.That(WebDriver.Url, Is.EqualTo(url));
         }
     }
 }

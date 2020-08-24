@@ -13,7 +13,7 @@ namespace UI.Pages
         private LoginForm _loginForm;
         public LoginForm LoginForm => _loginForm ??= WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
 
-        public LoginPage(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
+        public LoginPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {
         }
 

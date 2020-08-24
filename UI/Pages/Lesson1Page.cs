@@ -5,7 +5,7 @@ namespace UI.Pages
 {
     public sealed class Lesson1Page : BaseLessonPage
     {
-        public Lesson1Page(IWebDriver webDriver, Uri baseUrl) : base(webDriver, baseUrl)
+        public Lesson1Page(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {
         }
 
