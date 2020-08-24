@@ -4,7 +4,7 @@ using UI.Pages;
 namespace UI.Tests
 {
     [TestFixture]
-    internal sealed class LessonsTests : BaseWebGoatTest
+    public sealed class LessonsTests : BaseWebGoatTest
     {
         [Test]
         [TestCase("guest", "guest")]

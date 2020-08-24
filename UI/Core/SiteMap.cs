@@ -10,6 +10,6 @@ namespace UI.Core
     {
         public static Uri LoginPageUrl => new Uri($"{Configuration.ApplicationUrl}/login.mvc");
         public static Uri LogoutPageUrl => new Uri($"{Configuration.ApplicationUrl}/logout.mvc");
-        public static Uri Lesson1PageUrl => new Uri($"{Configuration.ApplicationUrl}/start.mvc#attack/360466308/5");
+        public static Uri Lesson1PageUrl => LessonLinks.GetById(360466308).Url;
     }
 }
