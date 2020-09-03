@@ -24,7 +24,7 @@ test-parallel:
 
 .PHONY: doc
 doc:
-	docfx build doc/docfx.json
+	docfx doc/docfx.json
 
 doc-watch:
-	docfx build doc/docfx.json --serve -p 8081
+	docfx doc/docfx.json --serve -p 8081
