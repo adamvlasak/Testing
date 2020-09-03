@@ -52,7 +52,7 @@ It is useful to enforce source files formatting (VS 2019 uses .editorconfig file
 make format
 ```
 
-> To be able to customize formatting rules you can check [this page](https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-formatting-conventions?view=vs-2019) or see [.editorconfig](https://editorconfig.org/) within the project.
+> To be able to customize formatting rules you can check [this page](https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-formatting-conventions?view=vs-2019) or see [.editorconfig homepage](https://editorconfig.org/) or see the file [within the project](https://github.com/adamvlasak/Testing/blob/master/.editorconfig).
 
 ## Generating Documentation
 
