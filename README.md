@@ -6,6 +6,9 @@ This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It u
 
 ### Windows 10 Version 2004 or later
 
+**Install .NET Core SDK**
+- [dotnet.microsoft.com/download](https://dotnet.microsoft.com/download)
+
 **Turn on Windows Features**
 - Windows Subsystem for Linux
 - Virtual Machine Platform
