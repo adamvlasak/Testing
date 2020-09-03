@@ -14,9 +14,20 @@ This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It u
 - https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
 
 **Install Docker for desktop**
- - https://hub.docker.com/editions/community/docker-ce-desktop-windows/
+- https://hub.docker.com/editions/community/docker-ce-desktop-windows/
 
-Use **Visual Studio Test Explorer** to run tests or **make**:
+**Install dotnet-format as global .NET tool**
+- [github.com/dotnet/format](https://github.com/dotnet/format)
+```
+dotnet tool install -g dotnet-format
+```
+
+**Install docfx**
+- [github.com/dotnet/docfx](https://github.com/dotnet/docfx/releases)
+
+## Running tests
+
+In Visual Studio 2019 you can use Test Explorer. Or make:
 
 ```
 make test
@@ -24,15 +35,25 @@ make test
 ```
 make test-parallel
 ```
-> Note: it is useful to have [dotnet-format](https://github.com/dotnet/format) installed as a global .NET tool:
 
-```
-dotnet tool install -g dotnet-format
-```
+## Enforcing code style
 
-Then you can format code before commit with this make target:
+It is useful to enforce source files formatting (VS 2019 uses .editorconfig file in the root of the project). If you don't have VS 2019:
+
 ```
 make format
 ```
 
 > To be able to customize formatting rules you can check [this page](https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-formatting-conventions?view=vs-2019) or see [.editorconfig](https://editorconfig.org/) within the project.
+
+## Generating Documentation
+
+```
+make doc
+```
+
+or
+
+```
+make doc-watch
+```
