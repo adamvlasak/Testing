@@ -14,7 +14,7 @@ build:
 	dotnet build
 
 format:
-	dotnet-format -v diagnostic
+	dotnet-format
 
 test:
 	dotnet test
