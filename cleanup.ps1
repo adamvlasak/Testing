@@ -19,5 +19,8 @@ Remove-Item -Path .\**\TestResults -Force -Recurse
 Write-Output "Removing screenshots"
 Remove-Item -Path c:\tmp\screenshots\*.png -Force
 
+Write-Output "Removing generated doc"
+Remove-Item -Path .\doc\_site -Force -Recurse
+
 Write-Output "Done with cleanup"
 exit(0)
