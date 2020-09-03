@@ -9,6 +9,14 @@ This project is focused on writing tests using C#, NUnit and .NET Core 3.1. It u
 **Turn on Windows Features**
 - Windows Subsystem for Linux
 - Virtual Machine Platform
+```
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+```
+> Restart your PC.
+```
+wsl --set-default-version 2
+```
 
 **Install WSL2 Linux kernel update package**
 - https://docs.microsoft.com/en-us/windows/wsl/wsl2-kernel
