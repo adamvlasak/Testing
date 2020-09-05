@@ -1,6 +1,7 @@
 using Framework.Core;
 using Framework.Extensions;
 using NUnit.Framework;
+using System.Linq;
 using UI.Core;
 using UI.Pages;
 
@@ -13,6 +14,7 @@ namespace UI.Tests
 
         protected Lesson1Page Login(string username, string password)
         {
+            Assert.That(LoginPage.LoginsTable.Rows.Count(), Is.EqualTo(3));
             Lesson1Page loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));

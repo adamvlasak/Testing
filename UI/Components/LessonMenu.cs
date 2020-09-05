@@ -49,6 +49,7 @@ namespace UI.Components
             var element = GetElement(text);
             var href = element.GetAttribute("href");
             element.Click();
+            Thread.Sleep(200); // animation takes 200 ms according to css
             return new Uri(href);
         }
     }

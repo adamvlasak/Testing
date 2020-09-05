@@ -1,6 +1,7 @@
 using Framework.Components;
 using Framework.Extensions;
 using OpenQA.Selenium;
+using System.Threading;
 
 namespace UI.Components
 {
@@ -23,6 +24,7 @@ namespace UI.Components
         public void Click()
         {
             Toggle.Click();
+            Thread.Sleep(200);
         }
 
         public void EnableLabelDebugging()
