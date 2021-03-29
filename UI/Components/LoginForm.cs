@@ -1,16 +1,15 @@
 using Framework.Components;
-using Framework.Extensions;
 using OpenQA.Selenium;
 
 namespace UI.Components
 {
     public class LoginForm : BaseComponent
     {
-        public IWebElement UsernameInput => Element.FindElement(By.Id("exampleInputEmail1"));
-        public IWebElement PasswordInput => Element.FindElement(By.Id("exampleInputPassword1"));
-        public IWebElement SubmitButton => Element.FindElement(By.CssSelector("button.btn-primary"));
+        public TextBox UsernameInput => new(By.Id("exampleInputEmail1"), WebDriver);
+        public TextBox PasswordInput => new(By.Id("exampleInputPassword1"), WebDriver);
+        public WebElement SubmitButton => new(By.CssSelector("button.btn-primary"), WebDriver);
 
-        public LoginForm(IWebDriver webDriver, IWebElement element) : base(webDriver, element)
+        public LoginForm(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
 

@@ -1,5 +1,4 @@
 using Framework.Components;
-using Framework.Extensions;
 using OpenQA.Selenium;
 using System.Threading;
 
@@ -7,21 +6,21 @@ namespace UI.Components
 {
     public class UserMenu : BaseComponent
     {
-        private IWebElement Toggle => Element.FindElementWithWait(By.CssSelector("button#user-menu"));
+        private WebElement Toggle => new(By.CssSelector("button#user-menu"), WebDriver);
 
-        private IWebElement LogoutItem => Element.FindElementWithWait(By.CssSelector("ul.dropdown-menu li:nth-child(1) a"));
+        private WebElement LogoutItem => new(By.CssSelector("ul.dropdown-menu li:nth-child(1) a"), WebDriver);
 
-        private IWebElement ShowDeveloperOptionsItem => Element.FindElementWithWait(By.LinkText("Show developer controls"));
+        private WebElement ShowDeveloperOptionsItem => new(By.LinkText("Show developer controls"), WebDriver);
 
-        private IWebElement EnableLabelDebuggingItem => WebDriver.FindElementWithWait(By.LinkText("Enable label debugging"));
+        private WebElement EnableLabelDebuggingItem => new(By.LinkText("Enable label debugging"), WebDriver);
 
-        private IWebElement DisableabelDebuggingItem => WebDriver.FindElementWithWait(By.LinkText("Disable label debugging"));
+        private WebElement DisableabelDebuggingItem => new(By.LinkText("Disable label debugging"), WebDriver);
 
-        public UserMenu(IWebDriver webDriver, IWebElement element) : base(webDriver, element)
+        public UserMenu(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
 
-        public void Click()
+        public override void Click()
         {
             Toggle.Click();
             Thread.Sleep(200);

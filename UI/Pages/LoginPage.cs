@@ -1,6 +1,5 @@
 using Framework.Components;
 using Framework.Core;
-using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
 using UI.Components;
@@ -10,12 +9,11 @@ namespace UI.Pages
 {
     public sealed class LoginPage : BasePage
     {
-        public IWebElement ErrorMessage => WebDriver.FindElementWithWait(By.CssSelector("div.error"));
+        public WebElement ErrorMessage => new(By.CssSelector("div.error"), WebDriver);
 
-        private LoginForm _loginForm;
-        public LoginForm LoginForm => _loginForm ??= WebDriver.FindElementWithWait<LoginForm>(By.CssSelector("form[name='loginForm']"));
+        public LoginForm LoginForm => new(By.CssSelector("form[name='loginForm']"), WebDriver);
 
-        public Table LoginsTable => WebDriver.FindElementWithWait<Table>(By.TagName("table"));
+        public Table LoginsTable => new(By.TagName("table"), WebDriver);
 
         public LoginPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {

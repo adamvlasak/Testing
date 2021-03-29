@@ -1,3 +1,4 @@
+using Framework.Extensions;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 
@@ -5,11 +6,29 @@ namespace Framework.Components
 {
     public abstract class BaseComponent : BaseObject, ISearchContext
     {
-        protected IWebElement Element { get; }
-
-        protected BaseComponent(IWebDriver webDriver, IWebElement element) : base(webDriver)
+        protected BaseComponent(By locator, IWebDriver webDriver) : base(webDriver)
         {
-            Element = element;
+            Locator = locator;
+        }
+
+        protected By Locator { get; }
+
+        protected IWebElement Element => WebDriver.FindElementWithWait(Locator);
+
+        public bool Displayed => Element.Displayed;
+
+        public bool Enabled => Element.Enabled;
+
+        public string Text => Element.Text;
+
+        public string GetAttribute(string attributeName)
+        {
+            return Element.GetAttribute(attributeName);
+        }
+
+        public virtual void Click()
+        {
+            Element.Click();
         }
 
         public IWebElement FindElement(By by)

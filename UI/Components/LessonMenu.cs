@@ -1,5 +1,4 @@
 using Framework.Components;
-using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
 using System.Threading;
@@ -9,7 +8,7 @@ namespace UI.Components
 {
     public class LessonMenu : BaseComponent
     {
-        public LessonMenu(IWebDriver webDriver, IWebElement element) : base(webDriver, element)
+        public LessonMenu(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
 
@@ -21,7 +20,7 @@ namespace UI.Components
         /// </summary>
         /// <param name="text"></param>
         /// <returns>IWebElement of a link found in sub menu</returns>
-        private IWebElement GetElement(string text)
+        private WebElement GetElement(string text)
         {
             Link link;
             try
@@ -33,10 +32,10 @@ namespace UI.Components
                 throw new ArgumentException($"Unknown link text: {text}", ex);
             }
 
-            var parent = Element.FindElementWithWait(By.PartialLinkText(link.Parent));
+            WebElement parent = new(By.PartialLinkText(link.Parent), WebDriver);
             parent.Click();
             Thread.Sleep(200); // animation takes 200 ms according to css
-            return Element.FindElementWithWait(By.PartialLinkText(link.Title));
+            return new(By.PartialLinkText(link.Title), WebDriver);
         }
 
         /// <summary>

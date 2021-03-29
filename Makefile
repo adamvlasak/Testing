@@ -10,7 +10,7 @@ log:
 clean:
 	pwsh cleanup.ps1
 
-build:
+build: format
 	dotnet build
 
 format:

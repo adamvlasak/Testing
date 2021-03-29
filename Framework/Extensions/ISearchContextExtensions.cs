@@ -21,18 +21,6 @@ namespace Framework.Extensions
         }
 
         /// <summary>
-        /// Returns instance of component.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="context">ISearchContext context</param>
-        /// <param name="by">By locator</param>
-        /// <returns>Component of type T instance on the current context.</returns>
-        public static T FindElementWithWait<T>(this ISearchContext context, By by) where T : BaseComponent
-        {
-            return Activator.CreateInstance(typeof(T), new object[] { ConvertToWebDriver(context), FindElementWithWait(context, by) }) as T;
-        }
-
-        /// <summary>
         /// Waits until Element.Displayed == true.
         /// </summary>
         /// <param name="context">ISearchContext context</param>

@@ -1,5 +1,5 @@
+using Framework.Components;
 using Framework.Core;
-using Framework.Extensions;
 using OpenQA.Selenium;
 using System;
 using UI.Components;
@@ -9,11 +9,10 @@ namespace UI.Pages
 {
     public class BaseLessonPage : BasePage
     {
-        private UserMenu _userMenu;
-        public UserMenu UserMenu => _userMenu ??= WebDriver.FindElementWithWait<UserMenu>(By.CssSelector("div.user-nav div.dropdown"));
-        public IWebElement LessonTitle => WebDriver.FindElementWithWait(By.CssSelector("h1#lesson-title"));
-        public IWebElement LessonProgressStatus => WebDriver.FindElementWithWait(By.CssSelector("div#lesson-progress"));
-        public LessonMenu LessonMenu => WebDriver.FindElementWithWait<LessonMenu>(By.CssSelector("div#menu-container ul.nano-content"));
+        public UserMenu UserMenu => new(By.CssSelector("div.user-nav div.dropdown"), WebDriver);
+        public WebElement LessonTitle => new(By.CssSelector("h1#lesson-title"), WebDriver);
+        public WebElement LessonProgressStatus => new(By.CssSelector("div#lesson-progress"), WebDriver);
+        public LessonMenu LessonMenu => new(By.CssSelector("div#menu-container ul.nano-content"), WebDriver);
         public BaseLessonPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {
         }

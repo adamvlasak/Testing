@@ -7,7 +7,7 @@ namespace Framework.Components
     {
         public IEnumerable<IWebElement> Rows => Element.FindElements(By.TagName("tr"));
 
-        public Table(IWebDriver webDriver, IWebElement element) : base(webDriver, element)
+        public Table(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
     }
