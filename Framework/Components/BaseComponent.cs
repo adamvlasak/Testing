@@ -21,6 +21,8 @@ namespace Framework.Components
 
         public string Text => Element.Text;
 
+        public bool Present => WebDriver.FindElements(Locator).Count > 0;
+
         public string GetAttribute(string attributeName)
         {
             return Element.GetAttribute(attributeName);

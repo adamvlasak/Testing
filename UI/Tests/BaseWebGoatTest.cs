@@ -17,6 +17,7 @@ namespace UI.Tests
             Assert.That(LoginPage.LoginsTable.Rows.Count(), Is.EqualTo(3));
             Lesson1Page loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
+            Assert.That(loggedInPage.LessonTitle.Present, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
             Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.Lesson1PageUrl));
             return loggedInPage;
@@ -26,6 +27,7 @@ namespace UI.Tests
         {
             LogoutPage logoutPage = loggedInPage.Logout();
             Assert.That(logoutPage.AlertSuccess.Displayed, Is.True);
+            Assert.That(logoutPage.AlertSuccess.Present, Is.True);
             Assert.That(logoutPage.AlertSuccess.Text, Is.EqualTo("You have logged out successfully"));
             Assert.That(logoutPage.LoginLink.Displayed, Is.True);
             Assert.That(WebDriver.Url, Is.EqualTo(SiteMap.LogoutPageUrl));
