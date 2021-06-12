@@ -13,6 +13,7 @@ namespace UI.Tests.Login
         [TestCase("webgoat", "Webgoat")]
         [TestCase("webgoat", "")]
         [TestCase("server", "Server")]
+        [Category("login")]
         public void LoginUnSuccessFul(string username, string password)
         {
             LoginPage.Login(username, password);

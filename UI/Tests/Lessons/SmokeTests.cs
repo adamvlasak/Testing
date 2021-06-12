@@ -8,6 +8,8 @@ namespace UI.Tests.Lessons
         [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
+        [Category("lesson")]
+        [Category("smoke")]
         public void LessonsSmoke(string username, string password)
         {
             LessonPage loggedInPage = Login(username, password);

@@ -1,3 +1,6 @@
+PARALLEL_OPTIONS=-- NUnit.NumberOfTestWorkers=4
+UI_PROJECT=UI/UI.csproj
+
 all: hub clean build test-parallel
 
 hub:
@@ -20,7 +23,25 @@ test:
 	dotnet test
 
 test-parallel:
-	dotnet test -- NUnit.NumberOfTestWorkers=4
+	dotnet test ${PARALLEL_OPTIONS}
+
+smoke:
+	dotnet test ${UI_PROJECT} --filter TestCategory=smoke
+
+smoke-parallel:
+	dotnet test ${UI_PROJECT} --filter TestCategory=smoke ${PARALLEL_OPTIONS}
+
+login:
+	dotnet test ${UI_PROJECT} --filter TestCategory=login
+
+login-parallel:
+	dotnet test ${UI_PROJECT} --filter TestCategory=login ${PARALLEL_OPTIONS}
+
+lesson:
+	dotnet test ${UI_PROJECT} --filter TestCategory=lesson
+
+lesson-parallel:
+	dotnet test ${UI_PROJECT} --filter TestCategory=lesson ${PARALLEL_OPTIONS}
 
 .PHONY: doc
 doc:

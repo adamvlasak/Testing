@@ -9,6 +9,7 @@ namespace UI.Tests.Lessons
         [Test]
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
+        [Category("lesson")]
         public void CompleteLesson1(string username, string password)
         {
             LessonPage loggedInPage = Login(username, password);
