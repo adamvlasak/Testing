@@ -31,7 +31,7 @@ namespace Framework.Core
                     return new RemoteWebDriver(Configuration.SeleniumHubUrl, chromeOptions);
 
                 default:
-                    throw new ArgumentException("Unsupported browser.");
+                    throw new ArgumentException($"Unsupported browser: {Configuration.Browser}.");
             }
         }
 
@@ -87,7 +87,7 @@ namespace Framework.Core
                     return RemoteWebDriver();
 
                 default:
-                    throw new Exception($"Unable to use browser: {Configuration.Browser}.");
+                    throw new ArgumentException($"Unsupported browser: {Configuration.Browser}.");
             }
         }
 
