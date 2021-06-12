@@ -12,16 +12,16 @@ namespace Framework.Components
         {
             Locator = locator;
             _context = WebDriver;
-            Clicked += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Clicking on \"{Locator}\"");
-            FindingElement += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Finding \"{Locator}\" in DOM");
+            Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
+            FindingElement += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding \"{Locator}\" in DOM"));
         }
 
         protected BaseComponent(By locator, IWebDriver webDriver, ISearchContext context) : base(webDriver)
         {
             Locator = locator;
             _context = context;
-            Clicked += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Clicking on \"{Locator}\"");
-            FindingElement += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Finding \"{Locator}\" in DOM");
+            Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
+            FindingElement += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding \"{Locator}\" in DOM"));
         }
 
         protected By Locator { get; }

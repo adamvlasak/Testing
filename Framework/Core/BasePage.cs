@@ -27,7 +27,7 @@ namespace Framework.Core
 
         protected BasePage(IWebDriver webDriver, Uri url) : base(webDriver)
         {
-            PageUrlChanged += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Url property has changed value to: {args.Value}");
+            PageUrlChanged += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Url property has changed value to: {args.Value}"));
             Url = url;
         }
 

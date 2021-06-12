@@ -1,6 +1,7 @@
 using Framework.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using System;
 
 namespace Framework.Components
 {
@@ -14,6 +15,11 @@ namespace Framework.Components
         {
             WebDriver = driver;
             Wait = Factory.CreateWebDriverWait(WebDriver);
+        }
+
+        protected string LogMessage(string message)
+        {
+            return $"{DateTime.Now} ~ {this} ~ {message}";
         }
     }
 }
