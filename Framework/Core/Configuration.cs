@@ -13,7 +13,7 @@ namespace Framework.Core
         /// <summary>
         /// Browser to test with
         /// </summary>
-        public static Browser Browser => Browser.RemoteChrome;
+        public static Browser Browser => Browser.ChromeDriver;
 
         /// <summary>
         /// URL of Selenium Grid

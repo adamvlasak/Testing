@@ -32,10 +32,10 @@ namespace UI.Components
                 throw new ArgumentException($"Unknown link text: {text}", ex);
             }
 
-            WebElement parent = new(By.PartialLinkText(link.Parent), WebDriver);
+            WebElement parent = new(By.PartialLinkText(link.Parent), WebDriver, Element);
             parent.Click();
             Thread.Sleep(200); // animation takes 200 ms according to css
-            return new(By.PartialLinkText(link.Title), WebDriver);
+            return new(By.PartialLinkText(link.Title), WebDriver, Element);
         }
 
         /// <summary>

@@ -8,6 +8,10 @@ namespace Framework.Components
         {
         }
 
+        public TextBox(By locator, IWebDriver webDriver, ISearchContext context) : base(locator, webDriver, context)
+        {
+        }
+
         public void SendKeys(string text)
         {
             Element.SendKeys(text);

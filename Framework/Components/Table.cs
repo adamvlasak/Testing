@@ -10,5 +10,9 @@ namespace Framework.Components
         public Table(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
+
+        public Table(By locator, IWebDriver webDriver, ISearchContext context) : base(locator, webDriver, context)
+        {
+        }
     }
 }
