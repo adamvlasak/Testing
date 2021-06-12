@@ -13,6 +13,7 @@ namespace UI.Pages
         public WebElement LessonTitle => new(By.CssSelector("h1#lesson-title"), WebDriver);
         public WebElement LessonProgressStatus => new(By.CssSelector("div#lesson-progress"), WebDriver);
         public LessonMenu LessonMenu => new(By.CssSelector("div#menu-container ul.nano-content"), WebDriver);
+
         public BaseLessonPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
         {
         }
