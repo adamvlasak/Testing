@@ -1,5 +1,7 @@
 using Framework.Extensions;
+using NUnit.Framework;
 using OpenQA.Selenium;
+using System;
 using System.Collections.ObjectModel;
 
 namespace Framework.Components
@@ -10,19 +12,30 @@ namespace Framework.Components
         {
             Locator = locator;
             _context = WebDriver;
+            Clicked += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Clicking on \"{Locator}\"");
+            FindingElement += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Finding \"{Locator}\" in DOM");
         }
 
         protected BaseComponent(By locator, IWebDriver webDriver, ISearchContext context) : base(webDriver)
         {
             Locator = locator;
             _context = context;
+            Clicked += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Clicking on \"{Locator}\"");
+            FindingElement += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Finding \"{Locator}\" in DOM");
         }
 
         protected By Locator { get; }
 
         private readonly ISearchContext _context;
 
-        protected IWebElement Element => _context.FindElementWithWait(Locator);
+        protected IWebElement Element
+        {
+            get
+            {
+                FindingElement?.Invoke(this, EventArgs.Empty);
+                return _context.FindElementWithWait(Locator);
+            }
+        }
 
         public bool Displayed => Element.Displayed;
 
@@ -32,6 +45,9 @@ namespace Framework.Components
 
         public bool Present => _context.FindElements(Locator).Count > 0;
 
+        public EventHandler Clicked;
+        public EventHandler FindingElement;
+
         public string GetAttribute(string attributeName)
         {
             return Element.GetAttribute(attributeName);
@@ -40,6 +56,7 @@ namespace Framework.Components
         public virtual void Click()
         {
             Element.Click();
+            Clicked?.Invoke(this, EventArgs.Empty);
         }
 
         public IWebElement FindElement(By by)
