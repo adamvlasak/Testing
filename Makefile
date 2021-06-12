@@ -1,8 +1,8 @@
 all: hub clean build test-parallel
 
 hub:
-	docker-compose down
-	docker-compose up -d --remove-orphans
+	docker compose down
+	docker compose up -d --remove-orphans
 
 log:
 	docker-compose logs -f --tail=10
