@@ -13,7 +13,8 @@ namespace Framework.Components
             Locator = locator;
             _context = WebDriver;
             Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
-            FindingElement += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding \"{Locator}\" in DOM"));
+            ComponentWaiting += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Waiting for wrapped element \"{Locator}\" in DOM"));
+            ElementFinding += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
         }
 
         protected BaseComponent(By locator, IWebDriver webDriver, ISearchContext context) : base(webDriver)
@@ -21,7 +22,8 @@ namespace Framework.Components
             Locator = locator;
             _context = context;
             Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
-            FindingElement += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding \"{Locator}\" in DOM"));
+            ComponentWaiting += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Waiting for wrapped element \"{Locator}\" in DOM"));
+            ElementFinding += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
         }
 
         protected By Locator { get; }
@@ -32,7 +34,7 @@ namespace Framework.Components
         {
             get
             {
-                FindingElement?.Invoke(this, EventArgs.Empty);
+                ComponentWaiting?.Invoke(this, EventArgs.Empty);
                 return _context.FindElementWithWait(Locator);
             }
         }
@@ -46,7 +48,8 @@ namespace Framework.Components
         public bool Present => _context.FindElements(Locator).Count > 0;
 
         public EventHandler Clicked;
-        public EventHandler FindingElement;
+        public EventHandler ComponentWaiting;
+        public EventHandler ElementFinding;
 
         public string GetAttribute(string attributeName)
         {
@@ -61,11 +64,13 @@ namespace Framework.Components
 
         public IWebElement FindElement(By by)
         {
+            ElementFinding?.Invoke(this, EventArgs.Empty);
             return _context.FindElement(by);
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
+            ElementFinding?.Invoke(this, EventArgs.Empty);
             return _context.FindElements(by);
         }
     }
