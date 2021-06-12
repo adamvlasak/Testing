@@ -26,7 +26,7 @@ test-parallel:
 doc:
 	docfx doc/docfx.json
 
-doc-watch:
+doc-serve:
 	docfx doc/docfx.json --serve -p 8081
 
 kill:
