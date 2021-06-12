@@ -9,7 +9,7 @@ namespace UI.Pages
 {
     public class LessonPage : BasePage
     {
-        public UserMenu UserMenu => new(By.CssSelector("div.user-nav div.dropdown"), WebDriver);
+        public TopNavigation TopNavigation => new(By.CssSelector("div.user-nav"), WebDriver);
         public WebElement LessonTitle => new(By.CssSelector("h1#lesson-title"), WebDriver);
         public WebElement LessonProgressStatus => new(By.CssSelector("div#lesson-progress"), WebDriver);
         public LessonMenu LessonMenu => new(By.CssSelector("div#menu-container ul.nano-content"), WebDriver);
@@ -24,7 +24,7 @@ namespace UI.Pages
         /// <returns></returns>
         public LogoutPage Logout()
         {
-            UserMenu.Logout();
+            TopNavigation.Logout();
             return new LogoutPage(WebDriver, SiteMap.LogoutPageUrl);
         }
 
@@ -45,7 +45,12 @@ namespace UI.Pages
         /// </summary>
         public void EnableLabelDebugging()
         {
-            UserMenu.EnableLabelDebugging();
+            TopNavigation.EnableLabelDebugging();
+        }
+
+        public void DisableLabelDebugging()
+        {
+            TopNavigation.DisableLabelDebugging();
         }
     }
 }

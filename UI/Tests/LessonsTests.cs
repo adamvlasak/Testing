@@ -15,6 +15,7 @@ namespace UI.Tests
             loggedInPage.EnableLabelDebugging();
             Assert.That(loggedInPage.LessonProgressStatus.Text, Is.EqualTo("Congratulations. You have successfully completed this lesson."));
             Assert.That(loggedInPage.LessonProgressStatus.Displayed, Is.True);
+            loggedInPage.DisableLabelDebugging();
             base.Logout(loggedInPage);
         }
 
