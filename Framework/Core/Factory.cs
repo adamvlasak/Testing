@@ -1,6 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Edge;
+using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -49,9 +50,9 @@ namespace Framework.Core
         /// Returns instance of GeckoDriver (Firefox)
         /// </summary>
         /// <returns>IWebDriver instance</returns>
-        private static IWebDriver GeckoDriver()
+        private static IWebDriver FirefoxDriver()
         {
-            throw new NotImplementedException();
+            return new FirefoxDriver();
         }
 
         /// <summary>
@@ -74,8 +75,8 @@ namespace Framework.Core
                 case Browser.ChromeDriver:
                     return ChromeDriver();
 
-                case Browser.GeckoDriver:
-                    return GeckoDriver();
+                case Browser.FirefoxDriver:
+                    return FirefoxDriver();
 
                 case Browser.EdgeDriver:
                     return EdgeDriver();

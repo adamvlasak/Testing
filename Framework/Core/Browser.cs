@@ -20,7 +20,7 @@ namespace Framework.Core
         /// <summary>
         /// Local Firefox browser installed on PC
         /// </summary>
-        GeckoDriver,
+        FirefoxDriver,
 
         /// <summary>
         /// Local Edge browser installed on PC

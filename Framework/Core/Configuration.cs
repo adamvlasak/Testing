@@ -25,7 +25,7 @@ namespace Framework.Core
         /// </summary>
         public static Uri ApplicationUrl =>
             Browser == Browser.ChromeDriver ||
-            Browser == Browser.GeckoDriver ||
+            Browser == Browser.FirefoxDriver ||
             Browser == Browser.EdgeDriver ?
                 new Uri("http://localhost:8080/WebGoat") : new Uri("http://webgoat:8080/WebGoat");
 
