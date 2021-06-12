@@ -87,7 +87,7 @@ namespace Framework.Core
                     return RemoteWebDriver();
 
                 default:
-                    throw new Exception("Invalid configuration.");
+                    throw new Exception($"Unable to use browser: {Configuration.Browser}.");
             }
         }
 
