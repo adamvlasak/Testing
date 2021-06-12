@@ -26,8 +26,8 @@ namespace UI.Tests
         [TestCase("server", "server")]
         public void LoginSuccessfull(string username, string password)
         {
-            LessonPage loggedInPage = base.Login(username, password);
-            base.Logout(loggedInPage);
+            LessonPage loggedInPage = Login(username, password);
+            Logout(loggedInPage);
         }
     }
 }
