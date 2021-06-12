@@ -28,3 +28,7 @@ doc:
 
 doc-watch:
 	docfx doc/docfx.json --serve -p 8081
+
+kill:
+	taskkill /f /im chromedriver.exe /fi "STATUS ne RUNNING"
+	taskkill /f /im chrome.exe
