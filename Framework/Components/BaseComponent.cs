@@ -9,11 +9,20 @@ namespace Framework.Components
         protected BaseComponent(By locator, IWebDriver webDriver) : base(webDriver)
         {
             Locator = locator;
+            _context = WebDriver;
+        }
+
+        protected BaseComponent(By locator, IWebDriver webDriver, ISearchContext context) : base(webDriver)
+        {
+            Locator = locator;
+            _context = context;
         }
 
         protected By Locator { get; }
 
-        protected IWebElement Element => WebDriver.FindElementWithWait(Locator);
+        private ISearchContext _context;
+
+        protected IWebElement Element => _context.FindElementWithWait(Locator);
 
         public bool Displayed => Element.Displayed;
 
@@ -21,7 +30,7 @@ namespace Framework.Components
 
         public string Text => Element.Text;
 
-        public bool Present => WebDriver.FindElements(Locator).Count > 0;
+        public bool Present => _context.FindElements(Locator).Count > 0;
 
         public string GetAttribute(string attributeName)
         {
@@ -35,12 +44,12 @@ namespace Framework.Components
 
         public IWebElement FindElement(By by)
         {
-            return Element.FindElement(by);
+            return _context.FindElement(by);
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            return Element.FindElements(by);
+            return _context.FindElements(by);
         }
     }
 }
