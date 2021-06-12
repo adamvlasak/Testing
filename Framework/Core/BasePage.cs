@@ -33,10 +33,10 @@ namespace Framework.Core
 
         protected BasePage(IWebDriver webDriver, Uri url) : base(webDriver)
         {
-            UrlChanging += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Url property changing value to: {args.Value}");
+            UrlChanging += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Url property is changing value to: {args.Value}");
             UrlChanged += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ Url property has changed value to: {args.Value}");
             Visiting += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ WebDriver Url before visiting: {args.Value}");
-            Visited += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ WebDriver has visited URL to: {args.Value}");
+            Visited += (sender, args) => TestContext.Progress.WriteLine($"{DateTime.Now} ~ {this.ToString()} ~ WebDriver has visited URL: {args.Value}");
             Url = url;
         }
 
