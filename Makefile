@@ -20,7 +20,7 @@ test:
 	dotnet test
 
 test-parallel:
-	dotnet test -- NUnit.NumberOfTestWorkers=2
+	dotnet test -- NUnit.NumberOfTestWorkers=4
 
 .PHONY: doc
 doc:
