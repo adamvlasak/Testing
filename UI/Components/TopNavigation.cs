@@ -13,17 +13,6 @@ namespace UI.Components
         {
         }
 
-        private void WaitForPopUpMenu()
-        {
-            Wait.Until(d => d.FindElement(By.CssSelector("ul.dropdown-menu")).Displayed);
-        }
-
-        public override void Click()
-        {
-            UserMenu.Click();
-            WaitForPopUpMenu();
-        }
-
         public void EnableLabelDebugging()
         {
             UserMenu.EnableLabelDebugging();
