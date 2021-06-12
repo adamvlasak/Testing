@@ -5,7 +5,7 @@ namespace UI.Core
 {
     public static class LessonLinks
     {
-        public static List<Link> Links = new List<Link>()
+        private static readonly List<Link> _links = new()
         {
             new Link { Title = "How to work with WebGoat", Id = 360466308, Score = 5, Parent = "Introduction" },
             new Link { Title = "How to create a Legacy Lesson", Id = 1894705151, Score = 5, Parent = "Introduction" },
@@ -77,17 +77,17 @@ namespace UI.Core
 
         public static Link GetLinkByText(string text)
         {
-            return Links.Single(l => l.Title == text);
+            return _links.Single(l => l.Title == text);
         }
 
         public static Link GetLinkByUrl(string url)
         {
-            return Links.Single(l => l.Path == url);
+            return _links.Single(l => l.Path == url);
         }
 
         public static Link GetById(int id)
         {
-            return Links.Single(l => l.Id == id);
+            return _links.Single(l => l.Id == id);
         }
     }
 }

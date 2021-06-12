@@ -20,7 +20,7 @@ namespace Framework.Components
 
         protected By Locator { get; }
 
-        private ISearchContext _context;
+        private readonly ISearchContext _context;
 
         protected IWebElement Element => _context.FindElementWithWait(Locator);
 

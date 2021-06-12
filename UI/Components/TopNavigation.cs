@@ -9,10 +9,6 @@ namespace UI.Components
 
         private WebElement Info => new(By.CssSelector("button#about-button"), WebDriver, Element);
 
-        private WebElement ContactUs => new(By.CssSelector("a[href='mailto:webgoat@owasp.org?Subject=Webgoat%20feedback']"), WebDriver, Element);
-
-
-
         public TopNavigation(By locator, IWebDriver webDriver) : base(locator, webDriver)
         {
         }
