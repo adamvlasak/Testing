@@ -16,18 +16,18 @@ namespace Framework.Core
             set
             {
                 _url = value;
-                PageUrlChanged?.Invoke(this, new EventArgs<Uri>(_url));
+                OnUrlChange?.Invoke(this, new EventArgs<Uri>(_url));
             }
         }
 
         private Uri _url;
 
         public string Path => Url.PathAndQuery;
-        public EventHandler<EventArgs<Uri>> PageUrlChanged;
+        public EventHandler<EventArgs<Uri>> OnUrlChange;
 
         protected BasePage(IWebDriver webDriver, Uri url) : base(webDriver)
         {
-            PageUrlChanged += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Url property has changed value to: {args.Value}"));
+            OnUrlChange += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Url property has changed value to: {args.Value}"));
             Url = url;
         }
 

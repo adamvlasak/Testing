@@ -12,18 +12,18 @@ namespace Framework.Components
         {
             Locator = locator;
             _context = WebDriver;
-            Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
-            ComponentWaiting += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Waiting for wrapped element \"{Locator}\" in DOM"));
-            ElementFinding += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
+            OnClick += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
+            OnComponentFindAndWait += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding wrapped element \"{Locator}\" in DOM"));
+            OnElementFind += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
         }
 
         protected BaseComponent(By locator, IWebDriver webDriver, ISearchContext context) : base(webDriver)
         {
             Locator = locator;
             _context = context;
-            Clicked += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
-            ComponentWaiting += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Waiting for wrapped element \"{Locator}\" in DOM"));
-            ElementFinding += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
+            OnClick += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Clicking on \"{Locator}\""));
+            OnComponentFindAndWait += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding wrapped element \"{Locator}\" in DOM"));
+            OnElementFind += (sender, args) => TestContext.Progress.WriteLine(LogMessage($"Finding element(s) \"{Locator}\" in DOM"));
         }
 
         protected By Locator { get; }
@@ -34,8 +34,9 @@ namespace Framework.Components
         {
             get
             {
-                ComponentWaiting?.Invoke(this, EventArgs.Empty);
-                return _context.FindElementWithWait(Locator);
+                var el = _context.FindElementWithWait(Locator);
+                OnComponentFindAndWait?.Invoke(this, EventArgs.Empty);
+                return el;
             }
         }
 
@@ -47,9 +48,9 @@ namespace Framework.Components
 
         public bool Present => _context.FindElements(Locator).Count > 0;
 
-        public EventHandler Clicked;
-        public EventHandler ComponentWaiting;
-        public EventHandler ElementFinding;
+        public EventHandler OnClick;
+        public EventHandler OnComponentFindAndWait;
+        public EventHandler OnElementFind;
 
         public string GetAttribute(string attributeName)
         {
@@ -58,19 +59,19 @@ namespace Framework.Components
 
         public virtual void Click()
         {
+            OnClick?.Invoke(this, EventArgs.Empty);
             Element.Click();
-            Clicked?.Invoke(this, EventArgs.Empty);
         }
 
         public IWebElement FindElement(By by)
         {
-            ElementFinding?.Invoke(this, EventArgs.Empty);
+            OnElementFind?.Invoke(this, EventArgs.Empty);
             return _context.FindElement(by);
         }
 
         public ReadOnlyCollection<IWebElement> FindElements(By by)
         {
-            ElementFinding?.Invoke(this, EventArgs.Empty);
+            OnElementFind?.Invoke(this, EventArgs.Empty);
             return _context.FindElements(by);
         }
     }
