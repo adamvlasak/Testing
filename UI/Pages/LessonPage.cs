@@ -10,8 +10,11 @@ namespace UI.Pages
     public class LessonPage : BasePage
     {
         public TopNavigation TopNavigation => new(By.CssSelector("div.user-nav"), WebDriver);
+
         public WebElement LessonTitle => new(By.CssSelector("h1#lesson-title"), WebDriver);
+
         public WebElement LessonProgressStatus => new(By.CssSelector("div#lesson-progress"), WebDriver);
+
         public LessonMenu LessonMenu => new(By.CssSelector("div#menu-container ul.nano-content"), WebDriver);
 
         public LessonPage(IWebDriver webDriver, Uri url) : base(webDriver, url)
