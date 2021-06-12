@@ -12,10 +12,10 @@ namespace UI.Tests
     {
         public LoginPage LoginPage { get; private set; }
 
-        protected Lesson1Page Login(string username, string password)
+        protected LessonPage Login(string username, string password)
         {
             Assert.That(LoginPage.LoginsTable.Rows.Count(), Is.EqualTo(3));
-            Lesson1Page loggedInPage = LoginPage.Login(username, password);
+            LessonPage loggedInPage = LoginPage.Login(username, password);
             Assert.That(loggedInPage.LessonTitle.Displayed, Is.True);
             Assert.That(loggedInPage.LessonTitle.Present, Is.True);
             Assert.That(loggedInPage.LessonTitle.Text, Is.EqualTo("How to work with WebGoat"));
@@ -23,7 +23,7 @@ namespace UI.Tests
             return loggedInPage;
         }
 
-        protected void Logout(Lesson1Page loggedInPage)
+        protected void Logout(LessonPage loggedInPage)
         {
             LogoutPage logoutPage = loggedInPage.Logout();
             Assert.That(logoutPage.AlertSuccess.Displayed, Is.True);

@@ -19,11 +19,11 @@ namespace UI.Pages
         {
         }
 
-        public Lesson1Page Login(string username, string password)
+        public LessonPage Login(string username, string password)
         {
             LoginForm.Fill(username, password);
             LoginForm.Submit();
-            return new Lesson1Page(WebDriver, SiteMap.Lesson1PageUrl);
+            return new LessonPage(WebDriver, SiteMap.Lesson1PageUrl);
         }
     }
 }

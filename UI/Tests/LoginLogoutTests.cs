@@ -12,6 +12,7 @@ namespace UI.Tests
         [TestCase("admin", "admin")]
         [TestCase("webgoat", "Webgoat")]
         [TestCase("webgoat", "")]
+        [TestCase("server", "Server")]
         public void LoginUnsuccessfull(string username, string password)
         {
             LoginPage.Login(username, password);
@@ -22,9 +23,10 @@ namespace UI.Tests
 
         [TestCase("guest", "guest")]
         [TestCase("webgoat", "webgoat")]
+        [TestCase("server", "server")]
         public void LoginSuccessfull(string username, string password)
         {
-            Lesson1Page loggedInPage = base.Login(username, password);
+            LessonPage loggedInPage = base.Login(username, password);
             base.Logout(loggedInPage);
         }
     }
