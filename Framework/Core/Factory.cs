@@ -1,5 +1,6 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Edge;
 using OpenQA.Selenium.Remote;
 using OpenQA.Selenium.Support.UI;
 using System;
@@ -59,7 +60,7 @@ namespace Framework.Core
         /// <returns>IWebDriver instance</returns>
         private static IWebDriver EdgeDriver()
         {
-            throw new NotImplementedException();
+            return new EdgeDriver();
         }
 
         /// <summary>
