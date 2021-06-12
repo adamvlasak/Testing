@@ -1,8 +1,6 @@
-using Framework.Components;
 using Framework.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
-using System;
 
 namespace Framework.Extensions
 {

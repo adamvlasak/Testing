@@ -1,11 +1,3 @@
-$required_computer_name = "<COMPUTERNAME>"
-
-if (-Not ($env:computername -Like $required_computer_name))
-{
-    Write-Output "Cannot use ${env:computername} - must be ${required_computer_name} computer!"
-    exit(1)
-}
-
 # make sure bin and obj are really clean
 Write-Output "Removing bin and obj directories in projects"
 Remove-Item -Path .\**\bin -Force -Recurse
