@@ -52,7 +52,8 @@ namespace Framework.Core
         /// <returns>IWebDriver instance</returns>
         private static IWebDriver FirefoxDriver()
         {
-            return new FirefoxDriver();
+            var options = Configuration.DefaultFirefoxOptions;
+            return new FirefoxDriver(options);
         }
 
         /// <summary>
@@ -61,6 +62,7 @@ namespace Framework.Core
         /// <returns>IWebDriver instance</returns>
         private static IWebDriver EdgeDriver()
         {
+            var options = Configuration.DefaultEdgeOptions;
             return new EdgeDriver();
         }
 
@@ -82,7 +84,6 @@ namespace Framework.Core
                     return EdgeDriver();
 
                 case Browser.RemoteChrome:
-                case Browser.RemoteFirefox:
                     return RemoteWebDriver();
 
                 default:
