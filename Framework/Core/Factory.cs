@@ -27,7 +27,7 @@ namespace Framework.Core
 
                 case Browser.RemoteChrome:
                     var chromeOptions = Configuration.DefaultChromeOptions;
-                    chromeOptions.AddArgument(Configuration.WindowSizeBrowserOption);
+                    chromeOptions.AddArgument(Configuration.ChromeWindowOption);
                     return new RemoteWebDriver(Configuration.SeleniumHubUrl, chromeOptions);
 
                 default:
@@ -42,7 +42,7 @@ namespace Framework.Core
         private static IWebDriver ChromeDriver()
         {
             var options = Configuration.DefaultChromeOptions;
-            options.AddArgument(Configuration.WindowSizeBrowserOption);
+            options.AddArgument(Configuration.ChromeWindowOption);
             return new ChromeDriver(options);
         }
 

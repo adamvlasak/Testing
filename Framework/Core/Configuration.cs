@@ -45,9 +45,15 @@ namespace Framework.Core
         public const uint DefaultTimeout = 5;
 
         /// <summary>
+        /// Page load strategy defines how selenium waits for page to load.
+        /// </summary>
+        private const OpenQA.Selenium.PageLoadStrategy PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default;
+
+
+        /// <summary>
         /// Based on other properties returns correct window size argument for WebDriver
         /// </summary>
-        public static string WindowSizeBrowserOption
+        public static string ChromeWindowOption
         {
             get
             {
@@ -65,7 +71,8 @@ namespace Framework.Core
         /// </summary>
         public static ChromeOptions DefaultChromeOptions => new ChromeOptions
         {
-            PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default
+            PageLoadStrategy = PageLoadStrategy,
+            UseSpecCompliantProtocol = true
         };
 
         /// <summary>
@@ -73,7 +80,7 @@ namespace Framework.Core
         /// </summary>
         public static FirefoxOptions DefaultFirefoxOptions => new FirefoxOptions
         {
-            PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default
+            PageLoadStrategy = PageLoadStrategy,
         };
 
         /// <summary>
@@ -81,7 +88,7 @@ namespace Framework.Core
         /// </summary>
         public static EdgeOptions DefaultEdgeOptions => new EdgeOptions
         {
-            PageLoadStrategy = OpenQA.Selenium.PageLoadStrategy.Default
+            PageLoadStrategy = PageLoadStrategy
         };
     }
 }
