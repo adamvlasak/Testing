@@ -4,8 +4,10 @@ UI_PROJECT=UI/UI.csproj
 all: hub clean build test-parallel
 
 hub:
+	wget https://github.com/WebGoat/WebGoat/releases/download/7.1/webgoat-container-7.1-exec.jar -O webgoat-container-7.1-exec.jar
 	docker compose down
 	docker compose up -d --remove-orphans
+	rm webgoat-container-7.1-exec.jar
 
 log:
 	docker-compose logs -f --tail=10

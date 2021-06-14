@@ -1,7 +1,9 @@
 version: "3.7"
 services:
   webgoat:
-    image: webgoat/webgoat-7.1
+    build:
+      context: .
+      dockerfile: Dockerfile.webgoat
     container_name: webgoat
     ports:
       - "8080:8080"
@@ -9,7 +11,7 @@ services:
       TZ: "Europe/Prague"
 
   hub:
-    image: selenium/hub
+    image: selenium/hub:4.0.0-beta-4-20210608
     container_name: hub
     ports:
       - "4444:4444"
@@ -17,11 +19,12 @@ services:
       TZ: "Europe/Prague"
 
   chrome1:
-    image: selenium/node-chrome
+    image: selenium/node-chrome:4.0.0-beta-4-20210608
     container_name: chrome1
-    shm_size: '2gb'
     environment:
-      HUB_HOST: hub
+      SE_EVENT_BUS_HOST: hub
+      SE_EVENT_BUS_PUBLISH_PORT: 4442
+      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
       SCREEN_WIDTH: "1920"
       SCREEN_HEIGHT: "1080"
       TZ: "Europe/Prague"
@@ -32,41 +35,12 @@ services:
       - webgoat
 
   chrome2:
-    image: selenium/node-chrome
+    image: selenium/node-chrome:4.0.0-beta-4-20210608
     container_name: chrome2
-    shm_size: '2gb'
     environment:
-      HUB_HOST: hub
-      SCREEN_WIDTH: "1920"
-      SCREEN_HEIGHT: "1080"
-      TZ: "Europe/Prague"
-    depends_on:
-      - hub
-    links:
-      - hub
-      - webgoat
-
-  chrome3:
-    image: selenium/node-chrome
-    container_name: chrome3
-    shm_size: '2gb'
-    environment:
-      HUB_HOST: hub
-      SCREEN_WIDTH: "1920"
-      SCREEN_HEIGHT: "1080"
-      TZ: "Europe/Prague"
-    depends_on:
-      - hub
-    links:
-      - hub
-      - webgoat
-
-  chrome4:
-    image: selenium/node-chrome
-    container_name: chrome4
-    shm_size: '2gb'
-    environment:
-      HUB_HOST: hub
+      SE_EVENT_BUS_HOST: hub
+      SE_EVENT_BUS_PUBLISH_PORT: 4442
+      SE_EVENT_BUS_SUBSCRIBE_PORT: 4443
       SCREEN_WIDTH: "1920"
       SCREEN_HEIGHT: "1080"
       TZ: "Europe/Prague"
